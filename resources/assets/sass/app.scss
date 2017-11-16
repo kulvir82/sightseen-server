@@ -1,0 +1,18 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+// @import "global";
+// @import "pagination";
+
+// Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+
+$fa-font-path: "../fonts/";
+@import "node_modules/font-awesome/scss/font-awesome.scss";
+
+$simple-line-font-path: "../fonts/";
+@import "node_modules/simple-line-icons/scss/simple-line-icons.scss";
