@@ -12,11 +12,11 @@
                 </div>
                 <div class="max-auto title-price">
                   <div class="row">
-                    <div class="col-md-9 center">
-                        <strong class="align-middle">{{sight.title}}</strong>
+                    <div class="col-md-9">
+                        <strong class="h6 ">{{sight.title}}</strong>
                     </div>
-                    <div class="col-md-3 center">
-                        <strong class="align-middle">${{sight.price}}</strong>
+                    <div class="col-md-3">
+                        <strong class="h6 ">${{sight.price}} Per Person</strong>
                     </div>
                   </div>
                 </div>
@@ -52,11 +52,15 @@ export default {
     },
     addToCart:function(sightid){
         this.product_ids.push([sightid]);
+
         var products = this.product_ids.length;
-        if(!this.$cookies.isKey(this.unique_code) ){
+        if(!this.$cookies.isKey('UserToken') ){
           this.unique_code = this.makeid();
+          this.$cookies.set('UserToken',this.unique_code,{ expires: '1M' });
         }
-          this.$cookies.set(this.unique_code,this.product_ids,{ expires: '1M' });
+
+          var token = this.$cookies.get('UserToken');
+          this.$cookies.set(token,this.product_ids,{expires:'1M'});
           this.$http.get('/addtocart',{sightid:sightid}).then(function(response){
           bus.$emit('change-header',[ this.country.img , products , this.unique_code ]);
       });

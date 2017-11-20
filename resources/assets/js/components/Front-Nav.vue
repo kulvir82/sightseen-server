@@ -17,36 +17,78 @@
           </li>
           <li class="nav-item">
             <!-- Modal Component -->
-            <b-modal id="modal1" size="lg" >
-              <div class="products" v-for="data in cartData">
-                <div class="row border rounded text-center margin-sm padding-sm">
-                  <div class="col-md-3 h6 padding-xs">
-                    <span class="align-middle">{{data.title}}</span>
+            <b-modal v-if="cartData" id="modal1" size="lg" hide-footer >
+              <!-- <div class="heading">
+                <div class="row border text-center padding-sm">
+                  <div class="col-md-3 h5 padding-xs">
+                    <span>Destination</span>
                   </div>
-                  <div class="col-md-2 h6 padding-md">
-                    <span class="align-middle">{{data.price}}</span>
+                  <div class="col-md-2 h5 padding-xs">
+                    <span>Persons</span>
                   </div>
-                  <div class="col-md-3">
-                    <div class="row padding-xs">
-                      <div class="col-md-6 col-sm-6 h6 ">
-                        <span class="align-middle">From</span>
-                      </div>
-                      <div class="col-md-6 col-sm-6 ">
-                        <date-picker :date="date" :limit="limit" :option="option" ></date-picker>
-                      </div>
-                      </div>
+                  <div class="col-md-3 h5 padding-xs">
+                    <span>Book Date</span>
+                  </div>
+                  <div class="col-md-1 h5 padding-xs">
+                    <span>Price</span>
+                  </div>
+                </div>
+              </div> -->
+              <div class="scroll-class">
+                <div class="products" v-for="(data,index) in cartData">
+                  <div class="row border rounded text-center margin-sm padding-sm">
+                    <div class="col-md-3 h6 padding-xs">
+                      <span class="align-middle">{{data.title}}</span>
+                    </div>
+                    <div class="col-md-3">
+                      <select  name="numberofpax" v-bind:id="'numberofpaxfor'+index">
+                        <option :value="1" selected>1</option>
+                        <option v-for="item in 19"  :value="val + item++">{{ item }}</option><span>person</span>
+                      </select><span>Persons</span>
+                    </div>
+                    <div class="col-md-4">
                       <div class="row padding-xs">
-                        <div class="col-md-6 col-sm-6 h6 ">
-                          <span class="align-middle">To</span>
+                        <datetime v-bind:id="'datefor'+data.id"
+                          :value="date"
+                          type="date"
+                          input-format="DD-MM-YYYY"
+                          wrapper-class="my-wrapper-class"
+                          input-class="my-input-class"
+                          placeholder="Select date"
+                          :min-date="date"
+                          monday-first
+                          auto-continue
+                          auto-close
+                          required></datetime>
                         </div>
-                        <div class="col-md-6 col-sm-6 ">
-                          <date-picker :date="date" :limit="limit"></date-picker>
-                        </div>
+                      </div>
+                      <div class="col-md-1 h6 padding-md">
+                        <span class="align-middle">{{data.price}}USD</span>
+                      </div>
+                      <div class="col-md-1 h6 padding-md">
+                        <b-button size="sm" v-on:click="removefromcart(data.id)">X</b-button>
                       </div>
                     </div>
                   </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <b-button size="sm" type="submit" v-on:click="checkoutCartData()">Check Out</b-button>
                 </div>
-              <b-btn >Check Out</b-btn>
+                <div class="col-md-9">
+                  <div class="col-md-4">
+                    <b-button size="sm">Continue Shoping</b-button>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
             </b-modal>
             <b-btn class="nav-link js-scroll-trigger" v-on:click="getcartdata(headerdata[2])" v-b-modal.modal1><span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span><span v-if="headerdata[1]" >{{ headerdata[1] }}</span></b-btn>
           </li>
@@ -118,12 +160,10 @@
 </template>
 <script>
 import Modal from './Modal.vue';
-import myDatepicker from 'vue-datepicker'
 
 export default {
   components:{
     modal:Modal,
-    'date-picker': myDatepicker
   },
   data:function(){
     return{
@@ -134,17 +174,20 @@ export default {
       check:true,
       cart:null,
       cartData:null,
-
-      date: {
-        time: '' // string
+      cartItem: {
+        id: '',
+        date: '',
+        persons:''
       },
-      limit:[
-        type =>'fromto',
-        from =>'',
-        to => ''
-      ],
+      val:1,
+      date: ''
     }
 
+  },
+  created ()
+  {
+    let d = new Date();
+    this.date = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
   },
   methods:{
     sendmessage:function(){
@@ -166,13 +209,16 @@ export default {
       });
     },
     getcartdata:function(){
-       this.userdata = this.$cookies.get(this.headerdata[2]);
-       this.$http.post('/productsdata',{product_ids:this.userdata}).then(function(response){
+       this.userdata = this.$cookies.get('UserToken');
+       var values = this.$cookies.get(this.userdata);
+       this.$http.post('/productsdata',{product_ids:values}).then(function(response){
        this.cartData = response.data;
        console.log(this.cartData);
      });
     },
-
+    removefromcart:function(itemtoRemove){
+      console.log(this.cartData);
+    }
   },
   mounted:function(){
     bus.$on('change-header', function(result){
@@ -206,5 +252,9 @@ export default {
 }
 .heading-image img{
   width:60px;
+}
+.scroll-class {
+  height:60vh;
+  overflow-y: scroll;
 }
 </style>

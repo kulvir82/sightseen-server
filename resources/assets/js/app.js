@@ -6,10 +6,13 @@
  */
 
 window.Vue = require('vue');
+Vue.use(require('vue-moment'));
+console.log(Vue.moment().locale());
+import Datetime from 'vue-datetime';
+Vue.use(Datetime);
 import VueCookies from 'vue-cookies';
 Vue.use(VueCookies);
 import BootstrapVue from 'bootstrap-vue';
-Vue.use(require('vue-moment'));
 Vue.use(BootstrapVue);
 require('jquery.easing');
 var jQuery = require("jquery");
