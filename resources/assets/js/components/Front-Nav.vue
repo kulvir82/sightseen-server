@@ -1,5 +1,5 @@
 <template >
-  <nav v-if="headerdata" class="navbar navbar-expand-lg bg-header fixed-top" id="mainNav" >
+  <nav v-if="headerdata" class="navbar navbar-expand-lg bg-header fixed-top text-center" id="mainNav" >
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Maple Labs</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,63 +34,73 @@
                   </div>
                 </div>
               </div> -->
-              <div class="scroll-class">
-                <div class="products" v-for="(data,index) in cartData">
-                  <div class="row border rounded text-center margin-sm padding-sm">
-                    <div class="col-md-3 h6 padding-xs">
+            <div class="scroll-class">
+              <div class="products" v-for="data,index in cartData"  :id="'product'+data.id">
+                <div class="row border rounded text-center margin-top-sm margin-xs ">
+                  <div class="col-md-3 h6 padding-xs">
+                    <div class="small">
                       <span class="align-middle">{{data.title}}</span>
                     </div>
-                    <div class="col-md-3">
-                      <select  name="numberofpax" v-bind:id="'numberofpaxfor'+index">
-                        <option :value="1" selected>1</option>
-                        <option v-for="item in 19"  :value="val + item++">{{ item }}</option><span>person</span>
-                      </select><span>Persons</span>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="row padding-xs">
-                        <datetime v-bind:id="'datefor'+data.id"
-                          :value="date"
-                          type="date"
-                          input-format="DD-MM-YYYY"
-                          wrapper-class="my-wrapper-class"
-                          input-class="my-input-class"
-                          placeholder="Select date"
-                          :min-date="date"
-                          monday-first
-                          auto-continue
-                          auto-close
-                          required></datetime>
-                        </div>
-                      </div>
-                      <div class="col-md-1 h6 padding-md">
-                        <span class="align-middle">{{data.price}}USD</span>
-                      </div>
-                      <div class="col-md-1 h6 padding-md">
-                        <b-button size="sm" v-on:click="removefromcart(data.id)">X</b-button>
-                      </div>
+                    <div class="small">
+                      <span>Cost: </span><span class="align-middle">{{data.price}} USD</span><span> Per Person</span>
                     </div>
                   </div>
-              </div>
-              <div class="row">
-                <div class="col-md-3">
-                  <b-button size="sm" type="submit" v-on:click="checkoutCartData()">Check Out</b-button>
+                  <div class="col-md-3 small">
+                    <select name="numberofpax" v-bind:id="'numberofpaxfor'+data.id" v-on:change="getPriceForAll(data.price,data.id,index)">
+                      <option :value="1" selected>1</option>
+                      <option v-for="item in 19"  :value="val + item++">{{ item }}</option><span>Person</span>
+                    </select><span>Person</span>
+                  </div>
+                  <div class="col-md-3 small">
+                    <div class="row padding-xs">
+                      <datetime :id="'date'+data.id"
+                        :value="date"
+                        type="date"
+                        input-format="DD-MM-YYYY"
+                        wrapper-class="my-wrapper-class"
+                        input-class="my-input-class"
+                        placeholder="Select date"
+                        :min-date="date"
+                        monday-first
+                        auto-close
+                        required ></datetime>
+                      </div>
+                    </div>
+                    <div class="col-md-2 h6 padding-md small">
+                      <div class="" :id="'total-'+data.id">
+                        <span class="total"></span>
+                        <span>USD</span>
+                      </div>
+                    </div>
+                    <div class="col-md-1 h6 padding-md small">
+                      <b-button class="text-center rounded-circle" size="sm" v-on:click="removefromcart(data.id)">X</b-button>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-9">
-                  <div class="col-md-4">
+              </div>
+              <div class="row border border-bottom-0 rounded small">
+                <div class="col-md-2 padding-top-md">
+                  <b-button size="sm" type="submit" v-on:click="checkoutCartData()">Checkout</b-button>
+                </div>
+                <div class="col-md-4 padding-top-md">
                     <b-button size="sm">Continue Shoping</b-button>
-                  </div>
-                  <div class="col-md-8">
-                    <div class="col-md-4">
-
+                </div>
+                <div class="col-md-6 text-right padding-top-xs">
+                  <div class="col-md-6">
+                    <div class="">
+                      <span>Tax</span>
                     </div>
                     <div class="">
-
+                      <span>Total Amount</span>
                     </div>
+                  </div>
+                  <div class="col-md-3">
+
                   </div>
                 </div>
               </div>
             </b-modal>
-            <b-btn class="nav-link js-scroll-trigger" v-on:click="getcartdata(headerdata[2])" v-b-modal.modal1><span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span><span v-if="headerdata[1]" >{{ headerdata[1] }}</span></b-btn>
+            <b-btn class="nav-link js-scroll-trigger" v-on:click="getcartdata()" v-b-modal.modal1><span><i class="fa fa-shopping-cart" aria-hidden="true"></i></span><span v-if="headerdata[1]" >{{ headerdata[1] }}</span><span v-else >{{ cartlength }}</span></b-btn>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -167,20 +177,18 @@ export default {
   },
   data:function(){
     return{
+      priceforall: [],
       headerdata:null,
       login:null,
       showModal: false,
       userdata:null,
       check:true,
+      cartlength:null,
       cart:null,
       cartData:null,
-      cartItem: {
-        id: '',
-        date: '',
-        persons:''
-      },
       val:1,
-      date: ''
+      date: '',
+      grandTotal:[],
     }
 
   },
@@ -213,17 +221,53 @@ export default {
        var values = this.$cookies.get(this.userdata);
        this.$http.post('/productsdata',{product_ids:values}).then(function(response){
        this.cartData = response.data;
-       console.log(this.cartData);
      });
     },
-    removefromcart:function(itemtoRemove){
+    getPriceForAll:function(price,sightid,index){
+      var id = "numberofpaxfor"+sightid;
+      var numberofpax = $("#"+id).val();
+      var totalid = "total-"+sightid;
+      var value = numberofpax * price
+      $("span.total" ,'#'+totalid).text(value);
+      this.cartData[index].number_of_pax = numberofpax;
+    },
+    savebookingdate:function(sightId,index){
+      var id = "date"+sightId;
+      var date = $("#"+id).val();
+      this.cartData[index].bookingDate = date;
       console.log(this.cartData);
+    },
+    checkoutCartData:function(){
+      
+      this.userdata = this.$cookies.get('UserToken');
+      var values = this.$cookies.get(this.userdata);
+      var arrvalues = values.split(',');
+
+    },
+    removefromcart:function(itemtoRemove){
+      this.userdata = this.$cookies.get('UserToken');
+      var values = this.$cookies.get(this.userdata);
+      var arrvalues = values.split(',');
+      values = jQuery.grep(arrvalues, function(value) {
+        return value != itemtoRemove;
+      });
+      var updateCart = values.join(", ");
+      this.$cookies.set(this.userdata,updateCart,{expires:'1M'});
+      this.headerdata[1] = values.length;
+      this.getcartdata();
+    },
+    countCartItems:function(){
+      this.userdata = this.$cookies.get('UserToken');
+      var values = this.$cookies.get(this.userdata);
+      var arrvalues = values.split(',');
+      this.cartlength = arrvalues.length;
     }
   },
   mounted:function(){
-    bus.$on('change-header', function(result){
+      bus.$on('change-header', function(result){
         this.headerdata = result;
       }.bind(this));
+      this.countCartItems();
     }
   }
 </script>

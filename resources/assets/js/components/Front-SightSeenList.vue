@@ -13,10 +13,10 @@
                 <div class="max-auto title-price">
                   <div class="row">
                     <div class="col-md-9">
-                        <strong class="h6 ">{{sight.title}}</strong>
+                      <strong class="h6 ">{{sight.title}}</strong>
                     </div>
                     <div class="col-md-3">
-                        <strong class="h6 ">${{sight.price}} Per Person</strong>
+                      <strong class="h6 ">${{sight.price}} Per Person</strong>
                     </div>
                   </div>
                 </div>
@@ -62,8 +62,13 @@ export default {
           var token = this.$cookies.get('UserToken');
           this.$cookies.set(token,this.product_ids,{expires:'1M'});
           this.$http.get('/addtocart',{sightid:sightid}).then(function(response){
-          bus.$emit('change-header',[ this.country.img , products , this.unique_code ]);
-      });
+          bus.$emit('change-header',[ this.country.img , products ]);
+          });
+
+
+      // this.$http.post('/',{sightId:sightid,userId:token}).then(function(response){
+      //
+      // });
     },
     makeid:function() {
       var text = "";

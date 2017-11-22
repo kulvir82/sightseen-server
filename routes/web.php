@@ -20,12 +20,8 @@ Route::post('/usersignin','UsersController@userLogin');
 Route::post('/sendsms','UsersController@sendSms');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/getsightseenfromcountry','CityExplorer@getSightSeenFromCountry');
-Route::post('/verifypincode','UsersController@verifyPin');
-Route::get('/addtocart','UsersController@addProductToUsersCart');
-Route::post('/productsdata','CityExplorer@getProductDetail');
 
+//admin routes
 Route::group(['middleware' => 'auth'], function () {
   Route::post('/userprofile','CityExplorer@getUserProfile');
   Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -43,6 +39,14 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/refreshimages','CityExplorer@getImages');
   Route::post('/searchsightseen','CityExplorer@searchSight');
 });
+
+//user routes
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/getsightseenfromcountry','CityExplorer@getSightSeenFromCountry');
+Route::post('/verifypincode','UsersController@verifyPin');
+Route::get('/addtocart','UsersController@addProductToUsersCart');
+Route::post('/productsdata','CityExplorer@getProductDetail');
+Route::post('/addtocart','SightSeenBookings@AddToCart');
 // Route::get('/sightseen',[ 'as' => 'sight_seen', 'uses' =>  'CityExplorer@sight_seen']);
 // Route::get('/getcounty',[ 'as' => 'getcountry', 'uses' =>  'CityExplorer@getCountry']);
 // Route::get('/getCityList',[ 'as' => 'getCityList', 'uses' =>  'CityExplorer@getCity']);
