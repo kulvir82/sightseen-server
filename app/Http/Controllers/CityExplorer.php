@@ -95,6 +95,13 @@ class CityExplorer extends Controller
   {
     $model = new CityExplorerModel;
     $productDetail = $model->getProductDetail($request);
+    $count = count($productDetail);
+    for ($i=0; $i < $count; $i++) {
+      # code...
+      $productDetail[$i]['number_of_pax'] = '1';
+      $productDetail[$i]['bookingDate'] = '1';
+    }
+
     return response()->json($productDetail);
   }
 

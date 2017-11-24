@@ -3,32 +3,44 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Cities;
 use App\Models\Countries;
 use App\Models\Sightseen;
-use App\Models\CeUser;
+use App\Models\CeUsers;
+use App\Models\User;
+use App\Models\UserBookings;
+use App\Models\BookingDetails;
 
 class UsersModel extends Model
 {
 
   public function createUser($request)
   {
+
     $newUser = new CeUsers;
-    $newUser->phone_number = $request->phonenumber;
+    $newUser->phone_number = $request->phnum;
     $newUser->save();
 
-    $id = CeUsers::where('phone_number',$request->phonenumber)->value('id');
+    $id = CeUsers::where('phone_number','=',$request->phnum)->value('id');
     return $id;
   }
 
   public function updateUser($request)
   {
-    $updateduser = CeUsers::where('id','=',$request->id)->update(['username' => $request->username, 'email' => $request->email]);
-    return 'success';
+    $password = Hash::make('123456789');
+    $updateuser = CeUsers::where('id','=',$request->id)->update(['username' => $request->username, 'email' => $request->email ,'password' => $password ]);
+    $userdetails = CeUsers::where('id','=',$request->id)->first();
+    return $userdetails;
   }
-  public function CheckExistinUserList($request)
+  public function ExistingUser($request)
   {
-    $userid = CeUsers::where('phone_number','=',$request->phonenumber)->value('id');
-    return $userid;
+    $user = User::where('phone_number', $request->phnum)->first();
+    return $user;
+  }
+
+  public function checkoutCartData($request)
+  {
+
   }
 }

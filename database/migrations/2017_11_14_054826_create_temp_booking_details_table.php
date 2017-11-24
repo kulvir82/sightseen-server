@@ -14,15 +14,13 @@ class CreateTempBookingDetailsTable extends Migration
     public function up()
     {
         Schema::create('temp_booking_details', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('userid');
-            $table->integer('total_sale_amount');
-            $table->string('status');
-            $table->string('card_no');
-            $table->string('payment_status');
-            $table->integer('totaldiscount');
-            $table->integer('total_cost');
-            $table->timestamps();
+          $table->increments('id');
+          $table->integer('booking_id');
+          $table->integer('sight_seen_id');
+          $table->integer('no_of_pax');
+          $table->integer('cost_per_pax');
+          $table->integer('discount');
+          $table->timestamps();
         });
     }
 
