@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers\api\v1;
-require '/Users/navinder/Documents/city-explorer-server/vendor/autoload.php';
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request ;
 use Twilio\Rest\Client;
