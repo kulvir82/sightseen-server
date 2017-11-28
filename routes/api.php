@@ -26,6 +26,10 @@ Route::get('/getCityList/{country}','CityExplorer@getCity');
 Route::post('/getsightseenfromcountry','api\v1\CityExplorer@getSightSeenFromCountry');
 Route::post('/singlesight','CityExplorer@singleSightSeen');
 
+// booing api's routes
+Route::post('userbookings', 'api\v1\UserBookingController@store');
+Route::put('userbookings/{booking}', 'api\v1\UserBookingController@update');
+//
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

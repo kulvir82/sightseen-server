@@ -19,7 +19,9 @@ class CreateTempBookingDetailsTable extends Migration
           $table->integer('sight_seen_id');
           $table->integer('no_of_pax');
           $table->integer('cost_per_pax');
+          $table->integer('total');
           $table->integer('discount');
+          $table->datetime('booking_time');
           $table->timestamps();
         });
     }
