@@ -74,6 +74,17 @@ class CityExplorerModel extends Model
 
       return $sightseen;
     }
+
+    public function getSightSeenFromCity($request)
+    {
+      $sightseen =  Sightseen::where('city',$request->city)
+                    ->join('ce_countries','ce_countries.id','=','ce_sightseen.country')
+                    ->join('ce_cities','ce_cities.city_code','=','ce_sightseen.city' )
+                    ->select('ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
+                    ->get();
+
+      return $sightseen;
+    }
     public function getProductDetail($request)
     {
       $ids = explode(',',$request->product_ids);

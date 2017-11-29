@@ -24,11 +24,12 @@ Route::get('/getsightseen','Api\v1\CityExplorer@sight_seen');
 Route::post('/getcountries','Api\v1\CityExplorer@getCountry');
 Route::get('/getCityList/{country}','CityExplorer@getCity');
 Route::post('/getsightseenfromcountry','Api\v1\CityExplorer@getSightSeenFromCountry');
+Route::get('/getsightseenfromcity','Api\v1\CityExplorer@getSightSeenFromCity');
 Route::post('/singlesight','CityExplorer@singleSightSeen');
 
 // booing Api's routes
 Route::post('userbookings', 'Api\v1\UserBookingController@store');
-Route::put('userbookings/{booking}', 'Api\v1\UserBookingController@update');
+Route::put('updateCart/{booking}', 'Api\v1\UserBookingController@update');
 Route::get('getCartItems/{id}', 'Api\v1\UserBookingController@getCartItems');
 //
 Route::middleware('auth:api')->get('/user', function (Request $request) {

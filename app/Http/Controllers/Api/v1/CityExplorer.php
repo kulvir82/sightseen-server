@@ -40,6 +40,13 @@ class CityExplorer extends Controller
     return response()->json($sightseen);
   }
 
+  public function getSightSeenFromCity(Request $request)
+  {
+    $model = new CityExplorerModel;
+    $sightseen = $model->getSightSeenFromCity($request);
+    return response()->json($sightseen,200);
+  }
+
 	public function createSightSeen(Request $request)
 	{
     $imageData = $_FILES;
