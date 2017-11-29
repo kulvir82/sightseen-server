@@ -29,6 +29,7 @@ Route::post('/singlesight','CityExplorer@singleSightSeen');
 // booing Api's routes
 Route::post('userbookings', 'Api\v1\UserBookingController@store');
 Route::put('userbookings/{booking}', 'Api\v1\UserBookingController@update');
+Route::get('getCartItems/{id}', 'Api\v1\UserBookingController@getCartItems');
 //
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

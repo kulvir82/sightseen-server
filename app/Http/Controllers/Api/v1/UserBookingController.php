@@ -20,8 +20,8 @@ Class UserBookingController extends Controller
         $bookingDetail = new BookingDetail;
         $res = $bookingDetail->saveBookingDetail($request, $booking->id);
         
-        $booking->totaldiscount = $res[0];
-        $booking->total_sale_amount = $res[1];
+        $booking->totaldiscount += $res[0];
+        $booking->total_sale_amount += $res[1];
         $booking->save();
 
         return response()->json(['booking_id'=>$booking->id,'success'=>true], 201);
@@ -38,6 +38,19 @@ Class UserBookingController extends Controller
         $booking->save();
 
         return response()->json(['booking_id'=>$booking->id,'success'=>true], 200);
+    }
+    public function getCartItems(Request $request)
+    {
+        $userId = $request->id;
+        $booking = UserBooking::where('userid', $userId)->first();
+        if(count($booking) > 0){
+            $bookingDetail = new BookingDetail;
+            $cartItems = $bookingDetail->getCartItems($booking->id);
+            return response()->json(['cartItems'=> $cartItems,'success'=>true],200);
+        }else{
+            return response()->json(['success'=>false],200);
+        }
+
     }
 }
 

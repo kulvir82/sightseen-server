@@ -9,4 +9,9 @@ class Sightseen extends Model
     //
     protected $table = 'ce_sightseen';
     public $timestamps = false;
+
+    public function bookings()
+    {
+        return $this->hasMany('App\Models\BookingDetail', 'sight_seen_id');
+    }
 }

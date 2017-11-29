@@ -8,6 +8,10 @@ class BookingDetail extends Model
 {
     protected $fillable = ['booking_id','sight_seen_id', 'total', 'no_of_pax', 'discount', 'cost_per_pax','booking_time'];
 
+    public function sightseen()
+    {
+        return $this->belongsTo('App\Models\Sightseen','sight_seen_id');
+    }
 
     public function saveBookingDetail($data, $bookingId)
     {
@@ -41,6 +45,22 @@ class BookingDetail extends Model
     	}
     	return [$totalDiscount,$totalSaleAmount];
     	
+    }
+    public function getCartItems($bookingId){
+        $cartItems = BookingDetail::where('booking_id', $bookingId)->get();
+        $data = array();
+        $i = 0;    
+        foreach($cartItems as $cartItem){
+            $data[$i]['id'] = $cartItem->id;
+            $data[$i]['sight_seen_name'] = $cartItem->sightseen->title;
+            $data[$i]['no_of_pax'] = $cartItem->no_of_pax;
+            $data[$i]['cost_per_person'] = $cartItem->cost_per_pax;
+            $data[$i]['total'] = $cartItem->total;
+            $data[$i]['booking_time'] = $cartItem->booking_time;
+            $data[$i]['booking_id'] = $cartItem->booking_id;
+            $i++;
+        }  
+        return $data;
     }
 }
 
