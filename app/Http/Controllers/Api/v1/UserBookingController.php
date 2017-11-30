@@ -52,6 +52,25 @@ Class UserBookingController extends Controller
         }
 
     }
+
+    public function getCartCount(Request $request)
+    {
+        $userId = $request->id;
+        $booking = UserBooking::where('userid', $userId)->first();
+        if(count($booking) > 0){
+            $cartCount = BookingDetail::where('booking_id',$booking->id)->count();
+            return response()->json(['booking_id'=>$booking->id,'cart_count'=> $cartCount],200);
+        }else{
+            return response()->json(['booking_id'=>0,'cart_count'=> 0],200);
+        }
+    }
+
+    public function deleteCartItem(Request $request)
+    {
+        $cartId = $request->id;
+        BookingDetail::destroy($cartId);
+        return response()->json(['success'=>true],204);
+    }   
 }
 
 	

@@ -62,6 +62,11 @@ class BookingDetail extends Model
         }  
         return $data;
     }
+
+    // public function updateCartTotal($cartId)
+    // {
+    //     $total = BookingDetail
+    // }
 }
 
 ?>
