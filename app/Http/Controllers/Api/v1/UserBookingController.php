@@ -15,7 +15,7 @@ Class UserBookingController extends Controller
         if($request->booking_id > 0)
         	$booking = UserBooking::find(1);
         else
-        	$booking = UserBooking::create(['userid'=>$request->user_id,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Payment Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0]);
+        	$booking = UserBooking::create(['userid'=>$request->user_id,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Payment Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
         
         $bookingDetail = new BookingDetail;
         $res = $bookingDetail->saveBookingDetail($request, $booking->id);
@@ -35,6 +35,7 @@ Class UserBookingController extends Controller
 
     	$booking->totaldiscount = $res[0];
     	$booking->total_sale_amount = $res[1];
+        $booking->tax_amount = $request->tax_amount;
         $booking->save();
 
         return response()->json(['booking_id'=>$booking->id,'success'=>true], 200);
