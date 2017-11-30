@@ -41,7 +41,7 @@ class BookingDetail extends Model
 	        $finalTotal = $total - $discount; // including discount
 	        $totalDiscount += $discount;
 	        $totalSaleAmount += $finalTotal;
-    		BookingDetail::where('booking_id', $bookingId)->update(['booking_id'=> $bookingId,'sight_seen_id' => $req->booking_detail['sight_seen_id'],'no_of_pax'=>$req->booking_detail['no_of_pax'],'cost_per_pax'=>$req->booking_detail['price'],'total'=> $total,'booking_time'=>$req->booking_detail['datetime'],'discount'=>$req->booking_detail['discount']]);
+    		BookingDetail::where('booking_id', $bookingId)->update(['booking_id'=> $bookingId,'sight_seen_id' => $req->booking_detail['sight_seen_id'],'no_of_pax'=>$req->booking_detail['no_of_pax'],'cost_per_pax'=>$req->booking_detail['price'],'total'=> $finalTotal,'booking_time'=>$req->booking_detail['datetime'],'discount'=>$req->booking_detail['discount']]);
     	}
     	return [$totalDiscount,$totalSaleAmount];
     	

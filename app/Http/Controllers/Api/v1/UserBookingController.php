@@ -70,6 +70,11 @@ Class UserBookingController extends Controller
         $cartId = $request->id;
         BookingDetail::destroy($cartId);
         return response()->json(['success'=>true],204);
+    }
+
+    public function getTax(Request $request)
+    {
+        return response()->json(['tax'=>10],200);
     }   
 }
 

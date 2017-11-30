@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Cities;
 use App\Models\Countries;
 use App\Models\Sightseen;
+use Illuminate\Contracts\Filesystem\Filesystem;
 class CityExplorerModel extends Model
 {
     //
@@ -23,11 +24,13 @@ class CityExplorerModel extends Model
       $i = 1;
       $images = "image";
       $imagename = "";
+      $s3 = \Storage::disk('s3');
       foreach($imageData['file']['name'] as $index => $imagename){
-         move_uploaded_file($imageData['file']['tmp_name'][$index], public_path().'/images/'.$imagename);
-         $image = $images.$i;
-         $sightseen->$image = $imagename;
-         $i = $i + 1;
+        $filePath = 'sightseenimages/' . $imagename;
+        $s3->put($filePath, file_get_contents($imageData['file']['tmp_name'][$index]), 'public');
+        $image = $images.$i;
+        $sightseen->$image = $s3->url('sightseenimages/'.$imagename);
+        $i = $i + 1;
       }
       $sightseen->save();
       return 'datasaved';
@@ -108,33 +111,37 @@ class CityExplorerModel extends Model
     {
 
       $id = $request->id;
+      $s3 = \Storage::disk('s3');
       $imagename = $imageData['file']['name'];
+      $filePath = 'sightseenimages/' . $imagename;
+      $s3->put($filePath, file_get_contents($imageData['file']['tmp_name']), 'public'); 
       $emptyImages = Sightseen::select('image1','image2','image3','image4')->where('id','=',$id)->first();
       if($emptyImages->image1 == ''){
-         move_uploaded_file($imageData['file']['tmp_name'], public_path().'/uploads/images/'.$imagename);
-         $sightseen = Sightseen::where('id','=',$id)->update(['image1' => $imagename]);
+         //move_uploaded_file($imageData['file']['tmp_name'], public_path().'/uploads/images/'.$imagename);
+         $sightseen = Sightseen::where('id','=',$id)->update(['image1' => $s3->url('sightseenimages/'.$imagename)]);
          return $imageData;
       }
       if($emptyImages->image2 == ''){
-         move_uploaded_file($imageData['file']['tmp_name'], public_path().'/uploads/images/'.$imagename);
-         $sightseen = Sightseen::where('id','=',$id)->update(['image2' => $imagename]);
+         // move_uploaded_file($imageData['file']['tmp_name'], public_path().'/uploads/images/'.$imagename);
+         $sightseen = Sightseen::where('id','=',$id)->update(['image2' => $s3->url('sightseenimages/'.$imagename)]);
          return 'image2 uploaded';
       }
       if($emptyImages->image3 == ''){
-         move_uploaded_file($imageData['file']['tmp_name'], public_path().'/uploads/images/'.$imagename);
-         $sightseen = Sightseen::where('id','=',$id)->update(['image3' => $imagename]);
+         // move_uploaded_file($imageData['file']['tmp_name'], public_path().'/uploads/images/'.$imagename);
+         $sightseen = Sightseen::where('id','=',$id)->update(['image3' => $s3->url('sightseenimages/'.$imagename)]);
          return 'image3 uploaded';
       }
       if($emptyImages->image4 == ''){
-         move_uploaded_file($imageData['file']['tmp_name'], public_path().'/uploads/images/'.$imagename);
-         $sightseen = Sightseen::where('id','=',$id)->update(['image4' => $imagename]);
+         // move_uploaded_file($imageData['file']['tmp_name'], public_path().'/uploads/images/'.$imagename);
+         $sightseen = Sightseen::where('id','=',$id)->update(['image4' => $s3->url('sightseenimages/'.$imagename)]);
          return 'image4 uploaded';
       }
-
     }
     public function removeSelectedImage($request)
     {
-      File::delete('uploads/images/'.$request->image);
+      $s3 = \Storage::disk('s3');
+      $filename = explode("/",$request->image);
+      $s3->delete('sightseenimages/'.end($filename));
       $sightseen = Sightseen::where('id','=',$request->id)->update([$request->column => '']);
       return 'image removed';
     }

@@ -61,25 +61,25 @@
                   <td>
                     <div class="images">
                       <div class="sight_images">
-                        <img v-if="refreshedImages.image1 != ''" :src="'/uploads/images/'+refreshedImages.image1" alt="">
+                        <img v-if="refreshedImages.image1 != ''" :src="refreshedImages.image1" alt="">
                         <button v-if="refreshedImages.image1 != ''" type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image1,image1)">remove</button>
                       </div>
                     </div>
                     <div class="images">
                       <div class="sight_images">
-                        <img  v-if="refreshedImages.image2 != ''" :src="'/uploads/images/'+refreshedImages.image2" alt="">
+                        <img  v-if="refreshedImages.image2 != ''" :src="refreshedImages.image2" alt="">
                         <button v-if="refreshedImages.image2 != ''" type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image2,image2)">remove</button>
                       </div>
                     </div>
                     <div class="images">
                       <div class="sight_images">
-                        <img v-if="refreshedImages.image3 != ''" :src="'/uploads/images/'+refreshedImages.image3" alt="">
+                        <img v-if="refreshedImages.image3 != ''" :src="refreshedImages.image3" alt="">
                         <button v-if="refreshedImages.image3 != ''" type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image3,image3)">remove</button>
                       </div>
                     </div>
                     <div class="images">
                       <div class="sight_images">
-                        <img v-if="refreshedImages.image4 != ''" :src="'/uploads/images/'+refreshedImages.image4" alt="">
+                        <img v-if="refreshedImages.image4 != ''" :src="refreshedImages.image4" alt="">
                         <button v-if="refreshedImages.image4 != ''" type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image4,image4)">remove</button>
                       </div>
                     </div>
