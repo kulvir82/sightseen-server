@@ -276,10 +276,14 @@ export default {
 
 <style lang="css">
 #mainNav{
-  background: rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.8);
+}
+#mainNav.navbar-shrink {
+    border-color: rgba(34,34,34,.1) !important;
+    background-color: #000 !important;
 }
 ul.ml-auto li a{
-  color: #000 !important;
+  color: #fff !important;
 }
 .bg-header{
   background-color: #E8E8E8 !important;

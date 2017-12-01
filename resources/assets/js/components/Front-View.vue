@@ -100,9 +100,9 @@
           <hr>
         </div>
         <div class="row">
-          <div class="col-lg-4 my-auto">
+          <div class="col-lg-4">
             <div class="device-container">
-              <div class="device-mockup iphone6_plus portrait white" style="padding-bottom: 0">
+              <div class="device-mockup iphone6_plus portrait white" style="padding-bottom: 0;margin-left: 60px;">
                 <!-- <div class="device">
                   <div class="screen"> -->
                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
@@ -198,6 +198,13 @@ export default {
 </script>
 
 <style lang="css">
+  section{
+    padding: 50px 0  !important;
+  }
+  section.features .section-heading
+  {
+    margin-bottom: 0px !important;
+  }
   .destination-background{
     background: #d3d3d3;
   }
@@ -206,7 +213,7 @@ export default {
   }
   .get_app_text{
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
     width: 100%;
   }
   .get_app_text h1{
@@ -223,9 +230,12 @@ export default {
     right: 5.97%;
   }
   .feature-item{
-    padding-top: 130px   !important;
+    padding-top: 70px   !important;
   }
   section.cta .cta-content h2{
     font-size: 50px !important;
+  }
+  section.cta{
+    padding: 250px 0  !important;
   }
 </style>
