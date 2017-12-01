@@ -42,19 +42,19 @@
           	</tr>
           	<tr>
           		<td class="form_header2" align="left">Image1</td>
-          		<td class="form_header4"><img v-if="singleSight.image1" :src="'/uploads/images/'+singleSight.image1" height="100px" width="100px" /></td>
+          		<td class="form_header4"><img v-if="singleSight.image1" :src="singleSight.image1" height="100px" width="100px" /></td>
           	</tr>
           	<tr>
           		<td class="form_header2" align="left" >Image2</td>
-          		<td class="form_header4"><img v-if="singleSight.image2" :src="'/uploads/images/'+singleSight.image2" height="100px" width="100px" /></td>
+          		<td class="form_header4"><img v-if="singleSight.image2" :src="singleSight.image2" height="100px" width="100px" /></td>
           	</tr>
         		<tr>
           		<td class="form_header2" align="left">Image3</td>
-          		<td class="form_header4"><img v-if="singleSight.image3" :src="'/uploads/images/'+singleSight.image3" height="100px" width="100px" /></td>
+          		<td class="form_header4"><img v-if="singleSight.image3" :src="singleSight.image3" height="100px" width="100px" /></td>
             </tr>
             <tr>
           		<td class="form_header2" align="left">Image4</td>
-          		<td class="form_header4"><img v-if="singleSight.image4" :src="'/uploads/images/'+singleSight.image4" height="100px" width="100px" /></td>
+          		<td class="form_header4"><img v-if="singleSight.image4" :src="singleSight.image4" height="100px" width="100px" /></td>
           	</tr>
          </tbody>
       </table>

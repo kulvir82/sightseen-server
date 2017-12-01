@@ -69,9 +69,10 @@ class BookingDetail extends Model
         $i = 0;
         foreach($bookings as $booking)
         {
-            $data['booking_detail'][$i] = BookingDetail::where('booking_id', $booking->id)->get(); 
-            $data['booking_detail'][$i]['total_amount'] = $booking->total_sale_amount;
-            $data['booking_detail'][$i]['booking_id'] = $booking->id;
+            $data[$i] = BookingDetail::where('booking_id', $booking->id)->get(); 
+            $data[$i]['total_amount'] = $booking->total_sale_amount;
+            $data[$i]['booking_id'] = $booking->id;
+            $data[$i]['count'] = BookingDetail::where('booking_id', $booking->id)->count();
             $i++;
         }
         return $data;
