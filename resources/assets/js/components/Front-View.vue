@@ -202,4 +202,11 @@ export default {
   .get_app_text{
     text-align: center;
   }
+  .device-mockup.iphone6_plus > .device > .screen,
+  .device-mockup.iphone6_plus.portrait > .device > .screen {
+    top: 11% !important;
+    bottom: 11% !important;
+    left: 5.97%;
+    right: 5.97%;
+  }
 </style>
