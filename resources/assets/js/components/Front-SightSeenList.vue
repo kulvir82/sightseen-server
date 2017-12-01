@@ -7,15 +7,14 @@
             <div class="row border border-secondary rounded sightgap">
               <div class=" col-md-3 text-center">
                 <div class="sightimage">
-                  <img class="img-fluid" :src="'/images/frontimages/thailand3x.png'" alt="">
-                  <button class="btn btn-sm" type="button" name="button" v-on:click="addToCart(sight.id)">Add to Cart</button>
+                  <img class="img-fluid" :src="sight.image1" :alt="sight.title">
                 </div>
                 <div class="max-auto title-price">
                   <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-sm-12">
                       <strong class="h6 ">{{sight.title}}</strong>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-sm-12">
                       <strong class="h6 ">${{sight.price}} Per Person</strong>
                     </div>
                   </div>

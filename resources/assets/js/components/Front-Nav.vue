@@ -1,5 +1,5 @@
 <template >
-  <nav v-if="headerdata" class="navbar navbar-expand-lg bg-header fixed-top text-center" id="mainNav" >
+  <!-- <nav v-if="headerdata" class="navbar navbar-expand-lg bg-header fixed-top text-center" id="mainNav" >
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">Maple Labs</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +17,7 @@
           </li>
           <li class="nav-item">
             <!-- Modal Component -->
-            <b-modal v-if="cartData" id="modal1" size="lg" hide-footer >
+            <!-- <b-modal v-if="cartData" id="modal1" size="lg" hide-footer > -->
               <!-- <div class="heading">
                 <div class="row border text-center padding-sm">
                   <div class="col-md-3 h5 padding-xs">
@@ -34,7 +34,7 @@
                   </div>
                 </div>
               </div> -->
-            <div class="scroll-class">
+            <!-- <div class="scroll-class">
               <div class="products" v-for="data,index in cartData"  :id="'product'+data.id">
                 <div class="row border rounded text-center margin-top-sm margin-xs ">
                   <div class="col-md-3 h6 padding-xs">
@@ -110,14 +110,14 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
   <!-- use the modal component, pass in the prop -->
-  <modal v-if="showModal" @close="showModal = false">
+  <!-- <modal v-if="showModal" @close="showModal = false"> -->
     <!--
       you can use custom content here to overwrite
       default content
     -->
-    <div slot="header">
+    <!-- <div slot="header">
       <div class="phoneheading">
         <h6>Please Enter Your Phone Number</h6>
       </div>
@@ -140,11 +140,13 @@
       </div>
     </div>
   </modal>
-  </nav>
+  </nav> -->
 
   <nav v-else class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Maple Labs</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <img :src="'/images/frontimages/bmsslogo_40.png'" />
+      </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fa fa-bars"></i>
