@@ -275,6 +275,12 @@ export default {
 </script>
 
 <style lang="css">
+#mainNav{
+  background: rgba(255,255,255,0.8);
+}
+ul.ml-auto li a{
+  color: #000 !important;
+}
 .bg-header{
   background-color: #E8E8E8 !important;
   padding: 0 0 !important;

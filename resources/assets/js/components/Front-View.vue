@@ -3,12 +3,12 @@
     <header class="masthead">
       <div class="container h-100">
         <div class="row h-100">
-          <div class="col-lg-7 my-auto">
+          <div class="col-lg-8 my-auto">
             <div class="header-content mx-auto">
-              <h1 class="mb-5">BookMySightSeen (BMSS) is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.</h1>
+              <h1 class="mb-5">BookMySightSeen is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.</h1>
             </div>
           </div>
-          <div class="col-lg-5 my-auto">
+          <div class="col-lg-4 my-auto">
             <div class="device-container">
               <div class="device-mockup iphone6_plus portrait white">
                 <div class="device">
@@ -95,8 +95,8 @@
     <section class="features" id="features">
       <div class="container">
         <div class="section-heading text-center">
-          <h2>Unlimited Features, Unlimited Fun</h2>
-          <p class="text-muted">Check out what you can do with this app theme!</p>
+          <h2>Book your favourite Sight Seen or Show with just CLICK of a Button!</h2>
+          <p class="text-muted"></p>
           <hr>
         </div>
         <div class="row">
@@ -119,7 +119,9 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="get_app_text">
-                  <h1>Get BookMySightSeen now  on IOS and Android Phone.</h1>
+                  <h1>Download BookMySightSeen now</h1>
+                  <h1>on</h1>
+                  <h1>IOS and Android Phone.</h1>
                 </div>
               </div>
               <div class="row">
@@ -143,8 +145,7 @@
     <section class="cta">
       <div class="cta-content">
         <div class="container">
-          <h2>Stop waiting.<br>Start building.</h2>
-          <a href="#contact" class="btn btn-outline btn-xl js-scroll-trigger">Let's Get Started!</a>
+          <h2>Stop waiting.<br>Start booking.</h2>
         </div>
       </div>
       <div class="overlay"></div>
@@ -157,17 +158,18 @@
           new friends!</h2>
         <ul class="list-inline list-social">
           <li class="list-inline-item social-twitter">
-            <a href="#">
+            <a href="https://twitter.com/BookmySeen">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li class="list-inline-item social-facebook">
-            <a href="#">
+            <a href="https://www.facebook.com/Bookmysightseen-2022848227997448/
+">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li class="list-inline-item social-google-plus">
-            <a href="#">
+            <a href="https://plus.google.com/104221511420505410319">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -199,8 +201,19 @@ export default {
   .destination-background{
     background: #d3d3d3;
   }
+  header.masthead .header-content{
+    max-width: 100%;
+  }
   .get_app_text{
     text-align: center;
+    margin-top: 50px;
+    width: 100%;
+  }
+  .get_app_text h1{
+    color: #f00;
+  }
+  .section-heading h2{
+    color: #f5c109;
   }
   .device-mockup.iphone6_plus > .device > .screen,
   .device-mockup.iphone6_plus.portrait > .device > .screen {
@@ -208,5 +221,11 @@ export default {
     bottom: 11% !important;
     left: 5.97%;
     right: 5.97%;
+  }
+  .feature-item{
+    padding-top: 130px   !important;
+  }
+  section.cta .cta-content h2{
+    font-size: 50px !important;
   }
 </style>
