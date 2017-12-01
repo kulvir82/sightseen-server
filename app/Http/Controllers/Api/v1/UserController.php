@@ -45,8 +45,15 @@ class UserController extends Controller
   public function updateUser(Request $request)
   {
     $model = new UsersModel;
-    $updateduser = $model->updateUser($request);
-    return response()->json($updateduser);
+    $updateduser = $model->updateAppUser($request);
+    return response()->json($updateduser,200);
+  }
+
+  public function getUserDetail(Request $request)
+  {
+    $model = new UsersModel;
+    $user = $model->getUserDetail($request->id);
+    return response()->json($user, 200);
   }
 
 }

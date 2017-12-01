@@ -14,7 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::post('/sendsms','Api\v1\UserController@sendSms');
-Route::post('/updateuser','Api\v1\UserController@updateUser');
+Route::get('/getuserdetail/{id}', 'Api\v1\UserController@getUserDetail');
+Route::put('/updateuser','Api\v1\UserController@updateUser');
 Route::post('/updateprofile','Api\v1\UserController@updateProfile');
 Route::post('/displayprofile','Api\v1\UserController@displayProfile');
 Route::get('/getsightseen','Api\v1\CityExplorer@sight_seen');

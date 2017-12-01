@@ -43,4 +43,24 @@ class UsersModel extends Model
   {
 
   }
+
+  public function getUserDetail($userId){
+    $user = User::find($userId);
+    $data = array();
+    if(count($user) > 0){
+      $data['username'] = $user->username;
+      $data['first_name'] = $user->first_name;
+      $data['last_name'] = $user->last_name;
+      $data['email'] = $user->email;
+      $data['phone_number'] = $user->phone_number;
+    }
+    return $data;
+  }
+
+  public function updateAppUser($request)
+  {
+    $updateuser = CeUsers::where('id','=',$request->id)->update(['username' => $request->username, 'email' => $request->email ,'first_name' => $request->first_name, 'last_name' => $request->last_name, 'phone_number' => $request->phone_number ]);
+    $userdetails = $this->getUserDetail($request->id);
+    return $userdetails;
+  }
 }

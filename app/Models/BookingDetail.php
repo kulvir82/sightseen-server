@@ -78,7 +78,7 @@ class BookingDetail extends Model
                 $data[$j]['no_of_pax'] = $row->no_of_pax;
                 $data[$j]['cost_per_person'] = $row->cost_per_pax;
                 $data[$j]['total'] = $row->total;
-                $data[$j]['booking_time'] = $row->booking_time;
+                $data[$j]['booking_date'] = date("Y-m-d",strtotime($row->booking_time));
                 $data[$j]['booking_id'] = $row->booking_id;
                 $data[$j]['booking_count'] = $query->count();
                 $j++;
