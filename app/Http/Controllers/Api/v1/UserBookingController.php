@@ -13,7 +13,7 @@ Class UserBookingController extends Controller
 	public function store(Request $request)
     {
         if($request->booking_id > 0)
-        	$booking = UserBooking::find(1);
+        	$booking = UserBooking::find($request->booking_id);
         else
         	$booking = UserBooking::create(['userid'=>$request->user_id,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Payment Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
         
@@ -76,7 +76,15 @@ Class UserBookingController extends Controller
     public function getTax(Request $request)
     {
         return response()->json(['tax'=>10],200);
-    }   
+    }  
+
+    public function getBookings(Request $request)
+    {
+        $bookings = UserBooking::where('userid', $request->id)->where('status','!=','Payment Pending')->get();
+        $bookingDetail = new BookingDetail;
+        $allBookings = $bookingDetail->getBookings($bookings);
+        return response()->json($allBookings, 200);
+    } 
 }
 
 	

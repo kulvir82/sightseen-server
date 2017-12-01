@@ -26,11 +26,11 @@ class CityExplorer extends Controller
     return response()->json($cities);
   }
 
-  public function sight_seen()
+  public function getPopularSightSeen()
 	{
     $model = new CityExplorerModel;
-    $sightseen = $model->getSightSeen();
-    return response()->json($sightseen);
+    $sightseens = $model->getPopularSightSeen();
+    return response()->json($sightseens);
 	}
 
   public function getSightSeenFromCountry(Request $request)

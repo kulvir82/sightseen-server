@@ -63,10 +63,19 @@ class BookingDetail extends Model
         return $data;
     }
 
-    // public function updateCartTotal($cartId)
-    // {
-    //     $total = BookingDetail
-    // }
+    public function getBookings($bookings)
+    {
+        $data = array();
+        $i = 0;
+        foreach($bookings as $booking)
+        {
+            $data['booking_detail'][$i] = BookingDetail::where('booking_id', $booking->id)->get(); 
+            $data['booking_detail'][$i]['total_amount'] = $booking->total_sale_amount;
+            $data['booking_detail'][$i]['booking_id'] = $booking->id;
+            $i++;
+        }
+        return $data;
+    }
 }
 
 ?>
