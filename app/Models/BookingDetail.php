@@ -65,24 +65,28 @@ class BookingDetail extends Model
 
     public function getBookings($bookings)
     {
-        $data = array();
+        $finalData = array();
         $i = 0;
         foreach($bookings as $booking)
         {
             $query = BookingDetail::where('booking_id', $booking->id)->get();
+            $j = 0;
+            $data = array();
             foreach($query as $row){
-                $data[$i]['id'] = $row->id;
-                $data[$i]['sight_seen_name'] = $row->sightseen->title;
-                $data[$i]['no_of_pax'] = $row->no_of_pax;
-                $data[$i]['cost_per_person'] = $row->cost_per_pax;
-                $data[$i]['total'] = $row->total;
-                $data[$i]['booking_time'] = $row->booking_time;
-                $data[$i]['booking_id'] = $row->booking_id;
-                $data[$i]['booking_count'] = $query->count();
-            } 
-            $i++;
+                $data[$j]['id'] = $row->id;
+                $data[$j]['sight_seen_name'] = $row->sightseen->title;
+                $data[$j]['no_of_pax'] = $row->no_of_pax;
+                $data[$j]['cost_per_person'] = $row->cost_per_pax;
+                $data[$j]['total'] = $row->total;
+                $data[$j]['booking_time'] = $row->booking_time;
+                $data[$j]['booking_id'] = $row->booking_id;
+                $data[$j]['booking_count'] = $query->count();
+                $j++;
+            }
+            $finalData[$i] = $data;
+            $i++; 
         }
-        return $data;
+        return $finalData;
     }
 }
 
