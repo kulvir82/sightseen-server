@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <header class="masthead">
+    <header class="masthead masthead-bg">
       <div class="container h-100">
         <div class="row h-100">
           <div class="col-lg-8 my-auto">
@@ -206,10 +206,13 @@ export default {
     margin-bottom: 0px !important;
   }
   .destination-background{
-    background: #d3d3d3;
+    background: #F9F0EC;
   }
   header.masthead .header-content{
     max-width: 100%;
+  }
+  .masthead-bg{
+   background-image:url("/images/frontimages/top-banner-bg.png") !important;
   }
   .get_app_text{
     text-align: center;
