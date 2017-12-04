@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\SightSeen;
+use App\Models\Sightseen;
 use Illuminate\Http\Request;
 
 class SightSeensController extends Controller
