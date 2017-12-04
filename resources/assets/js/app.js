@@ -61,11 +61,12 @@ const router = new VueRouter({
       { path: '/editsightseen', component: EditSightSeen, name: 'editsightseen' },
       { path: '/sightseen', component: SightSeen, name: 'sightseen' },
       { path: '/singlesight', component: SingleSight, name: 'singlesight' },
-      { path: '/frontview', component: FrontView, name: 'frontview' },
+      { path: '/', component: FrontView, name: 'frontview' },
       { path: '/userprofilepage', component: UserProfilePage, name: 'userprofilepage' },
       { path: '/frontsightseenlist/:country', component: FrontSightSeenList, name: 'frontsightseenlist' },
     ],
-    mode: 'history'
+    history: true,
+    root: '/'
  });
 
  var bus = new Vue({});
