@@ -44,8 +44,7 @@ export default {
   methods:{
     getSightSeenFromCountry:function(){
         this.country = this.$route.params.country;
-        bus.$emit('change-header',[this.country.img]);
-        this.$http.post('/getsightseenfromcountry',{country:this.country.code}).then(function(response){
+        this.$http.post('/getsightseenfromcountry',{country:this.$route.params.country}).then(function(response){
         this.sightseenlist = response.data;
       });
     },
@@ -74,12 +73,14 @@ export default {
       var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       for (var i = 0; i < 8; i++)
       text += possible.charAt(Math.floor(Math.random() * possible.length));
-      console.log(text);
       return text;
     }
   },
-  mounted:function(){
+  created (){
     this.getSightSeenFromCountry();
+  },
+  mounted:function(){
+    //this.getSightSeenFromCountry();
   }
 }
 </script>

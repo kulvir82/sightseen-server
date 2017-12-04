@@ -32,7 +32,7 @@
     </header>
 
     <section class="booking destination-background ">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-md-12 text-center">
             <h2 class="section-heading ">Select Your Destination</h2>
@@ -40,16 +40,38 @@
           <div class="col-md-12 text-center">
 
           </div>
-          <div class="col-md-6 mx-auto ">
+          <div class="col-md-8 mx-auto ">
             <div class="row">
               <div class="col-sm-12 text-center">
                 <div class="top-destinations">
                   <h3>Choose From Top Destinations</h3>
                 </div>
               </div>
+              <div v-for="sightseen in popularSightSeens" class="col-sm-5 col-xs-12 popularsightseen" :style="{ 'background-image': 'url(' + sightseen.image1 + ')' }">
+                <!-- <div class="sightimage">
+                  <img class="img-fluid" src="https://bookmysightseen.s3.ap-southeast-1.amazonaws.com/sightseenimages/gallery2.jpg">
+                </div> -->
+                <div class="sightseeninfo_wrap">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="sightseendetail_left">
+                        <strong class="h6 ">{{ sightseen.title }}</strong>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="sightseendetail_right">
+                        <strong class="h6 ">{{ sightseen.price }} Per Person</strong>
+                      </div>
+                      <div class="sightseendetail_right">
+                        <strong class="h6 ">{{ sightseen.country_name }}</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-md-6 mx-auto">
+          <div class="col-md-4 mx-auto">
             <div class="row">
               <div class="col-sm-12 text-center">
                 <div class="select-counteries">
@@ -143,12 +165,18 @@
     </section>
 
     <section class="cta">
-      <div class="cta-content">
-        <div class="container">
-          <h2>Stop waiting.<br>Start booking.</h2>
+      <img :src="'images/frontimages/banner-startbooking_bg.png'" alt="ios_download.png"/>
+       <div class="cta-content">
+        <div class="cta_text_stop">
+          Stop Waiting...
+        </div>
+        <div class="cta_text_start">
+          Start Booking!
         </div>
       </div>
-      <div class="overlay"></div>
+      <!-- <div class="overlay">
+        <img :src="'images/frontimages/banner-startbooking.png'" alt="ios_download.png"/>
+      </div> -->
     </section>
 
     <section class="contact bg-primary" id="contact">
@@ -186,13 +214,22 @@ export default {
       thailand:{ 'code':313,'img':'thailand3x.png'},
       malaysia:{ 'code':173,'img':'malaysia3x.png'},
       singapore:{ 'code':430,'img':'singapore3x.png'},
-      dubai:{ 'code2':43,'img':'dubai3x.png'}
+      dubai:{ 'code2':43,'img':'dubai3x.png'},
+      popularSightSeens: [],
     }
   },
+  created (){
+    this.getPopularSightSeen();
+  },
   methods:{
-    redirectToCountrySights:function(country) {
-    this.$router.push({ name: 'frontsightseenlist', params: { country: country }});
+    redirectToCountrySights (country) {
+      this.$router.push({ name: 'frontsightseenlist', params: { country: country.code }});
     },
+    getPopularSightSeen (){
+      this.$http.get("/getPopularSightSeen").then(function(response){
+        this.popularSightSeens = response.data;
+      });
+    }
   }
 }
 </script>
@@ -235,10 +272,49 @@ export default {
   .feature-item{
     padding-top: 70px   !important;
   }
-  section.cta .cta-content h2{
-    font-size: 50px !important;
+  section.cta .cta-content{
+    font-size: 3vw !important;
+    position: absolute !important;
+    top: 10%;
+    left: 10%;
+    color: #fff;
+    letter-spacing: 2px;
+    width: 100%;
+  }
+  section.cta .cta-content .cta_text_start{
+    padding-top: 2%;
+    padding-left: 6%;
   }
   section.cta{
-    padding: 250px 0  !important;
+    padding: 0  !important;
+    background-image: none !important;
+  }
+  section.cta img{
+    width: 100%;
+  }
+  .popularsightseen{
+    height: 200px;
+    margin-bottom: .5rem;
+    margin-right: 1%;
+    margin-left:  6%;
+    background-size: cover;
+    background-position: center;
+  }
+  .sightseeninfo_wrap{
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 1rem;
+    right:0;
+  }
+  .sightseendetail_left{
+    padding:0 .5rem;
+    text-align: left;
+  }
+  .sightseendetail_right{
+    padding:0 .5rem;
+    text-align: right;
   }
 </style>
