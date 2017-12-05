@@ -41,7 +41,7 @@ class BookingDetail extends Model
 	        $finalTotal = $total - $discount; // including discount
 	        $totalDiscount += $discount;
 	        $totalSaleAmount += $finalTotal;
-    		BookingDetail::where('booking_id', $bookingId)->update(['booking_id'=> $bookingId,'sight_seen_id' => $req->booking_detail['sight_seen_id'],'no_of_pax'=>$req->booking_detail['no_of_pax'],'cost_per_pax'=>$req->booking_detail['price'],'total'=> $finalTotal,'booking_time'=>$req->booking_detail['datetime'],'discount'=>$req->booking_detail['discount']]);
+    		BookingDetail::where('id', $req->booking_detail['id'])->update(['booking_id'=> $bookingId,'sight_seen_id' => $req->booking_detail['sight_seen_id'],'no_of_pax'=>$req->booking_detail['no_of_pax'],'cost_per_pax'=>$req->booking_detail['price'],'total'=> $finalTotal,'booking_time'=>$req->booking_detail['datetime'],'discount'=>$req->booking_detail['discount']]);
     	}
     	return [$totalDiscount,$totalSaleAmount];
     	
@@ -53,6 +53,7 @@ class BookingDetail extends Model
         foreach($cartItems as $cartItem){
             $data[$i]['id'] = $cartItem->id;
             $data[$i]['sight_seen_name'] = $cartItem->sightseen->title;
+            $data[$i]['discount'] = $cartItem->sightseen->discount;
             $data[$i]['no_of_pax'] = $cartItem->no_of_pax;
             $data[$i]['cost_per_person'] = $cartItem->cost_per_pax;
             $data[$i]['total'] = $cartItem->total;
