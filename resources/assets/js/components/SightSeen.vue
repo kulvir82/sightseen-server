@@ -117,7 +117,7 @@ export default {
         localStorage.setItem("lastcomponent", JSON.stringify(result));
     },
     getcountries:function() {
-      this.$http.post('/getcountries').then(function(response){
+      this.$http.get('/getcountries').then(function(response){
                  this.countries  = response.data;
         });
     },

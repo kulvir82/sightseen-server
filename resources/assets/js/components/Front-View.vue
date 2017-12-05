@@ -53,16 +53,18 @@
                 </div> -->
                 <div class="sightseeninfo_wrap">
                   <div class="row">
-                    <div class="col-sm-6">
-                      <div class="sightseendetail_left">
+                    <div class="col-sm-12">
+                      <div class="sightseen_name">
                         <strong class="h6 ">{{ sightseen.title }}</strong>
                       </div>
                     </div>
                     <div class="col-sm-6">
-                      <div class="sightseendetail_right">
+                      <div class="text-left">
                         <strong class="h6 ">{{ sightseen.price }} Per Person</strong>
                       </div>
-                      <div class="sightseendetail_right">
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="text-right">
                         <strong class="h6 ">{{ sightseen.country_name }}</strong>
                       </div>
                     </div>
@@ -79,18 +81,18 @@
                 </div>
               </div>
               <div class="col-md-6 col-sm-6 text-center ">
-                  <div class="">
+                  <div class="top_countries">
                     <a class="badge-link" v-on:click="redirectToCountrySights(thailand)"><img class="img-fluid" :src="'images/frontimages/thailand3x.png'" alt=""></a>
                   </div>
-                  <div class="">
+                  <div class="top_countries">
                     <a class="badge-link" v-on:click="redirectToCountrySights(singapore)"><img class="img-fluid" :src="'images/frontimages/singapore3x.png'" alt=""></a>
                   </div>
               </div>
               <div class="col-md-6 col-sm-6 text-center">
-                  <div class="">
+                  <div class="top_countries">
                     <a class="badge-link" v-on:click="redirectToCountrySights(dubai)" ><img class="img-fluid" :src="'images/frontimages/dubai3x.png'" alt=""></a>
                   </div>
-                  <div class="">
+                  <div class="top_countries">
                     <a class="badge-link " v-on:click="redirectToCountrySights(malaysia)"><img class="img-fluid" :src="'images/frontimages/malaysia3x.png'" alt=""></a>
                   </div>
               </div>
@@ -309,12 +311,7 @@ export default {
     padding: 1rem;
     right:0;
   }
-  .sightseendetail_left{
-    padding:0 .5rem;
-    text-align: left;
-  }
-  .sightseendetail_right{
-    padding:0 .5rem;
-    text-align: right;
+  .top_countries{
+    margin-bottom: 1rem;
   }
 </style>

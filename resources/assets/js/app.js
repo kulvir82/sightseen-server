@@ -66,6 +66,7 @@ const router = new VueRouter({
       { path: '/frontsightseenlist/:country', component: FrontSightSeenList, name: 'frontsightseenlist' },
     ],
     history: true,
+    saveScrollPosition: false,
     root: '/'
  });
 

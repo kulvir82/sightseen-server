@@ -34,7 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/userprofile','CityExplorer@getUserProfile');
   Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
   Route::get('/getsightseen','CityExplorer@sight_seen');
-  Route::post('/getcountries','CityExplorer@getCountry');
   Route::get('/editsightseen/getCityList/{country}','CityExplorer@getCity');
   Route::get('/getCityList/{country}','CityExplorer@getCity');
   Route::post('/createsightseen','CityExplorer@createSightSeen');
@@ -47,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/refreshimages','CityExplorer@getImages');
   Route::post('/searchsightseen','CityExplorer@searchSight');
 });
-
+Route::get('/getcountries','CityExplorer@getCountry');
 //user routes
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/getsightseenfromcountry','CityExplorer@getSightSeenFromCountry');

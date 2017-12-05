@@ -1,7 +1,13 @@
 <template lang="html">
   <div class="">
-    <section class="sightlist ">
+    <section class="sightlist">
       <div class="container">
+        <div class="row select_country">
+          <select v-model="selected" @change="getSightSeenFromCountry">
+            <option disabled="" :value="''">Select Country</option>
+            <option v-for="country in countries" :value="country.id">{{ country.country_name }}</option>
+          </select>
+        </div>
         <div class="row">
           <div class="list" v-for="sight in sightseenlist">
             <div class="row border border-secondary rounded sightgap">
@@ -33,59 +39,39 @@
 export default {
   data:function(){
     return{
-      sightseenlist:null,
-      country:null,
-      cart:null,
-      product_ids:[],
-      unique_code:null,
-      i:0,
+      sightseenlist:[],
+      countries: [],
+      selected: ''
     }
   },
   methods:{
-    getSightSeenFromCountry:function(){
-        this.country = this.$route.params.country;
-        this.$http.post('/getsightseenfromcountry',{country:this.$route.params.country}).then(function(response){
+    getSightSeenFromCountry (){
+      this.$http.post('/getsightseenfromcountry',{country:this.selected}).then(function(response){
         this.sightseenlist = response.data;
       });
     },
-    addToCart:function(sightid){
-        this.product_ids.push([sightid]);
-
-        var products = this.product_ids.length;
-        if(!this.$cookies.isKey('UserToken') ){
-          this.unique_code = this.makeid();
-          this.$cookies.set('UserToken',this.unique_code,{ expires: '1M' });
-        }
-
-          var token = this.$cookies.get('UserToken');
-          this.$cookies.set(token,this.product_ids,{expires:'1M'});
-          this.$http.get('/addtocart',{sightid:sightid}).then(function(response){
-          bus.$emit('change-header',[ this.country.img , products ]);
-          });
-
-
-      // this.$http.post('/',{sightId:sightid,userId:token}).then(function(response){
-      //
-      // });
-    },
-    makeid:function() {
-      var text = "";
-      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-      for (var i = 0; i < 8; i++)
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-      return text;
+    getCountryList (){
+      this.$http.get('/getcountries').then(function(response){
+        this.countries  = response.data;
+      });
     }
   },
   created (){
-    this.getSightSeenFromCountry();
+    this.selected = this.$route.params.country
+    this.getCountryList();
   },
   mounted:function(){
-    //this.getSightSeenFromCountry();
   }
 }
 </script>
 
 <style lang="css">
+.sightlist{
+  margin-top: 40px;
+}
+.select_country{
+  padding: 10px;
+}
 .info p{
   font-size: 15px;
   line-height: 15px;
