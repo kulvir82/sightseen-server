@@ -29,19 +29,17 @@ class BookingDetail extends Model
 
     public function updateBookingDetail($data, $bookingId)
     {
-    	$data = [];
     	$totalDiscount = 0;
     	$totalSaleAmount = 0;
     	foreach ($data as $req){
-
-    		$costPerPax = $req->booking_detail['price'];
-	        $noOfPax = $req->booking_detail['no_of_pax'];
+    		$costPerPax = $req['cost_per_person'];
+	        $noOfPax = $req['no_of_pax'];
 	        $total = $costPerPax * $noOfPax; // without discount
-	        $discount = ($total * $req->booking_detail['discount'])/100;
+	        $discount = ($total * $req['discount'])/100;
 	        $finalTotal = $total - $discount; // including discount
 	        $totalDiscount += $discount;
 	        $totalSaleAmount += $finalTotal;
-    		BookingDetail::where('id', $req->booking_detail['id'])->update(['booking_id'=> $bookingId,'sight_seen_id' => $req->booking_detail['sight_seen_id'],'no_of_pax'=>$req->booking_detail['no_of_pax'],'cost_per_pax'=>$req->booking_detail['price'],'total'=> $finalTotal,'booking_time'=>$req->booking_detail['datetime'],'discount'=>$req->booking_detail['discount']]);
+    		BookingDetail::where('id', $req['id'])->update(['booking_id'=> $bookingId,'no_of_pax'=>$req['no_of_pax'],'cost_per_pax'=>$req['cost_per_person'],'total'=> $finalTotal,'booking_time'=>$req['booking_time'],'discount'=>$req['discount']]);
     	}
     	return [$totalDiscount,$totalSaleAmount];
     	

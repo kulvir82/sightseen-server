@@ -31,7 +31,8 @@ Class UserBookingController extends Controller
     {
     	
     	$bookingDetail = new BookingDetail;
-        $res = $bookingDetail->updateBookingDetail($request, $booking->id);
+        $data = $request->booking_detail;
+        $res = $bookingDetail->updateBookingDetail($data, $booking->id);
 
     	$booking->totaldiscount = $res[0];
     	$booking->total_sale_amount = $res[1];

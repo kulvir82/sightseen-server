@@ -27,7 +27,7 @@ Route::get('/getsightseenfromcity','Api\v1\CityExplorer@getSightSeenFromCity');
 Route::post('/singlesight','CityExplorer@singleSightSeen');
 Route::get('getTax','Api\v1\UserBookingController@getTax');
 // booking Api's routes
-Route::post('userbookings', 'Api\v1\UserBookingController@store');
+Route::post('addToCart', 'Api\v1\UserBookingController@store');
 Route::put('updateCart/{booking}', 'Api\v1\UserBookingController@update');
 Route::get('getCartItems/{id}', 'Api\v1\UserBookingController@getCartItems');
 Route::get('getCartCount/{id}','Api\v1\UserBookingController@getCartCount');
@@ -39,7 +39,7 @@ Route::get('getCurrency', function(){
   $client = new Client();
   $response = $client->get('https://openexchangerates.org/api/latest.json?app_id=f5cdf62bf9e94f16bf512ec8542c255e');
   $response = json_decode((string) $response->getBody(), true);
-  return $response['rates']['INR'];
+  return response()->json(['value'=>$response['rates']['INR']],200);
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
