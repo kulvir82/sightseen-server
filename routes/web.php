@@ -10,13 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use GuzzleHttp\Client;
-Route::get('getCurrency', function(){
-  $client = new Client();
-  $response = $client->get('https://openexchangerates.org/api/latest.json?app_id=f5cdf62bf9e94f16bf512ec8542c255e');
-  $response = json_decode((string) $response->getBody(), true);
-  return $response['rates']['INR'];
-});
 
 
 Route::get('/', function () { return view('frontview/index'); });

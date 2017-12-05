@@ -34,6 +34,13 @@ Route::get('getCartCount/{id}','Api\v1\UserBookingController@getCartCount');
 Route::delete('deleteCartItem/{id}','Api\v1\UserBookingController@deleteCartItem');
 Route::get('getBookings/{id}','Api\v1\UserBookingController@getBookings');
 //
+use GuzzleHttp\Client;
+Route::get('getCurrency', function(){
+  $client = new Client();
+  $response = $client->get('https://openexchangerates.org/api/latest.json?app_id=f5cdf62bf9e94f16bf512ec8542c255e');
+  $response = json_decode((string) $response->getBody(), true);
+  return $response['rates']['INR'];
+});
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
