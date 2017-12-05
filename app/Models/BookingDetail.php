@@ -58,6 +58,7 @@ class BookingDetail extends Model
             $data[$i]['cost_per_person'] = $cartItem->cost_per_pax;
             $data[$i]['total'] = $cartItem->total;
             $data[$i]['booking_date'] = date("Y-m-d",strtotime($cartItem->booking_time));
+            $data[$i]['booking_time'] = $cartItem->booking_time;
             $data[$i]['booking_id'] = $cartItem->booking_id;
             $i++;
         }  
