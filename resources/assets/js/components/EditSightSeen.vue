@@ -59,28 +59,28 @@
                 <tr>
                   <td nowrap class="input_form_caption_td">Images:</td>
                   <td>
-                    <div class="images">
+                    <div class="images" v-if="refreshedImages.image1">
                       <div class="sight_images">
-                        <img v-if="refreshedImages.image1 != ''" :src="refreshedImages.image1" alt="">
-                        <button v-if="refreshedImages.image1 != ''" type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image1,image1)">remove</button>
+                        <img :src="refreshedImages.image1" alt="">
+                        <button type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image1,image1)">remove</button>
                       </div>
                     </div>
-                    <div class="images">
+                    <div class="images" v-if="refreshedImages.image2">
                       <div class="sight_images">
-                        <img  v-if="refreshedImages.image2 != ''" :src="refreshedImages.image2" alt="">
-                        <button v-if="refreshedImages.image2 != ''" type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image2,image2)">remove</button>
+                        <img :src="refreshedImages.image2" alt="">
+                        <button type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image2,image2)">remove</button>
                       </div>
                     </div>
-                    <div class="images">
+                    <div class="images" v-if="refreshedImages.image3">
                       <div class="sight_images">
-                        <img v-if="refreshedImages.image3 != ''" :src="refreshedImages.image3" alt="">
-                        <button v-if="refreshedImages.image3 != ''" type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image3,image3)">remove</button>
+                        <img :src="refreshedImages.image3" alt="">
+                        <button type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image3,image3)">remove</button>
                       </div>
                     </div>
-                    <div class="images">
+                    <div class="images" v-if="refreshedImages.image4">
                       <div class="sight_images">
-                        <img v-if="refreshedImages.image4 != ''" :src="refreshedImages.image4" alt="">
-                        <button v-if="refreshedImages.image4 != ''" type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image4,image4)">remove</button>
+                        <img :src="refreshedImages.image4" alt="">
+                        <button type="button" name="button" v-on:click="removeImage(sightseen.id,refreshedImages.image4,image4)">remove</button>
                       </div>
                     </div>
                   </td>
@@ -158,7 +158,6 @@ export default {
             cache: false,
             processData:false,
             success: (response) => {
-              console.log(response);
               this.refreshImages();
             },
             error:function(exception){alert('Exception:'+exception);}

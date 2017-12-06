@@ -66,11 +66,17 @@ export default {
 </script>
 
 <style lang="css">
+section{
+    padding: 50px 0  !important;
+  }
 .sightlist{
   margin-top: 40px;
 }
 .select_country{
   padding: 10px;
+}
+.list{
+  width: 100%;
 }
 .info p{
   font-size: 15px;
