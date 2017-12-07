@@ -50,6 +50,7 @@ class CityExplorer extends Controller
 
   public function searchSight(Request $request)
   {
+    // return response()->json($request->all());
     $model = new CityExplorerModel;
     $sightseen = $model->searchSightSeen($request);
     return response()->json($sightseen);

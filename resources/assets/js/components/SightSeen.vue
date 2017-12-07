@@ -25,7 +25,7 @@
                <option value="">Select Country</option>
                 <option v-for="country in countries" :value="country.id">{{country.country_name}}</option>
              </select>
-             <select  id="city" name="city" onchange="" >
+             <select  id="city" name="city">
                <option value="">Select City</option>
              </select>
             <input type="submit" name="report_search"  class="travel_buttons1" v-on:click="searchSight()" autocomplete="off">
@@ -72,8 +72,8 @@
       </table>
       <div class="paginationstyle" id="gallerypaginate" >
         <vue-pagination
-            v-bind:pagination="pagination"
-            v-on:click.native="getSightSeen(pagination.current_page)"
+            :pagination="pagination"
+            @paginate="getSightSeen(pagination.current_page)"
             :offset="4">
         </vue-pagination>
       </div>
@@ -89,40 +89,46 @@ export default {
         sightseen:this.data.data,
         sightseenLinks:null,
         countries:null,
-        pagination:this.data,
+        pagination:{
+          total: 0,
+          per_page: 2,
+          from: 1,
+          to: 0,
+          current_page: 1
+        },
         limit1:45,
         limit2:55
       }
   },
   methods:{
-    refreshSightSeen:function () {
+    refreshSightSeen () {
       this.getSightSeen();
       this.getcountries();
     },
-    searchSight:function(){
+    searchSight (){
       var country = $('#country').val();
       var city = $('#city').val() ? $('#city').val():false;
        this.$http.post('/searchsightseen',{country:country,city:city}).then(function(response){
         this.sightseen = response.data.data;
-
+        this.pagination = response.data;
       });
     },
-    getSightSeen:function(page) {
+    getSightSeen () {
 
-        this.$http.get('/getsightseen?page='+page).then(function(response){
+        this.$http.get("/getsightseen?page="+this.pagination.current_page).then(function(response){
           this.sightseen = response.data.data;
           this.pagination = response.data;
         });
-        var result  = ['sightseen','/getsightseen?page=',page,'get'];
+        var result  = ['sightseen','/getsightseen?page=',this.pagination.current_page,'get'];
         localStorage.setItem("lastcomponent", JSON.stringify(result));
     },
-    getcountries:function() {
+    getcountries () {
       this.$http.get('/getcountries').then(function(response){
-                 this.countries  = response.data;
-        });
+        this.countries  = response.data;
+      });
     },
-    deleteSightSeen:function(id){
-      var r = confirm("do you want to delete sight");
+    deleteSightSeen (id){
+      var r = confirm("Are you sure you want to delete this sight seen?");
       if (r == true) {
         this.$http.get('/deletesightseen/'+id).then(function(response){
           this.refreshSightSeen();
@@ -132,26 +138,27 @@ export default {
           txt = "You pressed Cancel!";
       }
     },
-    redirectToAddSightseen: function(){
+    redirectToAddSightseen (){
       var view  = ['addsightseen','','','get']
       bus.$emit('open-view',view)
     },
-    redirectToEditSightseen: function(sightId){
+    redirectToEditSightseen (sightId){
       var view  = ['editsightseen','/editsightseen?id=',sightId,'get']
       bus.$emit('open-view',view)
     },
-    redirectTosingleSightseen: function(sightId){
+    redirectTosingleSightseen (sightId){
       var view  = ['singlesight','/singlesight?id=',sightId,'get']
       bus.$emit('open-view',view)
     }
   },
   filters: {
-  	truncate: function(string, value) {
+  	truncate (string, value) {
     	return string.substring(0, value);
     }
   },
-  mounted: function(){
+  created (){
     this.getcountries();
+    this.pagination = this.data;
   }
 }
 </script>

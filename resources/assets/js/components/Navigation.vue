@@ -2,8 +2,8 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <ul class="my_nav">
-          <li><a href="javascript:;" @click="redirectToSightseen()">Sight Seen</a></li>
-          <li><a href="javascript:;" @click="redirectToAddSightseen()">Add Sightseen</a></li>
+          <li><a href="javascript:;" @click="redirectToSightseen($event)">Sight Seen</a></li>
+          <li><a href="javascript:;" @click="redirectToAddSightseen($event)">Add Sightseen</a></li>
           <li><a href="javascript:;" @click="">Records</a></li>
           <li><a href="javascript:;" @click="">Bookings</a></li>
           <li><a href="logout">Logout</a></li>
@@ -16,13 +16,15 @@
 export default {
 
   methods:{
-    redirectToSightseen: function(){
-      // this.$router.push({ name: 'sightseen' });
+    redirectToSightseen: function(event){
+      $('ul.my_nav li a').removeClass("active");
+      event.target.className = "active";
       var view  = ['sightseen','/getsightseen?page=',1,'get'];
       bus.$emit('open-view',view);
     },
-    redirectToAddSightseen: function(){
-      // this.$router.push({ name: 'addsightseen'});
+    redirectToAddSightseen: function(event){
+      $('ul.my_nav li a').removeClass("active");
+      event.target.className = "active";
       var view  = ['addsightseen','','','get'];
       bus.$emit('open-view',view);
     }
@@ -60,6 +62,6 @@ export default {
   }
 
   ul.my_nav .active {
-      background-color: #4CAF50;
+      background-color: #000;
   }
 </style>

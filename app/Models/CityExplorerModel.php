@@ -182,7 +182,7 @@ class CityExplorerModel extends Model
 
     public function searchSightSeen($request)
     {
-      $searchedSights = Sightseen::where('country_id',$request->country_id)->orWhere('city_id',$request->city_id)->paginate(10);
+      $searchedSights = Sightseen::where('country_id',$request->country)->orWhere('city_id',$request->city)->paginate(10);
       return $searchedSights;
     }
 
