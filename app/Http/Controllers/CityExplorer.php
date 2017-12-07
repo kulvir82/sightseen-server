@@ -68,12 +68,7 @@ class CityExplorer extends Controller
 	{
     $model = new CityExplorerModel;
     $singlesightseen = $model->getSingleSight($request->id);
-    $city = $singlesightseen->city;
-    $country = $singlesightseen->country;
-    $selecteableCities = $model->getCities($country);
-    $selectedCity = $model->getSingleCity($city);
-    $singlesightseen['cityname'] = $selectedCity;
-    $singlesightseen['citiesList'] = $selecteableCities;
+    $singlesightseen['cities'] = $model->getCities($singlesightseen['country_id']);
     return response()->json($singlesightseen);
 	}
 
@@ -124,12 +119,8 @@ class CityExplorer extends Controller
 	{
     $model = new CityExplorerModel;
     $singleSight = $model->getSingleSight($request->id);
-    $countryID = $singleSight->country;
-    $city_code = $singleSight->city;
-    $singleCountry = $model->getSingleSightCountry($countryID);
-    $singleCity = $model->getSingleSightCity($city_code);
-    $singleSight['countryName'] = $singleCountry;
-    $singleSight['cityName'] = $singleCity;
+    $singleSight['countryName'] = $model->getSingleSightCountry($singleSight['country_id']);
+    $singleSight['cityName'] = $model->getSingleSightCity($singleSight['city_id']);
     return response()->json($singleSight);
 	}
 

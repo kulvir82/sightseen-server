@@ -29,7 +29,7 @@
     						<tr>
     							<td nowrap class="input_form_caption_td">Country: </td>
     							<td>
-    								<select name="country" class="country_list" id="country" v-model="sightseen.country" onchange="changeCities()">
+    								<select name="country" class="country_list" id="country" v-model="sightseen.country_id" onchange="changeCities()">
     									<option value="" >Select Country</option>
     									<option v-for="country in countries" :value="country.id ">{{ country.country_name }}</option>
     								</select>
@@ -38,9 +38,9 @@
     						<tr>
     							<td nowrap class="input_form_caption_td">City: </td>
     							<td>
-    								<select  id="city"  name="city" v-model="sightseen.city">
+    								<select  id="city"  name="city" v-model="sightseen.city_id">
     									<option value="" >Select City</option>
-                      <option v-for=" cities in sightseen.citiesList" :value="cities.city_code">{{ cities.city_name}}</option>
+                      <option v-for="city in sightseen.cities" :value="city.id">{{ city.city_name}}</option>
     								</select>
     							</td>
     						</tr>
@@ -48,6 +48,13 @@
     							<td nowrap class="input_form_caption_td">Price: </td>
     							<td><input type="number" name="price" min="0" max="999999999" id="price" :value="sightseen.price" />&nbsp;&nbsp;USD (Per pax)</td>
     						</tr>
+                <tr>
+                  <td nowrap class="input_form_caption_td">Information: </td>
+                  <td>
+                    <input type="radio" id="pickupYes" name="pickup" :value="1" v-model="sightseen.pickup">Yes
+                    <input type="radio" id="pickupNo" name="pickup" :value="0" v-model="sightseen.pickup">No
+                  </td>
+                </tr>
     						<tr>
     							<td nowrap class="input_form_caption_td">Information: </td>
     							<td><vue-editor id="information" v-model="sightseen.information"></vue-editor></td>
@@ -178,13 +185,14 @@ export default {
     updateSightSeen: function(){
       var id = $('#hiddenId').val();
       var title = $('#title').val();
-      var countryID = $('#country').val();
-      var city = $('#city').val();
+      var country_id = $('#country').val();
+      var city_id = $('#city').val();
       var price = $('#price').val();
+      var pickup = $("input[name=pickup]:checked").val();
       var info = this.sightseen.information;
       var description = this.sightseen.description;
-      this.$http.post('/updatesightseen',{id:id,price:price,countryID:countryID,title:title,cityCode:city,info:info,description:description}).then(function (response) {
-        alert('sightseen updated');
+      this.$http.post('/updatesightseen',{id:id,price:price,country_id:country_id,title:title,city_id:city_id,pickup:pickup,info:info,description:description}).then(function (response) {
+        this.redirectToSightseen();
       });
     },
     getcountries:function() {
@@ -193,7 +201,7 @@ export default {
         });
     },
   },
-  mounted: function(){
+  created (){
     this.getcountries();
     this.refreshImages();
   }

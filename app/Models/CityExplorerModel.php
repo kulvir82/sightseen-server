@@ -18,9 +18,10 @@ class CityExplorerModel extends Model
       $sightseen->title = $request->title;
       $sightseen->description = $request->description;
       $sightseen->price = $request->price;
-      $sightseen->country =  $request->countryID;
-      $sightseen->city = $request->city;
+      $sightseen->country_id =  $request->country_id;
+      $sightseen->city_id = $request->city_id;
       $sightseen->information = $request->information;
+      $sightseen->pickup = $request->pickup;
       $i = 1;
       $images = "image";
       $imagename = "";
@@ -42,23 +43,22 @@ class CityExplorerModel extends Model
       $countries = Countries::select('country_name','id')->orderBy('country_name','ASC')->get();
       return  $countries;
     }
-    public function getSingleSightCountry($countryID)
+    public function getSingleSightCountry($country_id)
     {
-      $country = Countries::where('id',$countryID)->value('country_name');
+      $country = Countries::where('id',$country_id)->value('country_name');
       return $country;
     }
 
-    public function getCities($countryID)
+    public function getCities($country_id)
     {
-      $cities = Cities::select('city_name','city_code')->where('country_id', $countryID)->get();
-      $cities = $cities->toArray();
+      $cities = Cities::select('city_name','id')->where('country_id', $country_id)->get()->toArray();
 
       return $cities;
     }
 
-    public function getSingleSightCity($city_code)
+    public function getSingleSightCity($city_id)
     {
-      $city = Cities::where('city_code',$city_code)->value('city_name');
+      $city = Cities::where('id',$city_id)->value('city_name');
       return $city;
     }
 
@@ -70,18 +70,19 @@ class CityExplorerModel extends Model
 
     public function getPopularSightSeen(){
       $sightseens = Sightseen::select('ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
-                    ->join('ce_countries','ce_countries.id','=','ce_sightseen.country')
-                    ->join('ce_cities','ce_cities.city_code','=','ce_sightseen.city' )
+                    ->join('ce_countries','ce_countries.id','=','ce_sightseen.country_id')
+                    ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
                     ->orderBy('popularity', 'desc')
+                    ->take(10)  
                     ->get();
       return $sightseens;
     }
 
     public function getSightSeenFromCountry($request)
     {
-      $sightseen =  Sightseen::where('country',$request->country)
-                    ->join('ce_countries','ce_countries.id','=','ce_sightseen.country')
-                    ->join('ce_cities','ce_cities.city_code','=','ce_sightseen.city' )
+      $sightseen =  Sightseen::where('ce_sightseen.country_id',$request->country)
+                    ->join('ce_countries','ce_countries.id','=','ce_sightseen.country_id')
+                    ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
                     ->select('ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
                     ->get();
 
@@ -90,9 +91,9 @@ class CityExplorerModel extends Model
 
     public function getSightSeenFromCity($request)
     {
-      $sightseen =  Sightseen::where('city',$request->city)
-                    ->join('ce_countries','ce_countries.id','=','ce_sightseen.country')
-                    ->join('ce_cities','ce_cities.city_code','=','ce_sightseen.city' )
+      $sightseen =  Sightseen::where('ce_sightseen.city_id',$request->city)
+                    ->join('ce_countries','ce_countries.id','=','ce_sightseen.country_id')
+                    ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
                     ->select('ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
                     ->get();
 
@@ -112,9 +113,10 @@ class CityExplorerModel extends Model
         $price = $request->price;
         $description = $request->description;
         $information = $request->info;
-        $country = $request->countryID;
-        $city = $request->cityCode;
-        $sightseen = Sightseen::where('id','=',$id)->update(['title' => $title,'country'=>$country, 'city'=> $city,'price' => $price, 'description' => $description, 'information' => $information]);
+        $country_id = $request->country_id;
+        $city_id = $request->city_id;
+        $pickup = $request->pickup;
+        $sightseen = Sightseen::where('id','=',$id)->update(['title' => $title,'country_id'=>$country_id, 'city_id'=> $city_id,'price' => $price, 'description' => $description, 'information' => $information,'pickup'=>$pickup]);
         return 'success';
   	}
     public function updateImageSeen($request,$imageData)
@@ -162,14 +164,13 @@ class CityExplorerModel extends Model
     }
     public function getSingleSight($id)
   	{
-      $singleSight = Sightseen::where('id',$id)->first();
-
+      $singleSight = Sightseen::where('id',$id)->first()->toArray();
       return $singleSight;
   	}
 
     public function getSingleCity($city)
     {
-      $selectedCity = Cities::where('city_code',$city)->value('city_name');
+      $selectedCity = Cities::where('city',$city_id)->value('city_name');
       return $selectedCity;
     }
 
@@ -181,7 +182,7 @@ class CityExplorerModel extends Model
 
     public function searchSightSeen($request)
     {
-      $searchedSights = Sightseen::where('country','like',$request->country)->orWhere('city','like',$request->city)->paginate(10);
+      $searchedSights = Sightseen::where('country_id',$request->country_id)->orWhere('city_id',$request->city_id)->paginate(10);
       return $searchedSights;
     }
 

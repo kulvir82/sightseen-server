@@ -5,7 +5,7 @@
               <td id="listpage_button_bar"><table align="left" height="60" width="100%" border="0" ><tr>
                           <td valign="middle" align="left"><span id="pageTitle">View Sight Seen</span></td>
       					<td align="right">
-      						<a  onclick="history.back(-1)" class="travel_buttons">Back</a>
+      						<a  @click="redirectToSightseen()" class="travel_buttons">Back</a>
       					</td>
                       </tr>
                   </table>
@@ -70,7 +70,13 @@ export default {
        singleSight:this.data,
     }
   },
-
+  methods: {
+    redirectToSightseen: function(){
+      // this.$router.push({ name: 'sightseen' });
+      var view  = ['sightseen','/getsightseen?page=',1,'get'];
+      bus.$emit('open-view',view);
+    },
+  }
 }
 </script>
 

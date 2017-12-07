@@ -21,12 +21,13 @@ class CreateSightseenTable extends Migration
             $table->string('image3',200)->nullable();
             $table->string('image4',200)->nullable();
             $table->text('description')->nullable();
-            $table->float('price');
-            $table->integer('country');
-            $table->integer('city');
+            $table->float('price',10,2);
+            $table->integer('country_id');
+            $table->integer('city_id');
             $table->text('information')->nullable();
             $table->smallInteger('discount')->default(0);
             $table->integer('popularity')->default(0);
+            $table->boolean('pickup')->default(0);
         });
     }
 

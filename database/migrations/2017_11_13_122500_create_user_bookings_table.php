@@ -16,12 +16,13 @@ class CreateUserBookingsTable extends Migration
         Schema::create('user_bookings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('userid');
-            $table->integer('total_sale_amount');
+            $table->float('total_sale_amount',10,2);
             $table->string('status');
             $table->string('card_no');
             $table->string('payment_status');
-            $table->integer('totaldiscount');
-            $table->integer('total_cost');
+            $table->float('totaldiscount',10,2);
+            $table->float('total_cost',10,2);
+            $table->float('tax_amount',10,2);
             $table->timestamps();
         });
     }

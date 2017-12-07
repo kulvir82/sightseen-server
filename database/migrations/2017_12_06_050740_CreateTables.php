@@ -16,15 +16,12 @@ class CreateTables extends Migration
         Schema::create('ce_countries', function(BLueprint $table){
             $table->increments('id');
             $table->string('country_name',100);
-            $table->integer('country_code')->nullable();
         });
 
         Schema::create('ce_cities', function(BLueprint $table){
             $table->increments('id');
-            $table->integer('state_id')->default(0);
             $table->string('city_name',100);
             $table->integer('country_id');
-            $table->integer('city_code')->nullable();
         });
     }
 

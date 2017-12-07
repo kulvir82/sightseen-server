@@ -55,6 +55,13 @@
     								  {{'enter the price'}}
     								</div></td>
     							</tr>
+                  <tr>
+                    <td nowrap class="input_form_caption_td">Price: </td>
+                    <td>
+                      <input type="radio" id="pickupYes" name="pickup" value="1" required/>Yes
+                      <input type="radio" id="pickupNo" name="pickup" value="0" checked required/>No
+                    </td>
+                  </tr>
     							<tr>
     								<td nowrap class="input_form_caption_td">Information: </td>
     								<td><vue-editor id="information" v-model="infocontent"></vue-editor><div v-if="errorMessage == 'information'" class="errorMessage">
@@ -167,13 +174,14 @@ export default {
         form_data.append('file[2]', this.images.image3);
         form_data.append('file[3]', this.images.image4);
         form_data.append('title', $('#title').val());
-        form_data.append('city', $('#city').val());
-        form_data.append('countryID', $('#country').val());
+        form_data.append('city_id', $('#city').val());
+        form_data.append('country_id', $('#country').val());
         form_data.append('information', this.infocontent);
         form_data.append('description', this.descontent);
         form_data.append('price', $('#price').val());
+        form_data.append('pickup', $("input[name=pickup]:checked").val());
         this.$http.post('/createsightseen',form_data).then(function (response) {
-          this.message = response;
+          this.redirectToSightseen();
         });
       }
     },
@@ -242,7 +250,7 @@ export default {
     },
 
   },
-  mounted:function(){
+  created (){
     this.getcountries();
   }
 }
