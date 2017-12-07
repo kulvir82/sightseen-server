@@ -1,7 +1,7 @@
 <template lang="html">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <ul class="nav navbar-nav">
+        <ul class="my_nav">
           <li><a href="javascript:;" @click="redirectToSightseen()">Sight Seen</a></li>
           <li><a href="javascript:;" @click="redirectToAddSightseen()">Add Sightseen</a></li>
           <li><a href="javascript:;" @click="">Records</a></li>
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="css">
-  ul {
+  ul.my_nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -40,14 +40,14 @@ export default {
     font-size: 1vw;
   }
 
-  li {
+  ul.my_nav li {
       float: left;
   }
-  ul li:last-child{
+  ul.my_nav li:last-child{
     float: right;
   }
 
-  li a {
+  ul.my_nav li a {
       display: block;
       color: #fff;
       text-align: center;
@@ -55,11 +55,11 @@ export default {
       text-decoration: none;
   }
 
-  li a:hover:not(.active) {
+  .my_nav li a:hover:not(.active) {
       background-color: #375192;
   }
 
-  .active {
+  ul.my_nav .active {
       background-color: #4CAF50;
   }
 </style>
