@@ -83,7 +83,7 @@ Class UserBookingController extends Controller
 
     public function getBookings(Request $request)
     {
-        $bookings = UserBooking::where('userid', $request->id)->where('status','==','Confirmed')->get();
+        $bookings = UserBooking::where('userid', $request->id)->where('status','Confirmed')->get();
         $bookingDetail = new BookingDetail;
         $allBookings = $bookingDetail->getBookings($bookings);
         return response()->json($allBookings, 200);
