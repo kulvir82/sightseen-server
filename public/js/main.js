@@ -16,7 +16,7 @@ function changeCities()
 			 {
 				 var optn = document.createElement("OPTION");
 				 optn.text = cities[i].city_name;
-				 optn.value = cities[i].city_code;
+				 optn.value = cities[i].id;
 				 document.getElementById('city').options.add(optn);
 			 }
 
