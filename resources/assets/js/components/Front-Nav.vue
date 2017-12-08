@@ -14,11 +14,11 @@
             <a class="nav-link js-scroll-trigger" href="#sightseen">SightSeens</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact Us</a>
-          </li>
+              <a class="nav-link js-scroll-trigger" v-on:click="redirectToContactUs()">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" v-on:click="redirectToAboutUs()" >About Us</a>
+            </li>
         </ul>
       </div>
     </div>
@@ -66,7 +66,16 @@ export default {
           $('.onetimepwd').show();
           $('.otpheading').show();
       });
+
     },
+
+    redirectToAboutUs:function(){
+      this.$router.push({ name: 'aboutus'});
+    },
+    redirectToContactUs:function(){
+      this.$router.push({ name: 'contactus'});
+    },
+
     verifypincode:function () {
         var pin = $('#pincode').val();
         this.$http.post('/verifypincode',{pin:pin}).then(function(response){
@@ -94,7 +103,7 @@ export default {
       console.log(this.cartData);
     },
     checkoutCartData:function(){
-      
+
       this.userdata = this.$cookies.get('UserToken');
       var values = this.$cookies.get(this.userdata);
       var arrvalues = values.split(',');
