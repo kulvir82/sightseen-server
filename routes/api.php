@@ -33,6 +33,7 @@ Route::get('getCartItems/{id}', 'Api\v1\UserBookingController@getCartItems');
 Route::get('getCartCount/{id}','Api\v1\UserBookingController@getCartCount');
 Route::delete('deleteCartItem/{id}','Api\v1\UserBookingController@deleteCartItem');
 Route::get('getBookings/{id}','Api\v1\UserBookingController@getBookings');
+Route::put('cancelBooking/{id}','Api\v1\UserBookingController@cancelBooking');
 //
 use GuzzleHttp\Client;
 Route::get('getCurrency', function(){

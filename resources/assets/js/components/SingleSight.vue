@@ -32,6 +32,10 @@
           		<td class="form_header2" align="left">Price</td>
           		<td class="form_header4">{{ singleSight.price }}</td>
           	</tr>
+            <tr>
+              <td class="form_header2" align="left">Discount</td>
+              <td class="form_header4">{{ singleSight.discount }} %</td>
+            </tr>
           	<tr>
           		<td class="form_header2" align="left" valign="top">Information</td>
           		<td class="form_header4 blackColor" v-html="singleSight.information"></td>

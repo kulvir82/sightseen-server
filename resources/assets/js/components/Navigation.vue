@@ -6,6 +6,7 @@
           <li><a href="javascript:;" @click="redirectToAddSightseen($event)">Add Sightseen</a></li>
           <li><a href="javascript:;" @click="">Records</a></li>
           <li><a href="javascript:;" @click="">Bookings</a></li>
+          <li><a href="javascript:;" @click="">Settings</a></li>
           <li><a href="logout">Logout</a></li>
         </ul>
       </div>

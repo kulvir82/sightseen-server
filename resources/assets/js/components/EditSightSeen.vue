@@ -49,7 +49,13 @@
     							<td><input type="number" name="price" min="0" max="999999999" id="price" :value="sightseen.price" />&nbsp;&nbsp;USD (Per pax)</td>
     						</tr>
                 <tr>
-                  <td nowrap class="input_form_caption_td">Information: </td>
+                    <td nowrap class="input_form_caption_td">Discount: </td>
+                    <td>
+                      <input type="number" id="discount" name="dsicount" :value="sightseen.discount" min="0" max="999999999" required/>&nbsp;&nbsp;in %
+                    </td>
+                  </tr>
+                <tr>
+                  <td nowrap class="input_form_caption_td">Location Pickup: </td>
                   <td>
                     <input type="radio" id="pickupYes" name="pickup" :value="1" v-model="sightseen.pickup">Yes
                     <input type="radio" id="pickupNo" name="pickup" :value="0" v-model="sightseen.pickup">No
@@ -188,10 +194,11 @@ export default {
       var country_id = $('#country').val();
       var city_id = $('#city').val();
       var price = $('#price').val();
+      var discount = $('#discount').val();
       var pickup = $("input[name=pickup]:checked").val();
       var info = this.sightseen.information;
       var description = this.sightseen.description;
-      this.$http.post('/updatesightseen',{id:id,price:price,country_id:country_id,title:title,city_id:city_id,pickup:pickup,info:info,description:description}).then(function (response) {
+      this.$http.post('/updatesightseen',{id:id,price:price,country_id:country_id,title:title,city_id:city_id,pickup:pickup,info:info,description:description,discount: discount}).then(function (response) {
         this.redirectToSightseen();
       });
     },

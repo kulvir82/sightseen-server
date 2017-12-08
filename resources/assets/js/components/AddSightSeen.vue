@@ -56,7 +56,13 @@
     								</div></td>
     							</tr>
                   <tr>
-                    <td nowrap class="input_form_caption_td">Price: </td>
+                    <td nowrap class="input_form_caption_td">Discount: </td>
+                    <td>
+                      <input :value="0" type="number" id="discount" name="dsicount" min="0" max="999999999" required/>&nbsp;&nbsp;in %
+                    </td>
+                  </tr>
+                  <tr>
+                    <td nowrap class="input_form_caption_td">Location Pickup: </td>
                     <td>
                       <input type="radio" id="pickupYes" name="pickup" value="1" required/>Yes
                       <input type="radio" id="pickupNo" name="pickup" value="0" checked required/>No
@@ -179,6 +185,7 @@ export default {
         form_data.append('information', this.infocontent);
         form_data.append('description', this.descontent);
         form_data.append('price', $('#price').val());
+        form_data.append('discount', $('#discount').val());
         form_data.append('pickup', $("input[name=pickup]:checked").val());
         this.$http.post('/createsightseen',form_data).then(function (response) {
           this.redirectToSightseen();

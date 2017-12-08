@@ -22,6 +22,7 @@ class CityExplorerModel extends Model
       $sightseen->city_id = $request->city_id;
       $sightseen->information = $request->information;
       $sightseen->pickup = $request->pickup;
+      $sightseen->discount = $request->discount;
       $i = 1;
       $images = "image";
       $imagename = "";
@@ -111,12 +112,13 @@ class CityExplorerModel extends Model
 
         $title = $request->title;
         $price = $request->price;
+        $discount = $request->discount;
         $description = $request->description;
         $information = $request->info;
         $country_id = $request->country_id;
         $city_id = $request->city_id;
         $pickup = $request->pickup;
-        $sightseen = Sightseen::where('id','=',$id)->update(['title' => $title,'country_id'=>$country_id, 'city_id'=> $city_id,'price' => $price, 'description' => $description, 'information' => $information,'pickup'=>$pickup]);
+        $sightseen = Sightseen::where('id','=',$id)->update(['title' => $title,'country_id'=>$country_id, 'city_id'=> $city_id,'price' => $price, 'discount' => $discount, 'description' => $description, 'information' => $information,'pickup'=>$pickup]);
         return 'success';
   	}
     public function updateImageSeen($request,$imageData)

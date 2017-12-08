@@ -65,9 +65,6 @@
                  <a  title="View" href="javascript:;" v-on:click="redirectTosingleSightseen(sight.id)">View</a>
               </td>
           </tr>
-          <tr class="row0">
-            <td colspan="4" style="text-align:center; !important;"></td>
-          </tr>
         </tbody>
       </table>
       <div class="paginationstyle" id="gallerypaginate" >
