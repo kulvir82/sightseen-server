@@ -82,18 +82,18 @@
               </div>
               <div class="col-md-6 col-sm-6 text-center ">
                   <div class="top_countries">
-                    <a class="badge-link" v-on:click="redirectToCountrySights(thailand)"><img class="img-fluid" :src="'images/frontimages/thailand3x.png'" alt=""></a>
+                    <a class="badge-link" v-on:click="redirectToCountrySights(countries.thailand)"><img class="img-fluid" :src="'images/frontimages/thailand3x.png'" alt=""></a>
                   </div>
                   <div class="top_countries">
-                    <a class="badge-link" v-on:click="redirectToCountrySights(singapore)"><img class="img-fluid" :src="'images/frontimages/singapore3x.png'" alt=""></a>
+                    <a class="badge-link" v-on:click="redirectToCountrySights(countries.singapore)"><img class="img-fluid" :src="'images/frontimages/singapore3x.png'" alt=""></a>
                   </div>
               </div>
               <div class="col-md-6 col-sm-6 text-center">
                   <div class="top_countries">
-                    <a class="badge-link" v-on:click="redirectToCountrySights(dubai)" ><img class="img-fluid" :src="'images/frontimages/dubai3x.png'" alt=""></a>
+                    <a class="badge-link" v-on:click="redirectToCountrySights(countries.dubai)" ><img class="img-fluid" :src="'images/frontimages/dubai3x.png'" alt=""></a>
                   </div>
                   <div class="top_countries">
-                    <a class="badge-link " v-on:click="redirectToCountrySights(malaysia)"><img class="img-fluid" :src="'images/frontimages/malaysia3x.png'" alt=""></a>
+                    <a class="badge-link " v-on:click="redirectToCountrySights(countries.malaysia)"><img class="img-fluid" :src="'images/frontimages/malaysia3x.png'" alt=""></a>
                   </div>
               </div>
             </div>
@@ -213,19 +213,30 @@
 export default {
   data:function(){
     return{
-      thailand:{ 'code':313,'img':'thailand3x.png'},
-      malaysia:{ 'code':173,'img':'malaysia3x.png'},
-      singapore:{ 'code':430,'img':'singapore3x.png'},
-      dubai:{ 'code2':43,'img':'dubai3x.png'},
       popularSightSeens: [],
+      countries: {
+        'malaysia' : null,
+        'singapore' : null,
+        'thailand' : null,
+        'dubai' : null,
+      }
     }
   },
   created (){
     this.getPopularSightSeen();
+    this.getcountries();
   },
   methods:{
+    getcountries () {
+      this.$http.get('/getcountries').then(function(response){
+        this.countries.malaysia  = response.data[0].id;
+        this.countries.singapore  = response.data[1].id;
+        this.countries.thailand  = response.data[2].id;
+        this.countries.dubai  = response.data[3].id;
+      });
+    },
     redirectToCountrySights (country) {
-      this.$router.push({ name: 'frontsightseenlist', params: { country: country.code }});
+      this.$router.push({ name: 'frontsightseenlist', params: { country: country }});
     },
     getPopularSightSeen (){
       this.$http.get("/getPopularSightSeen").then(function(response){

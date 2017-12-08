@@ -103,6 +103,7 @@ export default {
       this.getcountries();
     },
     searchSight (){
+      alert("here");
       var country = $('#country').val();
       var city = $('#city').val() ? $('#city').val():false;
        this.$http.post('/searchsightseen',{country:country,city:city}).then(function(response){
