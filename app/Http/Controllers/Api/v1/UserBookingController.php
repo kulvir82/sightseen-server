@@ -38,6 +38,7 @@ Class UserBookingController extends Controller
     	$booking->totaldiscount = $res[0];
     	$booking->total_sale_amount = $res[1];
         $booking->tax_amount = $request->tax_amount;
+        $booking->status = 'Confirmed';
         $booking->save();
 
         return response()->json(['booking_id'=>$booking->id,'success'=>true], 200);
