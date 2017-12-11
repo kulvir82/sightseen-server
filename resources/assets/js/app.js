@@ -38,6 +38,8 @@ import FrontSightSeenList from './components/Front-SightSeenList.vue';
 import UserProfilePage from './components/UserProfilePage.vue';
 import AboutUs from './components/AboutUs.vue';
 import ContactUs from './components/ContactUs.vue';
+import TermsConditions from './components/Terms&Conditions.vue';
+import Support from './components/Support.vue';
 
 
 
@@ -67,6 +69,8 @@ const router = new VueRouter({
       { path: '/frontsightseenlist/:country', component: FrontSightSeenList, name: 'frontsightseenlist' },
       { path: '/aboutus', component: AboutUs, name: 'aboutus' },
       { path: '/contactus', component: ContactUs, name: 'contactus' },
+      { path: '/termsconditions', component: TermsConditions, name: 'termsconditions' },
+      { path: '/support', component: Support, name: 'support' },
     ],
     history: true,
     saveScrollPosition: false,

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>New Age - Start Bootstrap Theme</title>
+    <title>Book your favourite sight scene with click of a button</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ mix('/css/front.css') }}" rel="stylesheet">

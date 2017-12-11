@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/searchsightseen','CityExplorer@searchSight');
 });
 Route::get('/getcountries','CityExplorer@getCountry');
+Route::post('/usersendmail','ContactUs@saveEmailData');
 //user routes
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/getsightseenfromcountry','CityExplorer@getSightSeenFromCountry');
