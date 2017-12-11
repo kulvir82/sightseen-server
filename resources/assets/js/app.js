@@ -38,7 +38,7 @@ import FrontSightSeenList from './components/Front-SightSeenList.vue';
 import UserProfilePage from './components/UserProfilePage.vue';
 import AboutUs from './components/AboutUs.vue';
 import ContactUs from './components/ContactUs.vue';
-
+import Bookings from './components/Bookings.vue';
 
 
 
@@ -67,6 +67,7 @@ const router = new VueRouter({
       { path: '/frontsightseenlist/:country', component: FrontSightSeenList, name: 'frontsightseenlist' },
       { path: '/aboutus', component: AboutUs, name: 'aboutus' },
       { path: '/contactus', component: ContactUs, name: 'contactus' },
+      { path: '/bookings', component: Bookings, name: 'bookings' },
     ],
     history: true,
     saveScrollPosition: false,

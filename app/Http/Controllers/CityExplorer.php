@@ -33,10 +33,10 @@ class CityExplorer extends Controller
     return response()->json($sightseen);
   }
 
-  public function sight_seen()
+  public function sight_seen(Request $request)
 	{
     $model = new CityExplorerModel;
-    $sightseen = $model->getSightSeen();
+    $sightseen = $model->getSightSeen($request);
     return response()->json($sightseen);
 	}
 

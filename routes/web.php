@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/removeimages','CityExplorer@removeImage');
   Route::post('/refreshimages','CityExplorer@getImages');
   Route::post('/searchsightseen','CityExplorer@searchSight');
+  Route::get('/bookings','UserBookingController@index');
 });
 Route::get('/getcountries','CityExplorer@getCountry');
 //user routes

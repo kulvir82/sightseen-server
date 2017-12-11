@@ -21,16 +21,16 @@
       </tr>
         <tr>
           <td align="left" width="60%">
-             <select name="country" id="country" class="country_list" onchange="changeCities()">
-               <option value="">Select Country</option>
+             <select name="country" id="country" v-model="country" class="country_list" onchange="changeCities()">
+                <option value="">Select Country</option>
                 <option v-for="country in countries" :value="country.id">{{country.country_name}}</option>
              </select>
-             <select  id="city" name="city">
+             <select  id="city" name="city" v-model="city">
                <option value="">Select City</option>
              </select>
-            <input type="submit" name="report_search"  class="travel_buttons1" v-on:click="searchSight()" autocomplete="off">
+            <input type="submit" name="report_search"  class="travel_buttons1" @click="searchSight()" autocomplete="off">
          </td>
-         <td align="left" width="20%"><a class="travel_buttons" href="javascript:;" v-on:click="refreshSightSeen()">All Records</a></td>
+         <td align="left" width="20%"><a class="travel_buttons" href="javascript:;" @click="refreshSightSeen()">All Records</a></td>
            <td align="right" class="fontGreen">Total Records:</td>
            <td class="fontGreen">{{pagination.total}}</td>
         </tr>
@@ -54,8 +54,8 @@
               Action
             </td>
           </tr>
-          <tr v-for="sight in sightseen">
-              <td class="form_header2">{{sight.id }}</td>
+          <tr v-for="(sight, index) in sightseen">
+              <td class="form_header2">{{ sight.id }}</td>
               <td class="form_header2">{{sight.title | truncate(50)}}</td>
               <td class="form_header2">{{sight.price}}</td>
               <td class="form_header2 overflowhide" v-html="$options.filters.truncate(sight.description,70)"></td>
@@ -64,6 +64,9 @@
                  <a  title="Delete" v-on:click="deleteSightSeen(sight.id)" id="delete" href="javascript:;">Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
                  <a  title="View" href="javascript:;" v-on:click="redirectTosingleSightseen(sight.id)">View</a>
               </td>
+          </tr>
+          <tr v-show="records">
+            No Record
           </tr>
         </tbody>
       </table>
@@ -84,6 +87,7 @@ export default {
   data: function() {
       return{
         sightseen:this.data.data,
+        records: false,
         sightseenLinks:null,
         countries:null,
         pagination:{
@@ -93,32 +97,33 @@ export default {
           to: 0,
           current_page: 1
         },
-        limit1:45,
-        limit2:55
+        country: '',
+        city: ''
       }
   },
   methods:{
     refreshSightSeen () {
+      this.pagination.current_page = 1;
+      this.country = '';
+      this.city = '';
       this.getSightSeen();
       this.getcountries();
     },
     searchSight (){
-      alert("here");
-      var country = $('#country').val();
-      var city = $('#city').val() ? $('#city').val():false;
-       this.$http.post('/searchsightseen',{country:country,city:city}).then(function(response){
-        this.sightseen = response.data.data;
-        this.pagination = response.data;
-      });
+      this.pagination.current_page = 1;
+      this.getSightSeen();
     },
     getSightSeen () {
-
-        this.$http.get("/getsightseen?page="+this.pagination.current_page).then(function(response){
+        this.$http.get("/getsightseen?page="+this.pagination.current_page+"&country="+this.country+"&city="+this.city).then(function(response){
           this.sightseen = response.data.data;
           this.pagination = response.data;
+          if(response.data.total > 0){
+          this.records = false;
+          }
+          else{
+            this.records = true;
+          }
         });
-        var result  = ['sightseen','/getsightseen?page=',this.pagination.current_page,'get'];
-        localStorage.setItem("lastcomponent", JSON.stringify(result));
     },
     getcountries () {
       this.$http.get('/getcountries').then(function(response){

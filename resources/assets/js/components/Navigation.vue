@@ -5,6 +5,9 @@
           <li><a href="javascript:;" @click="redirectToSightseen($event)">Sight Seen</a></li>
           <li><a href="javascript:;" @click="redirectToAddSightseen($event)">Add Sightseen</a></li>
           <li><a href="javascript:;" @click="">Records</a></li>
+          <!-- <router-link tag="li" to="/bookings">
+            <a>Bookings</a>
+          </router-link> -->
           <li><a href="javascript:;" @click="">Bookings</a></li>
           <li><a href="javascript:;" @click="">Settings</a></li>
           <li><a href="logout">Logout</a></li>

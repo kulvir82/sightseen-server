@@ -29,18 +29,18 @@
     						<tr>
     							<td nowrap class="input_form_caption_td">Country: </td>
     							<td>
-    								<select name="country" class="country_list" id="country" v-model="sightseen.country_id" onchange="changeCities()">
-    									<option value="" >Select Country</option>
-    									<option v-for="country in countries" :value="country.id ">{{ country.country_name }}</option>
+    								<select name="country" class="country_list" id="country" onchange="changeCities()">
+    									<!-- <option value="" >Select Country</option> -->
+    									<option v-for="country in countries" :value="country.id " :selected="sightseen.country_id == country.id">{{ country.country_name }}</option>
     								</select>
     							</td>
     						</tr>
     						<tr>
     							<td nowrap class="input_form_caption_td">City: </td>
     							<td>
-    								<select  id="city"  name="city" v-model="sightseen.city_id">
+    								<select  id="city"  name="city">
     									<option value="" >Select City</option>
-                      <option v-for="city in sightseen.cities" :value="city.id">{{ city.city_name}}</option>
+                      <option v-for="city in sightseen.cities" :value="city.id" :selected="sightseen.city_id == city.id">{{ city.city_name}}</option>
     								</select>
     							</td>
     						</tr>
@@ -154,7 +154,7 @@ export default {
             success: (response) => {
               this.refreshedImages = response;
             },
-            error:function(exception){alert('Exception:'+exception);}
+            error:function(exception){}
         });
     },
     updateImages:function () {

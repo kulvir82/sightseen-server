@@ -32,4 +32,9 @@ class User extends Authenticatable
       return $this->is_admin; // this looks for an admin column in your users table
     }
 
+    public function bookings()
+    {
+        return $this->hasMany(UserBooking::class, 'userid');
+    }
+
 }

@@ -63,9 +63,12 @@ class CityExplorerModel extends Model
       return $city;
     }
 
-    public function getSightSeen()
+    public function getSightSeen($request)
   	{
-      $sightseen = Sightseen::paginate(10);
+      if($request->has('country'))
+        $sightseen = Sightseen::where('country_id',$request->country)->where('city_id', $request->city)->paginate(10);
+      else
+        $sightseen = Sightseen::paginate(10);
       return $sightseen;
   	}
 
@@ -184,7 +187,7 @@ class CityExplorerModel extends Model
 
     public function searchSightSeen($request)
     {
-      $searchedSights = Sightseen::where('country_id',$request->country)->orWhere('city_id',$request->city)->paginate(10);
+      $searchedSights = Sightseen::where('country_id',$request->country)->where('city_id',$request->city)->paginate(10);
       return $searchedSights;
     }
 
