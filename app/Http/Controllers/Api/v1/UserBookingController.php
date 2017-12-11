@@ -46,7 +46,7 @@ Class UserBookingController extends Controller
     public function getCartItems(Request $request)
     {
         $userId = $request->id;
-        $booking = UserBooking::where('userid', $userId)->first();
+        $booking = UserBooking::where('userid', $userId)->where('status', '!=','Confirmed')->first();
         if(count($booking) > 0){
             $bookingDetail = new BookingDetail;
             $cartItems = $bookingDetail->getCartItems($booking->id);
@@ -60,7 +60,7 @@ Class UserBookingController extends Controller
     public function getCartCount(Request $request)
     {
         $userId = $request->id;
-        $booking = UserBooking::where('userid', $userId)->first();
+        $booking = UserBooking::where('userid', $userId)->where('status', '!=','Confirmed')->first();
         if(count($booking) > 0){
             $cartCount = BookingDetail::where('booking_id',$booking->id)->count();
             return response()->json(['booking_id'=>$booking->id,'cart_count'=> $cartCount],200);

@@ -36,7 +36,10 @@ class UsersModel extends Model
   public function ExistingUser($request)
   {
     $user = User::where('phone_number', $request->phnum)->first();
-    return $user;
+    if(count($user))
+      return $user->id;
+    else
+      return '';
   }
 
   public function checkoutCartData($request)
