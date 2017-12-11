@@ -13,13 +13,15 @@ import SightSeen from './SightSeen.vue';
 import AddSightSeen from './AddSightSeen.vue';
 import EditSightSeen from './EditSightSeen.vue';
 import SingleSight from './SingleSight.vue';
+import Bookings from './Bookings.vue';
 export default {
     name: 'app',
     components: {
       sightseen: SightSeen,
       addsightseen: AddSightSeen,
       editsightseen: EditSightSeen,
-      singlesight: SingleSight
+      singlesight: SingleSight,
+      bookings: Bookings
     },
     data:function() {
       return {

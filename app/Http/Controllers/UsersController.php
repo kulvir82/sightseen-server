@@ -47,9 +47,9 @@ class UsersController extends Controller
     $twilioNumber = env('TWILIO_NUMBER');
     $pin = $this->generatePIN($pindigits);
     $client = new Client($sid, $token);
-          $user = $model->ExistingUser($request);
-          if($user != null){
-            Auth::login($user);
+          $id = $model->ExistingUser($request);
+          if(!empty($id)){
+            Auth::login($id);
               $client->messages->create(
                   // the number you'd like to send the message to
                   $request->phnum,
@@ -61,10 +61,9 @@ class UsersController extends Controller
                   )
               );
 
-              $data['id'] = $user->id;
+              $data['id'] = $id;
               $data['pin'] = $pin;
               $data['user'] = "olduser";
-              $data['username'] = $user->username;
               return response()->json($data);
 
         }else {

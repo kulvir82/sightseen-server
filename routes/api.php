@@ -36,6 +36,7 @@ Route::get('getBookings/{id}','Api\v1\UserBookingController@getBookings');
 Route::put('cancelBooking/{id}','Api\v1\UserBookingController@cancelBooking');
 //
 use GuzzleHttp\Client;
+
 Route::get('getCurrency', function(){
   $client = new Client();
   $response = $client->get('https://openexchangerates.org/api/latest.json?app_id=f5cdf62bf9e94f16bf512ec8542c255e');

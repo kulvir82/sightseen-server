@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        echo "sedding users\n";
+        echo "seeding users\n";
         DB::table('users')->insert([
         	'username'     => 'admin',
             'email'        => 'admin@bookmysightseen.com',

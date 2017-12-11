@@ -7,23 +7,35 @@
               Sr.No.
             </td>
             <td class="form_header" align="left">
-              Title
+              Username
             </td>
             <td class="form_header" align="left">
-              Price (USD)
+              Total Price (USD)
             </td>
-            <td class="form_header" align="left" style="width: 347px;">
-              Description
+            <td class="form_header" align="left">
+              Discount
             </td>
-            <td class="form_header" style="padding-left: 31px;width: 130px;" align="left">
+            <td class="form_header" align="left">
+              Tax Amount
+            </td>
+            <td class="form_header" align="left">
+              Status
+            </td>
+            <td class="form_header" align="left">
+              Payment Status
+            </td>
+            <td class="form_header" align="left">
               Action
             </td>
           </tr>
-          <tr v-for="">
+          <tr v-for="booking in bookings">
               <td class="form_header2"></td>
-              <td class="form_header2"></td>
-              <td class="form_header2"></td>
-              <td class="form_header2"></td>
+              <td class="form_header2">{{ booking.username }}</td>
+              <td class="form_header2">{{ booking.total_amount }}</td>
+              <td class="form_header2">{{ booking.discount_amount }}</td>
+              <td class="form_header2">{{ booking.tax_amount }}</td>
+              <td class="form_header2">{{ booking.status }}</td>
+              <td class="form_header2">{{ booking.payment_status }}</td>
               <td class="form_header2">
                  &nbsp;&nbsp;&nbsp;&nbsp;
                  <a  title="View" href="javascript:;" v-on:click="">View</a>
@@ -36,21 +48,21 @@
 
 <script>
 	export default{
+    props: ['data'],
 		data (){
 			return {
-				bookings: [],
+				bookings: this.data,
 			}
 		},
 		methods: {
 			getBookings (){
 				this.$http.get('/bookings').then(function(response){
-					console.log(response.data);
 					this.bookings = response.data;
 				});
 			}
 		},
 		created (){
-			this.getBookings();
+			// this.getBookings();
 		}
 	}
 </script>

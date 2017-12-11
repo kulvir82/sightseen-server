@@ -8,7 +8,7 @@
           <!-- <router-link tag="li" to="/bookings">
             <a>Bookings</a>
           </router-link> -->
-          <li><a href="javascript:;" @click="">Bookings</a></li>
+          <li><a href="javascript:;" @click="redirectToBookings($event)">Bookings</a></li>
           <li><a href="javascript:;" @click="">Settings</a></li>
           <li><a href="logout">Logout</a></li>
         </ul>
@@ -20,16 +20,22 @@
 export default {
 
   methods:{
-    redirectToSightseen: function(event){
+    redirectToSightseen (event){
       $('ul.my_nav li a').removeClass("active");
       event.target.className = "active";
       var view  = ['sightseen','/getsightseen?page=',1,'get'];
       bus.$emit('open-view',view);
     },
-    redirectToAddSightseen: function(event){
+    redirectToAddSightseen (event){
       $('ul.my_nav li a').removeClass("active");
       event.target.className = "active";
       var view  = ['addsightseen','','','get'];
+      bus.$emit('open-view',view);
+    },
+    redirectToBookings (event){
+      $('ul.my_nav li a').removeClass("active");
+      event.target.className = "active";
+      var view  = ['bookings','/bookings','','get'];
       bus.$emit('open-view',view);
     }
   }
