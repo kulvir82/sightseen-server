@@ -40,7 +40,7 @@ class BookingDetail extends Model
     	        $finalTotal = $total - $discount; // including discount
     	        $totalDiscount += $discount;
     	        $totalSaleAmount += $finalTotal;
-        		BookingDetail::where('id', $req['id'])->update(['booking_id'=> $bookingId,'no_of_pax'=>$req['no_of_pax'],'cost_per_pax'=>$req['cost_per_person'],'total'=> $finalTotal,'booking_time'=>$req['booking_time'],'discount'=>$req['discount']]);
+        		BookingDetail::where('id', $req['id'])->update(['booking_id'=> $bookingId,'no_of_pax'=>$req['no_of_pax'],'cost_per_pax'=>$req['cost_per_person'],'total'=> $finalTotal,'booking_time'=>$req['booking_time'],'discount'=>$req['discount'], 'pickup_location' => $req['location']]);
     	   }
         }
     	return [$totalDiscount,$totalSaleAmount];
@@ -60,6 +60,7 @@ class BookingDetail extends Model
             $data[$i]['booking_date'] = date("Y-m-d",strtotime($cartItem->booking_time));
             $data[$i]['booking_time'] = $cartItem->booking_time;
             $data[$i]['booking_id'] = $cartItem->booking_id;
+            $data[$i]['location'] = $cartItem->pickup_location;
             $i++;
         }  
         return $data;
@@ -82,6 +83,7 @@ class BookingDetail extends Model
                 $data[$j]['total'] = $row->total;
                 $data[$j]['booking_date'] = date("Y-m-d",strtotime($row->booking_time));
                 $data[$j]['booking_id'] = $row->booking_id;
+                $data[$i]['location'] = $row->pickup_location;
                 $data[$j]['booking_count'] = $query->count();
                 $j++;
             }
