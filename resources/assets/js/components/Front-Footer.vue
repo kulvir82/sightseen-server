@@ -17,10 +17,10 @@
             <div class="col-lg-4 col-md-4">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#termsandconditions">Terms & Conditions</a>
+                    <a class="nav-link js-scroll-trigger" v-on:click="redirectToTermsConditions()">Terms & Conditions</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#support" >Support</a>
+                    <a class="nav-link js-scroll-trigger" v-on:click="redirectToSupport()">Support</a>
                 </li>
               </ul>
             </div>
@@ -36,7 +36,7 @@
               <a href="#">Support</a>
             </li>
             <li class="list-inline-item">
-             <a href="#">Terms & Conditions</a>
+             <a v-on:click="redirectToTermsConditions">Terms & Conditions</a>
             </li>
            </ul>
         </div>
@@ -67,6 +67,12 @@ export default {
     },
     redirectToContactUs:function(){
       this.$router.push({ name: 'contactus'});
+    },
+    redirectToTermsConditions:function(){
+      this.$router.push({ name: 'termsconditions'});
+    },
+    redirectToSupport:function(){
+      this.$router.push({ name: 'support'});
     },
   }
 

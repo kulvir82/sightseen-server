@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;	
+use Illuminate\Database\Eloquent\Model;
 
 class BookingDetail extends Model
 {
@@ -44,12 +44,12 @@ class BookingDetail extends Model
     	   }
         }
     	return [$totalDiscount,$totalSaleAmount];
-    	
+
     }
     public function getCartItems($bookingId){
         $cartItems = BookingDetail::where('booking_id', $bookingId)->get();
         $data = array();
-        $i = 0;    
+        $i = 0;
         foreach($cartItems as $cartItem){
             $data[$i]['id'] = $cartItem->id;
             $data[$i]['sight_seen_name'] = $cartItem->sightseen->title;
@@ -62,7 +62,7 @@ class BookingDetail extends Model
             $data[$i]['booking_id'] = $cartItem->booking_id;
             $data[$i]['location'] = $cartItem->pickup_location;
             $i++;
-        }  
+        }
         return $data;
     }
 
@@ -88,7 +88,7 @@ class BookingDetail extends Model
                 $j++;
             }
             $finalData[$i] = $data;
-            $i++; 
+            $i++;
         }
         return $finalData;
     }
