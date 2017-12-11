@@ -20,7 +20,7 @@ Route::post('/updateprofile','Api\v1\UserController@updateProfile');
 Route::post('/displayprofile','Api\v1\UserController@displayProfile');
 Route::get('/getsightseen','Api\v1\CityExplorer@sight_seen');
 Route::get('/getpopularsightseen','Api\v1\CityExplorer@getPopularSightSeen');
-Route::post('/getcountries','Api\v1\CityExplorer@getCountry');
+Route::get('/getcountries','Api\v1\CityExplorer@getCountry');
 Route::get('/getCityList/{country}','CityExplorer@getCity');
 Route::get('/getsightseenfromcountry','Api\v1\CityExplorer@getSightSeenFromCountry');
 Route::get('/getsightseenfromcity','Api\v1\CityExplorer@getSightSeenFromCity');

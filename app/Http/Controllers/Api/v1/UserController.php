@@ -15,7 +15,10 @@ class UserController extends Controller
     $twilioNumber = env('TWILIO_NUMBER');
     $pin = $this->generatePIN($pindigits);
     $client = new Client($sid, $token);
-    $id = $model->createUser($request);
+    $id = $model->ExistingUser($request);
+    if(empty($id)){
+      $id = $model->createUser($request);
+    }
     // Use the client to do fun stuff like send text messages!
     $client->messages->create(
         // the number you'd like to send the message to
