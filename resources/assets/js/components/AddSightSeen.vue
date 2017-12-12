@@ -153,12 +153,12 @@ export default {
    }
  },
   methods:{
-    redirectToSightseen: function(){
+    redirectToSightseen (){
       // this.$router.push({ name: 'sightseen' });
       var view  = ['sightseen','/getsightseen?page=',1,'get'];
       bus.$emit('open-view',view);
     },
-    createSightSeen:function () {
+    createSightSeen () {
       if($('#title').val() == ''){
         this.errorMessage = 'title';
       }else if($('#country').val() == '') {
@@ -192,7 +192,7 @@ export default {
         });
       }
     },
-    removeImage:function (image) {
+    removeImage  (image) {
       if(image == 'image1'){
           this.images.image1 = '';
           form_data.delete("file[0]");
@@ -210,7 +210,7 @@ export default {
           form_data.delete("file[3]");
       }
     },
-    previewThumbnail: function(event) {
+    previewThumbnail (event) {
       var input = event.target;
       var reader = new FileReader();
       if(input.files && input.files[0]) {
@@ -250,7 +250,7 @@ export default {
         }
       }
     },
-    getcountries:function() {
+    getcountries () {
       this.$http.get('/getcountries').then(function(response){
           this.countries  = response.data;
         });

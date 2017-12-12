@@ -2,14 +2,14 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <ul class="my_nav">
-          <li><a href="javascript:;" @click="redirectToSightseen($event)">Sight Seen</a></li>
-          <li><a href="javascript:;" @click="redirectToAddSightseen($event)">Add Sightseen</a></li>
-          <li><a href="javascript:;" @click="">Records</a></li>
+          <li><a href="javascript:void(0)" @click="redirectToSightseen($event)">Sight Seen</a></li>
+          <li><a href="javascript:void(0)" @click="redirectToAddSightseen($event)">Add Sightseen</a></li>
+          <li><a href="javascript:void(0)" @click="">Reports</a></li>
           <!-- <router-link tag="li" to="/bookings">
             <a>Bookings</a>
           </router-link> -->
-          <li><a href="javascript:;" @click="redirectToBookings($event)">Bookings</a></li>
-          <li><a href="javascript:;" @click="">Settings</a></li>
+          <li><a href="javascript:void(0)" @click="redirectToBookings($event)">Bookings</a></li>
+          <li><a href="javascript:void(0)" @click="redirectToSettings($event)">Settings</a></li>
           <li><a href="logout">Logout</a></li>
         </ul>
       </div>
@@ -36,6 +36,12 @@ export default {
       $('ul.my_nav li a').removeClass("active");
       event.target.className = "active";
       var view  = ['bookings','/bookings','','get'];
+      bus.$emit('open-view',view);
+    },
+    redirectToSettings (event){
+      $('ul.my_nav li a').removeClass("active");
+      event.target.className = "active";
+      var view  = ['settings','','','get'];
       bus.$emit('open-view',view);
     }
   }

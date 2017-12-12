@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Session;
 use Storage;
-
+use DB;
 class CityExplorer extends Controller
 {
 
@@ -139,5 +139,16 @@ class CityExplorer extends Controller
     return response()->json($singleSight);
 
 	}
+
+  public function addTax(Request $request)
+  {
+    DB::table('ce_countries')->where('id',$request->country_id)->update(['tax' => $request->tax]);      
+  }
+
+  public function getTax(Request $request)
+  {
+    $tax = DB::table('ce_countries')->where('id',$request->country_id)->pluck('tax')->toArray();      
+    return response()->json($tax[0]);
+  }
 
 }

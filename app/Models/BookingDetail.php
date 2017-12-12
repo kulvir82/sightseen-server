@@ -53,7 +53,7 @@ class BookingDetail extends Model
         foreach($cartItems as $cartItem){
             $data[$i]['id'] = $cartItem->id;
             $data[$i]['sight_seen_name'] = $cartItem->sightseen->title;
-            $data[$i]['discount'] = $cartItem->sightseen->discount;
+            $data[$i]['discount'] = $cartItem->discount;
             $data[$i]['no_of_pax'] = $cartItem->no_of_pax;
             $data[$i]['cost_per_person'] = $cartItem->cost_per_pax;
             $data[$i]['total'] = $cartItem->total;

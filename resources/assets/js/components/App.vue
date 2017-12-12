@@ -14,6 +14,8 @@ import AddSightSeen from './AddSightSeen.vue';
 import EditSightSeen from './EditSightSeen.vue';
 import SingleSight from './SingleSight.vue';
 import Bookings from './Bookings.vue';
+import BookingDetail from './BookingDetail.vue';
+import Settings from './Settings.vue';
 export default {
     name: 'app',
     components: {
@@ -21,7 +23,9 @@ export default {
       addsightseen: AddSightSeen,
       editsightseen: EditSightSeen,
       singlesight: SingleSight,
-      bookings: Bookings
+      bookings: Bookings,
+      bookingdetail: BookingDetail,
+      Settings
     },
     data:function() {
       return {
