@@ -24,7 +24,7 @@ Class UserBookingController extends Controller
         $booking->total_sale_amount += $res[1];
         $booking->save();
 
-        return response()->json(['booking_id'=>$booking->id,'success'=>true], 201);
+        return response()->json(['booking_id'=>$booking->id,'message'=>'Item successfully added to cart','success'=>true], 201);
     }
 
     public function update(Request $request, UserBooking $booking)
@@ -41,7 +41,7 @@ Class UserBookingController extends Controller
         $booking->status = 'Confirmed';
         $booking->save();
 
-        return response()->json(['booking_id'=>$booking->id,'success'=>true], 200);
+        return response()->json(['booking_id'=>$booking->id,'message'=>'Cart successfully updated','success'=>true], 200);
     }
     public function getCartItems(Request $request)
     {
@@ -52,7 +52,7 @@ Class UserBookingController extends Controller
             $cartItems = $bookingDetail->getCartItems($booking->id);
             return response()->json(['cartItems'=> $cartItems,'success'=>true],200);
         }else{
-            return response()->json(['success'=>false],200);
+            return response()->json(['success'=>false,'message'=>'No item in cart'],200);
         }
 
     }
@@ -73,12 +73,12 @@ Class UserBookingController extends Controller
     {
         $cartId = $request->id;
         BookingDetail::destroy($cartId);
-        return response()->json(['success'=>true],204);
+        return response()->json(['message'=>'Item successfully removed from cart','success'=>true],204);
     }
 
     public function getTax(Request $request)
     {
-        return response()->json(['tax'=>10],200);
+        return response()->json(['tax'=>10,'success'=>true],200);
     }  
 
     public function getBookings(Request $request)
@@ -86,13 +86,13 @@ Class UserBookingController extends Controller
         $bookings = UserBooking::where('userid', $request->id)->where('status','Confirmed')->get();
         $bookingDetail = new BookingDetail;
         $allBookings = $bookingDetail->getBookings($bookings);
-        return response()->json($allBookings, 200);
+        return response()->json(['bookings'=>$allBookings,'success'=>true], 200);
     }
 
     public function cancelBooking(Request $request)
     {
         UserBooking::where('id', $request->id)->update(['status'=>'Canceled']);
-        return response()->json(['success'=>true],200);
+        return response()->json(['message'=>'Booking canceled successfully','success'=>true],200);
     } 
 }
 

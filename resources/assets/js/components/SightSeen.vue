@@ -55,7 +55,7 @@
             </td>
           </tr>
           <tr v-for="(sight, index) in sightseen">
-              <td class="form_header2">{{ sight.id }}</td>
+              <td class="form_header2">{{ index | indexCount(pagination.current_page) }}</td>
               <td class="form_header2">{{sight.title | truncate(50)}}</td>
               <td class="form_header2">{{sight.price}}</td>
               <td class="form_header2 overflowhide" v-html="$options.filters.truncate(sight.description,70)"></td>
@@ -157,6 +157,10 @@ export default {
   filters: {
   	truncate (string, value) {
     	return string.substring(0, value);
+    },
+    indexCount (index, page) {
+      let count = (page - 1) * 10
+      return index + count + 1
     }
   },
   created (){
