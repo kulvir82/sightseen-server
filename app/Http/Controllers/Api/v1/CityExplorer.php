@@ -13,7 +13,7 @@ class CityExplorer extends Controller
   {
     $model = new CityExplorerModel;
     $countries = $model->getCountries();
-    return  response()->json($countries);
+    return  response()->json(['countries'=>$countries, 'success'=>true],200);
   }
 
 
