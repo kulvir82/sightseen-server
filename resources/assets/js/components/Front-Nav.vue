@@ -14,10 +14,10 @@
             <a class="nav-link js-scroll-trigger" href="#sightseen">SightSeens</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" v-on:click="redirectToContactUs()">Contact Us</a>
+              <a class="nav-link js-scroll-trigger" href="#contactus" v-on:click="redirectToContactUs()">Contact Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" v-on:click="redirectToAboutUs()" >About Us</a>
+              <a class="nav-link js-scroll-trigger" href="#aboutus" v-on:click="redirectToAboutUs()" >About Us</a>
             </li>
         </ul>
       </div>

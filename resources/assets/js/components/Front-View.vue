@@ -206,10 +206,30 @@
         </ul>
       </div>
     </section>
+    <section class="peopleviews">
+      <div class="container text-center">
+        <h2>What people Saying about us</h2>
+        <div class="row">
+          <div class="col-md-12">
+            <carousel :perPage="1" :autoplay="true" :autoplayTimeout="4000" :autoplayHoverPause="true">
+              <slide v-for="tweet in tweets" :key="tweet.id">
+                <div class="tweets text-center padding-md">
+                  <img class="img-fluid" :src="tweet.user.profile_image_url" alt="">
+                  {{tweet.media_url}}
+                  <p class="padding-top-md">{{tweet.text}}</p>
+                </div>
+              </slide>
+            </carousel>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import Tweet from 'vue-tweet-embed/tweet';
+import Moment from 'vue-tweet-embed/moment';
 export default {
   data:function(){
     return{
@@ -219,7 +239,8 @@ export default {
         'singapore' : null,
         'thailand' : null,
         'dubai' : null,
-      }
+      },
+      tweets:null
     }
   },
   created (){
@@ -227,6 +248,11 @@ export default {
     this.getcountries();
   },
   methods:{
+    getTweets(){
+      this.$http.get('/userTimeline').then(function(response){
+        this.tweets = response.data;
+      });
+    },
     getcountries () {
       this.$http.get('/getcountries').then(function(response){
         this.countries.malaysia  = response.data[0].id;
@@ -243,6 +269,9 @@ export default {
         this.popularSightSeens = response.data;
       });
     }
+  },
+  mounted:function(){
+    this.getTweets();
   }
 }
 </script>
@@ -324,5 +353,9 @@ export default {
   }
   .top_countries{
     margin-bottom: 1rem;
+  }
+  .tweets img{
+    border-radius: 50px;
+    height: 100px;
   }
 </style>

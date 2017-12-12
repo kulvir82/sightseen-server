@@ -16,7 +16,19 @@ import BootstrapVue from 'bootstrap-vue';
 Vue.use(BootstrapVue);
 require('jquery.easing');
 var jQuery = require("jquery");
+import * as VueGoogleMaps from 'vue2-google-maps';
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyCy8QYGViZHpTPprINX1ItmIapduifeXow',
+    libraries: 'places', // This is required if you use the Autocomplete plugin
+    // OR: libraries: 'places,drawing'
+    // OR: libraries: 'places,drawing,visualization'
+    // (as you require)
+  }
+});
 
+import VueCarousel from 'vue-carousel';
+Vue.use(VueCarousel);
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 Vue.use(require('vue-resource'));

@@ -7,20 +7,20 @@
             <div class="col-lg-4 col-md-4">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" v-on:click="redirectToAboutUs()" >About Us</a>
+                  <a class="nav-link js-scroll-trigger" href="#aboutus" v-on:click="redirectToAboutUs()" >About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" v-on:click="redirectToContactUs()">Contact Us</a>
+                    <a class="nav-link js-scroll-trigger" href="#contactus" v-on:click="redirectToContactUs()">Contact Us</a>
                 </li>
               </ul>
             </div>
             <div class="col-lg-4 col-md-4">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" v-on:click="redirectToTermsConditions()">Terms & Conditions</a>
+                    <a class="nav-link js-scroll-trigger" href="#termsconditions" v-on:click="redirectToTermsConditions()">Terms & Conditions</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" v-on:click="redirectToSupport()">Support</a>
+                    <a class="nav-link js-scroll-trigger" href="#support"  v-on:click="redirectToSupport()">Support</a>
                 </li>
               </ul>
             </div>

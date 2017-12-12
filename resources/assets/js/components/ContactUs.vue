@@ -27,16 +27,33 @@
       </div>
       <div class="col-md-6 ">
         <h2>Location</h2>
-        <div class="address">
-          <div class="">
-            <i class="fa fa-map-marker"></i>
+        <div class="address col-md-12">
+          <div class="location">
+            <strong><i class="fa fa-map-marker"></i></strong> Maple Labs 563, Stonehenge Drive Ancaster, <br>
+                &nbsp;&nbsp; ON Canada ZIP L9K1T4
           </div>
-          <div class="">
-            <i class="fa fa-phone"></i>
+          <div class="phone">
+            <strong><i class="fa fa-phone"></i></strong> +1(289)505-8058
           </div>
-          <div class="">
-            <i class="fa fa-fax"></i>
+          <div class="email">
+            <strong><i class="fa fa-envelope"></i></strong> info@maplelabs.ca
           </div>
+          <div class="helline">
+            <strong>Helpline Number For India</strong> +919875950679
+          </div>
+        </div>
+        <div class="maps col-md-12 padding-top-md">
+          <gmap-map style="width: 100%; height: 300px; position: relative;"
+                  :center="center"
+                  :zoom="12"
+              >
+              <gmap-marker
+                :position="markerposition"
+              ></gmap-marker>
+              <gmap-info-window :position="markerposition">
+                Maple Labs 563, Stonehenge Drive Ancaster , ON Canada ZIP L9K1T4
+              </gmap-info-window>
+            </gmap-map>
         </div>
       </div>
     </div>
@@ -51,7 +68,9 @@ export default {
       emailid:null,
       message:null,
       errormessage:null,
-      sendmessage:null
+      sendmessage:null,
+      center: {lat: 43.222435,lng: -79.938504},
+      markerposition: {lat: 43.222435,lng: -79.938504},
     }
   },
   methods:{
@@ -67,7 +86,7 @@ export default {
             this.errormessage == null;
             this.sendmessage == this.response.data;
         });
-        
+
       }
     }
   }

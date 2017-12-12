@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/bookings','UserBookingController@index');
 });
 Route::get('/getcountries','CityExplorer@getCountry');
+Route::get('/userTimeline','TwitterController@getTweets');
 Route::post('/usersendmail','ContactUs@saveEmailData');
 //user routes
 Route::get('/home', 'HomeController@index')->name('home');

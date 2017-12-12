@@ -12,6 +12,7 @@
         "laravelcollective/html": "~5.3",
         "league/flysystem-aws-s3-v3": "^1.0",
         "symfony/psr-http-message-bridge": "^1.0",
+        "thujohn/twitter": "^2.2",
         "twilio/sdk": "^5.15"
     },
     "require-dev": {
