@@ -21,10 +21,8 @@ Route::post('/displayprofile','Api\v1\UserController@displayProfile');
 Route::get('/getsightseen','Api\v1\CityExplorer@sight_seen');
 Route::get('/getpopularsightseen','Api\v1\CityExplorer@getPopularSightSeen');
 Route::get('/getcountries','Api\v1\CityExplorer@getCountry');
-Route::get('/getCityList/{country}','CityExplorer@getCity');
 Route::get('/getsightseenfromcountry','Api\v1\CityExplorer@getSightSeenFromCountry');
 Route::get('/getsightseenfromcity','Api\v1\CityExplorer@getSightSeenFromCity');
-Route::post('/singlesight','CityExplorer@singleSightSeen');
 Route::get('getTax','Api\v1\UserBookingController@getTax');
 // booking Api's routes
 Route::post('addToCart', 'Api\v1\UserBookingController@store');
