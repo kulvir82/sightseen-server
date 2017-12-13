@@ -231,8 +231,7 @@
 </template>
 
 <script>
-import Tweet from 'vue-tweet-embed/tweet';
-import Moment from 'vue-tweet-embed/moment';
+
 export default {
   data:function(){
     return{
