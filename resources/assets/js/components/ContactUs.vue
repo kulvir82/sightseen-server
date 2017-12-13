@@ -38,8 +38,12 @@
           <div class="email">
             <strong><i class="fa fa-envelope"></i></strong> info@maplelabs.ca
           </div>
-          <div class="helline">
-            <strong>Helpline Number For India</strong> +919875950679
+          <div class="helpline">
+            <ul class="india-group">
+              <li><strong>India Office</strong>:</li>
+              <li><strong>Call us for support</strong>: +919875950679</li>
+              <li><strong>Timings</strong>: Available from 9 AM to 9 PM</li>
+            </ul>
           </div>
         </div>
         <div class="maps col-md-12 padding-top-md">
@@ -94,4 +98,8 @@ export default {
 </script>
 
 <style lang="css">
+.india-group{
+  list-style: none;
+  padding: 0px !important;
+}
 </style>

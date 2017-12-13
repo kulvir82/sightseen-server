@@ -207,16 +207,19 @@
       </div>
     </section>
     <section class="peopleviews">
-      <div class="container text-center">
+      <div class="container text-center headingcolor">
         <h2>What people Saying about us</h2>
-        <div class="row">
-          <div class="col-md-12">
-            <carousel :perPage="1" :autoplay="true" :autoplayTimeout="4000" :autoplayHoverPause="true">
+        <div class="tweets row justify-content-center">
+          <div class="col-md-10">
+            <carousel :perPage="1" :autoplay="true" :autoplayTimeout="5000" :speed="1000" :navigationEnabled="true" :autoplayHoverPause="true">
               <slide v-for="tweet in tweets" :key="tweet.id">
-                <div class="tweets text-center padding-md">
-                  <img class="img-fluid" :src="tweet.user.profile_image_url" alt="">
-                  {{tweet.media_url}}
-                  <p class="padding-top-md">{{tweet.text}}</p>
+                <div class="tweets row padding-lg">
+                  <div class="col-md-3 text-center">
+                    <img class="img-fluid" :src="tweet.user.profile_image_url" alt="">
+                  </div>
+                  <div class="col-md-9 text-center tweet_text">
+                    <p>{{tweet.text}}</p>
+                  </div>
                 </div>
               </slide>
             </carousel>
@@ -355,7 +358,18 @@ export default {
     margin-bottom: 1rem;
   }
   .tweets img{
-    border-radius: 50px;
-    height: 100px;
+    border-radius: 10px;
+    height: 130px;
+  }
+  .popularsightlink{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left: 0;
+    z-index: 1;
+  }
+  .tweet_text p{
+    font-size: 30px;
   }
 </style>
