@@ -21,7 +21,6 @@ class CountriesCitiesTableSeeder extends Seeder
 					array('country_name'=>'Singapore'),	
 				);
     	DB::table('ce_countries')->insert($country_data);
-
 		// cities data
 		echo "seeding cities\n";
         $data =array(
@@ -31,18 +30,10 @@ class CountriesCitiesTableSeeder extends Seeder
 				array('city_name'=>'Ko Samui' , 'country_id'=>1),
 				array('city_name'=>'Krabi' , 'country_id'=>1),
 				array('city_name'=>'Kuala Lumpur' , 'country_id'=>2),
-				array('city_name'=>'Penang Island' , 'country_id'=>2),
-				array('city_name'=>'Ipoh' , 'country_id'=>2),
-				array('city_name'=>'Petaling Jaya' , 'country_id'=>2),
-				array('city_name'=>'Shah Alam' , 'country_id'=>2),
-				array('city_name'=>'Iskandar Puteri' , 'country_id'=>2),
-				array('city_name'=>'Johor Bahru' , 'country_id'=>2),
-				array('city_name'=>'Malacca City' , 'country_id'=>2),
-				array('city_name'=>'Kota Kinabalu' , 'country_id'=>2),
-				array('city_name'=>'Alor Setar' , 'country_id'=>2),
-				array('city_name'=>'Kuala Terengganu' , 'country_id'=>2),
-				array('city_name'=>'Kuching' , 'country_id'=>2),
-				array('city_name'=>'Miri' , 'country_id'=>2),
+				array('city_name'=>'Penang' , 'country_id'=>2),
+				array('city_name'=>'Langkawi' , 'country_id'=>2),
+				array('city_name'=>'Gentingh Highland' , 'country_id'=>2),
+				array('city_name'=>'Johor Legoland' , 'country_id'=>2),
 				array('city_name'=>'Dubai' , 'country_id'=>3),
 				array('city_name'=>'Singapore' , 'country_id'=>4),
 		);
