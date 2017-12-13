@@ -51,25 +51,29 @@
                 <!-- <div class="sightimage">
                   <img class="img-fluid" src="https://bookmysightseen.s3.ap-southeast-1.amazonaws.com/sightseenimages/gallery2.jpg">
                 </div> -->
-                <div class="sightseeninfo_wrap">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="sightseen_name">
-                        <strong class="h6 ">{{ sightseen.title }}</strong>
+                <span class="popularsightlink">
+                  <a href="#frontsightseenlist" v-on:click="redirectToCountrySights(countries.thailand)">
+                    <div class="sightseeninfo_wrap">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div class="sightseen_name">
+                            <strong class="h6 ">{{ sightseen.title }}</strong>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="text-left">
+                            <strong class="h6 ">{{ sightseen.price }} Per Person</strong>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="text-right">
+                            <strong class="h6 ">{{ sightseen.country_name }}</strong>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="text-left">
-                        <strong class="h6 ">{{ sightseen.price }} Per Person</strong>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="text-right">
-                        <strong class="h6 ">{{ sightseen.country_name }}</strong>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  </a>
+                </span>
               </div>
             </div>
           </div>
@@ -263,7 +267,7 @@ export default {
         this.countries.dubai  = response.data[3].id;
       });
     },
-    redirectToCountrySights (country) {
+    redirectToCountrySights(country) {
       this.$router.push({ name: 'frontsightseenlist', params: { country: country }});
     },
     getPopularSightSeen (){

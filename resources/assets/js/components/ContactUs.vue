@@ -42,7 +42,7 @@
             <ul class="india-group">
               <li><strong>India Office</strong>:</li>
               <li><strong>Call us for support</strong>: +919875950679</li>
-              <li><strong>Timings</strong>: Available from 9 AM to 9 PM</li>
+              <li><strong>Timings</strong>: Available from 10 AM to 5 PM</li>
             </ul>
           </div>
         </div>
