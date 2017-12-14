@@ -53,7 +53,6 @@ class CityExplorerModel extends Model
     public function getCities($country_id)
     {
       $cities = Cities::select('city_name','id')->where('country_id', $country_id)->get()->toArray();
-
       return $cities;
     }
 
@@ -77,7 +76,7 @@ class CityExplorerModel extends Model
                     ->join('ce_countries','ce_countries.id','=','ce_sightseen.country_id')
                     ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
                     ->orderBy('popularity', 'desc')
-                    ->take(10)  
+                    ->take(10)
                     ->get();
       return $sightseens;
     }
@@ -131,7 +130,7 @@ class CityExplorerModel extends Model
       $s3 = \Storage::disk('s3');
       $imagename = $imageData['file']['name'];
       $filePath = 'sightseenimages/' . $imagename;
-      $s3->put($filePath, file_get_contents($imageData['file']['tmp_name']), 'public'); 
+      $s3->put($filePath, file_get_contents($imageData['file']['tmp_name']), 'public');
       $emptyImages = Sightseen::select('image1','image2','image3','image4')->where('id','=',$id)->first();
       if($emptyImages->image1 == ''){
          //move_uploaded_file($imageData['file']['tmp_name'], public_path().'/uploads/images/'.$imagename);

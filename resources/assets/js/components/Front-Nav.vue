@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#sightseen">SightSeens</a>
+            <a class="nav-link js-scroll-trigger" href="#sightseen" v-on:click="redirectToCountrySights(countries.thailand)">SightSeens</a>
           </li>
           <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contactus" v-on:click="redirectToContactUs()">Contact Us</a>
@@ -45,6 +45,12 @@ export default {
       val:1,
       date: '',
       grandTotal:[],
+      countries: {
+        'malaysia' : null,
+        'singapore' : null,
+        'thailand' : null,
+        'dubai' : null,
+      },
     }
 
   },
@@ -52,6 +58,7 @@ export default {
   {
     let d = new Date();
     this.date = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+    this.getcountries ()
   },
   methods:{
     sendmessage:function(){
@@ -68,7 +75,17 @@ export default {
       });
 
     },
-
+    getcountries () {
+      this.$http.get('/getcountries').then(function(response){
+        this.countries.malaysia  = response.data[0].id;
+        this.countries.singapore  = response.data[1].id;
+        this.countries.thailand  = response.data[2].id;
+        this.countries.dubai  = response.data[3].id;
+      });
+    },
+    redirectToCountrySights(country) {
+      this.$router.push({ name: 'frontsightseenlist', params: { country: country }});
+    },
     redirectToAboutUs:function(){
       this.$router.push({ name: 'aboutus'});
     },

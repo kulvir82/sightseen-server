@@ -44,11 +44,13 @@ Route::group(['middleware' => 'auth'], function () {
   Route::get('/getTax/{country_id}','CityExplorer@getTax');
 });
 Route::get('/getcountries','CityExplorer@getCountry');
+Route::post('/getcities','CityExplorer@getCity');
 Route::get('/userTimeline','TwitterController@getTweets');
 Route::post('/usersendmail','ContactUs@saveEmailData');
 //user routes
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/getsightseenfromcountry','CityExplorer@getSightSeenFromCountry');
+Route::post('getsightseenfromcity','CityExplorer@getSightSeenFromCity');
 Route::post('/verifypincode','UsersController@verifyPin');
 Route::get('/addtocart','UsersController@addProductToUsersCart');
 Route::post('/productsdata','CityExplorer@getProductDetail');

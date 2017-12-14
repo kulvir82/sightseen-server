@@ -33,6 +33,13 @@ class CityExplorer extends Controller
     return response()->json($sightseen);
   }
 
+  public function getSightSeenFromCity(Request $request)
+  {
+    $model = new CityExplorerModel;
+    $sightseen = $model->getSightSeenFromCity($request);
+    return response()->json($sightseen);
+  }
+
   public function sight_seen(Request $request)
 	{
     $model = new CityExplorerModel;
@@ -142,12 +149,12 @@ class CityExplorer extends Controller
 
   public function addTax(Request $request)
   {
-    DB::table('ce_countries')->where('id',$request->country_id)->update(['tax' => $request->tax]);      
+    DB::table('ce_countries')->where('id',$request->country_id)->update(['tax' => $request->tax]);
   }
 
   public function getTax(Request $request)
   {
-    $tax = DB::table('ce_countries')->where('id',$request->country_id)->pluck('tax')->toArray();      
+    $tax = DB::table('ce_countries')->where('id',$request->country_id)->pluck('tax')->toArray();
     return response()->json($tax[0]);
   }
 

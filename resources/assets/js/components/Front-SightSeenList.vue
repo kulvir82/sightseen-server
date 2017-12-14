@@ -2,11 +2,19 @@
   <div class="">
     <section class="sightlist">
       <div class="container">
-        <div class="row select_country">
-          <select v-model="selected" @change="getSightSeenFromCountry">
-            <option disabled="" :value="''">Select Country</option>
-            <option v-for="country in countries" :value="country.id">{{ country.country_name }}</option>
-          </select>
+        <div class="row">
+          <div class="select_country">
+            <select v-model="selected" @change="getSightSeenFromCountry">
+              <option disabled="" :value="''">Select Country</option>
+              <option v-for="country in countries" :value="country.id">{{ country.country_name }}</option>
+            </select>
+          </div>
+          <div class="select_city">
+            <select id="selectedcity" @change="getSightSeenFromCity">
+              <option :value="''" selected>Select City</option>
+              <option v-for="city in cities" :value="city.id">{{ city.city_name }}</option>
+            </select>
+          </div>
         </div>
         <div class="row">
           <div class="list" v-for="sight in sightseenlist">
@@ -41,18 +49,32 @@ export default {
     return{
       sightseenlist:[],
       countries: [],
-      selected: ''
+      cities:[],
+      selected: '',
     }
   },
   methods:{
     getSightSeenFromCountry (){
+      this.cities = '';
+      this.getCityList();
       this.$http.post('/getsightseenfromcountry',{country:this.selected}).then(function(response){
+        this.sightseenlist = response.data;
+      });
+    },
+    getSightSeenFromCity (){
+      var city = $('#selectedcity').val()
+      this.$http.post('/getsightseenfromcity',{city:city}).then(function(response){
         this.sightseenlist = response.data;
       });
     },
     getCountryList (){
       this.$http.get('/getcountries').then(function(response){
         this.countries  = response.data;
+      });
+    },
+    getCityList(){
+      this.$http.post('/getcities',{country:this.selected}).then(function(response){
+        this.cities  = response.data;
       });
     }
   },
@@ -73,6 +95,9 @@ section{
   margin-top: 40px;
 }
 .select_country{
+  padding: 10px;
+}
+.select_city{
   padding: 10px;
 }
 .list{

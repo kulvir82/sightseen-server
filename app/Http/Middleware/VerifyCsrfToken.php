@@ -16,6 +16,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/updateimages',
         '/sendSms',
         '/usersignin',
-        '/getsightseenfromcountry'
+        '/getsightseenfromcountry',
+        '/getcities'
     ];
 }

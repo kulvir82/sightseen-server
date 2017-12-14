@@ -5,11 +5,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    <meta name="description" content="Book your favourite sight scene with click of a button">
     <meta name="author" content="">
 
-    <title>Book your favourite sight scene with click of a button</title>
-
+    <title>BookMySightSeen</title>
+    <link rel="shortcut icon" type="image/png" href="/images/frontimages/favicon.png"/>
     <!-- Bootstrap core CSS -->
     <link href="{{ mix('/css/front.css') }}" rel="stylesheet">
     <!-- Custom fonts for this template -->
