@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Models\UserBooking;
 use App\Models\BookingDetail;
+use App\Models\UserCard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 Class UserBookingController extends Controller
@@ -59,12 +60,18 @@ Class UserBookingController extends Controller
     public function getCartCount(Request $request)
     {
         $userId = $request->id;
+        $card_no = '';
+        $cards = UserCard::where('user_id', $userId)->first();
+        if(count($cards) > 0)
+        {
+            $card_no = $cards->card_no;
+        }
         $booking = UserBooking::where('userid', $userId)->where('status', '!=','Confirmed')->first();
         if(count($booking) > 0){
             $cartCount = BookingDetail::where('booking_id',$booking->id)->count();
-            return response()->json(['booking_id'=>$booking->id,'cart_count'=> $cartCount],200);
+            return response()->json(['booking_id'=>$booking->id,'cart_count'=> $cartCount,'card_no'=>$card_no],200);
         }else{
-            return response()->json(['booking_id'=>0,'cart_count'=> 0],200);
+            return response()->json(['booking_id'=>0,'cart_count'=> 0,'card_no'=>$card_no],200);
         }
     }
 
