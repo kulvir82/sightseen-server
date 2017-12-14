@@ -5,7 +5,7 @@
           <div class="aboutus">
             <h2>Some Words <strong>About Us</strong></h2>
             <p>
-              <strong>Go4SightSeeing (BMSS) </strong>is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.With just a few clicks, get ready to enjoy the Siam Nimrat show no big queues to get tickets , enjoy Santosa isLand under water park and other attractions.So Just click book and go to your favourite destination.
+              <strong>Go4SightSeeing </strong>is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.With just a few clicks, get ready to enjoy the Siam Nimrat show no big queues to get tickets , enjoy Santosa isLand under water park and other attractions.So Just click book and go to your favourite destination.
             </p>
           </div>
         </div>
@@ -23,7 +23,7 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="specialcontent ">
-          <h2>What is special and great about BMSS</h2>
+          <h2>What is special and great about Go4SightSeeing</h2>
           <ul>
             <li>Easy way to explore new shows , sight seen, locations which click of button you can book it. </li>
             <li>Easy cancellation no charges if cancel 48 hours before show.</li>
