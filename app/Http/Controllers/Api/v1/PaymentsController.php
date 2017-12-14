@@ -33,7 +33,7 @@ class PaymentsController extends Controller
 
 	        	$customer_id = $customer->id;
 
-	        	UserCard::firstOrCreate(['card_no'=>$request->payment['card_no'],'user_id'=>$request->payment['user_id'],'stripe_customer_id'=>$customer_id]);
+	        	UserCard::updateOrCreate(['user_id'=>$request->payment['user_id']],['card_no'=>$request->payment['card_no'],'stripe_customer_id'=>$customer_id]);
 
 	        }
 	        else{
