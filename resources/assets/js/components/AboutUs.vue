@@ -5,7 +5,7 @@
           <div class="aboutus">
             <h2>Some Words <strong>About Us</strong></h2>
             <p>
-              <strong>BookMySightSeen (BMSS) </strong>is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.With just a few clicks, get ready to enjoy the Siam Nimrat show no big queues to get tickets , enjoy Santosa isLand under water park and other attractions.So Just click book and go to your favourite destination.
+              <strong>Go4SightSeeing (BMSS) </strong>is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.With just a few clicks, get ready to enjoy the Siam Nimrat show no big queues to get tickets , enjoy Santosa isLand under water park and other attractions.So Just click book and go to your favourite destination.
             </p>
           </div>
         </div>

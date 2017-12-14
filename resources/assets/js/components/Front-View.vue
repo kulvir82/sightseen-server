@@ -5,7 +5,7 @@
         <div class="row h-100">
           <div class="col-lg-8 my-auto">
             <div class="header-content mx-auto">
-              <h1 class="mb-5">BookMySightSeen is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.</h1>
+              <h1 class="mb-5">Go4SightSeeing is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.</h1>
             </div>
           </div>
           <div class="col-lg-4 my-auto">
@@ -147,7 +147,7 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="get_app_text">
-                  <h1>Download BookMySightSeen now</h1>
+                  <h1>Download Go4SightSeeing now</h1>
                   <h1>on</h1>
                   <h1>IOS and Android Phone.</h1>
                 </div>
@@ -219,7 +219,7 @@
               <slide v-for="tweet in tweets" :key="tweet.id">
                 <div class="tweets row padding-lg">
                   <div class="col-md-3 text-center">
-                    <img class="img-fluid" :src="tweet.user.profile_image_url" alt="">
+                    <img class="img-fluid" :src="tweet.user.profile_image_url_https" alt="">
                   </div>
                   <div class="col-md-9 text-center tweet_text">
                     <p>{{tweet.text}}</p>

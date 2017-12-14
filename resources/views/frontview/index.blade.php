@@ -8,7 +8,7 @@
     <meta name="description" content="Book your favourite sight scene with click of a button">
     <meta name="author" content="">
 
-    <title>BookMySightSeen</title>
+    <title>Go4SightSeeing - Book your favourite sight scene with click of a button</title>
     <link rel="shortcut icon" type="image/png" href="/images/frontimages/favicon.png"/>
     <!-- Bootstrap core CSS -->
     <link href="{{ mix('/css/front.css') }}" rel="stylesheet">
