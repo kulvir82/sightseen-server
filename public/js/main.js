@@ -1,6 +1,7 @@
 function changeCities()
 {
  var country=$('.country_list').val();
+	 if(country){	
 	 $.ajax({
 
 		 url: 'getCityList/'+country,
@@ -22,9 +23,12 @@ function changeCities()
 
 			 $('#status').fadeOut('slow');//fade out the loader
 		 },
-     error:function(exception){alert('Exception:'+exception);}
+	     error:function(exception){
 
-	 });
+	     }
+
+	});
+	}
 }
 
 /*!

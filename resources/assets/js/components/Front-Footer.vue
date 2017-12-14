@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="col-lg-4">
-          <p>&copy; 2017 bookmysightseen.com. All Rights Reserved.</p>
+          <p>&copy; 2017 go4sightseeing.com. All Rights Reserved.</p>
           <ul class="list-inline">
             <li class="list-inline-item">
               <a href="#">Support</a>
