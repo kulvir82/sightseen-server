@@ -83,7 +83,7 @@ class BookingDetail extends Model
                 $data[$j]['total'] = $row->total;
                 $data[$j]['booking_date'] = date("Y-m-d",strtotime($row->booking_time));
                 $data[$j]['booking_id'] = $row->booking_id;
-                $data[$i]['location'] = $row->pickup_location;
+                $data[$j]['location'] = $row->pickup_location;
                 $data[$j]['booking_count'] = $query->count();
                 $j++;
             }
