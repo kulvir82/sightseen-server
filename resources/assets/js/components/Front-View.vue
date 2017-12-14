@@ -210,27 +210,6 @@
         </ul>
       </div>
     </section>
-    <section class="peopleviews">
-      <div class="container text-center headingcolor">
-        <h2>What people Saying about us</h2>
-        <div class="tweets row justify-content-center">
-          <div class="col-md-10">
-            <carousel :perPage="1" :autoplay="true" :autoplayTimeout="5000" :speed="1000" :navigationEnabled="true" :autoplayHoverPause="true">
-              <slide v-for="tweet in tweets" :key="tweet.id">
-                <div class="tweets row padding-lg">
-                  <div class="col-md-3 text-center">
-                    <img class="img-fluid" :src="tweet.user.profile_image_url_https" alt="">
-                  </div>
-                  <div class="col-md-9 text-center tweet_text">
-                    <p>{{tweet.text}}</p>
-                  </div>
-                </div>
-              </slide>
-            </carousel>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
