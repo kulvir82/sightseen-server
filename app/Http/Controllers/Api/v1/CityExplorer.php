@@ -16,6 +16,15 @@ class CityExplorer extends Controller
     return response()->json(['countries'=>$countries, 'success'=>true],200);
   }
 
+  public function getCity(Request $request)
+  {
+
+    $countryID = $request->country;
+    $model = new CityExplorerModel;
+    $cities = $model->getCities($countryID);
+    return response()->json(['cities'=>$cities,'success'=>true],200);
+  }
+
   public function getPopularSightSeen()
 	{
     $model = new CityExplorerModel;

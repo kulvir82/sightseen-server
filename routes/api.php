@@ -18,6 +18,7 @@ Route::get('/getuserdetail/{id}', 'Api\v1\UserController@getUserDetail');
 Route::put('/updateuser','Api\v1\UserController@updateUser');
 Route::post('/updateprofile','Api\v1\UserController@updateProfile');
 Route::post('/displayprofile','Api\v1\UserController@displayProfile');
+Route::get('/getCityList/{country}','CityExplorer@getCity');
 Route::get('/getsightseen','Api\v1\CityExplorer@sight_seen');
 Route::get('/getpopularsightseen','Api\v1\CityExplorer@getPopularSightSeen');
 Route::get('/getcountries','Api\v1\CityExplorer@getCountry');
@@ -32,6 +33,7 @@ Route::get('getCartCount/{id}','Api\v1\UserBookingController@getCartCount');
 Route::delete('deleteCartItem/{id}','Api\v1\UserBookingController@deleteCartItem');
 Route::get('getBookings/{id}','Api\v1\UserBookingController@getBookings');
 Route::put('cancelBooking/{id}','Api\v1\UserBookingController@cancelBooking');
+Route::post('payment','Api\v1\PaymentsController@charge');
 //
 use GuzzleHttp\Client;
 
