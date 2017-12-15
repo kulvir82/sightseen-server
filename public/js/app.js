@@ -73127,27 +73127,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -73401,40 +73380,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": 'images/frontimages/banner-startbooking_bg.png',
       "alt": "ios_download.png"
     }
-  }), _vm._v(" "), _vm._m(7)]), _vm._v(" "), _vm._m(8), _vm._v(" "), _c('section', {
-    staticClass: "peopleviews"
-  }, [_c('div', {
-    staticClass: "container text-center headingcolor"
-  }, [_c('h2', [_vm._v("What people Saying about us")]), _vm._v(" "), _c('div', {
-    staticClass: "tweets row justify-content-center"
-  }, [_c('div', {
-    staticClass: "col-md-10"
-  }, [_c('carousel', {
-    attrs: {
-      "perPage": 1,
-      "autoplay": true,
-      "autoplayTimeout": 5000,
-      "speed": 1000,
-      "navigationEnabled": true,
-      "autoplayHoverPause": true
-    }
-  }, _vm._l((_vm.tweets), function(tweet) {
-    return _c('slide', {
-      key: tweet.id
-    }, [_c('div', {
-      staticClass: "tweets row padding-lg"
-    }, [_c('div', {
-      staticClass: "col-md-3 text-center"
-    }, [_c('img', {
-      staticClass: "img-fluid",
-      attrs: {
-        "src": tweet.user.profile_image_url,
-        "alt": ""
-      }
-    })]), _vm._v(" "), _c('div', {
-      staticClass: "col-md-9 text-center tweet_text"
-    }, [_c('p', [_vm._v(_vm._s(tweet.text))])])])])
-  }))], 1)])])])])
+  }), _vm._v(" "), _vm._m(7)]), _vm._v(" "), _vm._m(8)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-lg-8 my-auto"
@@ -74116,13 +74062,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-lg-6 col-md-6 col-sm-12"
   }, [_c('div', {
     staticClass: "aboutus"
-  }, [_c('h2', [_vm._v("Some Words "), _c('strong', [_vm._v("About Us")])]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Go4SightSeeing (BMSS) ")]), _vm._v("is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.With just a few clicks, get ready to enjoy the Siam Nimrat show no big queues to get tickets , enjoy Santosa isLand under water park and other attractions.So Just click book and go to your favourite destination.\n          ")])])])
+  }, [_c('h2', [_vm._v("Some Words "), _c('strong', [_vm._v("About Us")])]), _vm._v(" "), _c('p', [_c('strong', [_vm._v("Go4SightSeeing ")]), _vm._v("is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.With just a few clicks, get ready to enjoy the Siam Nimrat show no big queues to get tickets , enjoy Santosa isLand under water park and other attractions.So Just click book and go to your favourite destination.\n          ")])])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-lg-6 col-md-6 col-sm-12"
   }, [_c('div', {
     staticClass: "specialcontent "
-  }, [_c('h2', [_vm._v("What is special and great about BMSS")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Easy way to explore new shows , sight seen, locations which click of button you can book it. ")]), _vm._v(" "), _c('li', [_vm._v("Easy cancellation no charges if cancel 48 hours before show.")]), _vm._v(" "), _c('li', [_vm._v("Lowest price guaranteed.")]), _vm._v(" "), _c('li', [_vm._v("Easy confirmation and paperless e-tickets for many popular attractions")]), _vm._v(" "), _c('li', [_vm._v("Secure and easy booking and safe payment with credit cards or debit cards.")])])])])
+  }, [_c('h2', [_vm._v("What is special and great about Go4SightSeeing")]), _vm._v(" "), _c('ul', [_c('li', [_vm._v("Easy way to explore new shows , sight seen, locations which click of button you can book it. ")]), _vm._v(" "), _c('li', [_vm._v("Easy cancellation no charges if cancel 48 hours before show.")]), _vm._v(" "), _c('li', [_vm._v("Lowest price guaranteed.")]), _vm._v(" "), _c('li', [_vm._v("Easy confirmation and paperless e-tickets for many popular attractions")]), _vm._v(" "), _c('li', [_vm._v("Secure and easy booking and safe payment with credit cards or debit cards.")])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
