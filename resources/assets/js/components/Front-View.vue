@@ -1,11 +1,11 @@
 <template lang="html">
-  <div class="">
+  <div class="frontview">
     <header class="masthead masthead-bg">
       <div class="container h-100">
         <div class="row h-100">
           <div class="col-lg-8 my-auto">
             <div class="header-content mx-auto">
-              <h1 class="mb-5">Go4SightSeeing is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.</h1>
+            <h1 class="mb-5"><span class="sighttitle">Go4</span><span class="sighttitlecont">SightSeeing</span> is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.</h1>
             </div>
           </div>
           <div class="col-lg-4 my-auto">
@@ -14,7 +14,7 @@
                 <div class="device">
                   <div class="screen">
                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img :src="'images/frontimages/dashboard_banner.jpg'" class="img-fluid" alt="">
+                    <img :src="'images/frontimages/dashboardiphone6.jpg'" class="img-fluid" alt="">
                   </div>
                   <div class="button">
                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -122,7 +122,7 @@
 
     <section class="features" id="features">
       <div class="container">
-        <div class="section-heading text-center">
+        <div class="headingcolor text-center">
           <h2>Book your favourite Sight Seen or Show with just CLICK of a Button!</h2>
           <p class="text-muted"></p>
           <hr>
@@ -130,11 +130,11 @@
         <div class="row">
           <div class="col-lg-4">
             <div class="device-container">
-              <div class="device-mockup iphone6_plus portrait white" style="padding-bottom: 0;margin-left: 60px;">
+              <div class="device-mockup iphone6_plus portrait white s8bannerimg " style="padding-bottom: 0;">
                 <!-- <div class="device">
                   <div class="screen"> -->
                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img :src="'images/frontimages/BmssBannerAndroid.png'" class="img-fluid" alt="BmssBannerAndroid.png">
+                    <img :src="'images/frontimages/BmssBannerAndroid.jpg'" class="img-fluid" alt="BmssBannerAndroid.jpg">
                   <!-- </div>
                   <div class="button">
                     You can hook the "home button" to some JavaScript events or just remove it
@@ -147,7 +147,7 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="get_app_text">
-                  <h1>Download Go4SightSeeing now</h1>
+                  <h1>Download <span class="sighttitle">Go4</span><span class="sighttitlecont">SightSeeing</span> now</h1>
                   <h1>on</h1>
                   <h1>IOS and Android Phone.</h1>
                 </div>
@@ -171,15 +171,19 @@
     </section>
 
     <section class="cta">
-      <img :src="'images/frontimages/banner-startbooking_bg.png'" alt="ios_download.png"/>
-       <div class="cta-content">
-        <div class="cta_text_stop">
-          Stop Waiting...
-        </div>
-        <div class="cta_text_start">
-          Start Booking!
-        </div>
-      </div>
+      <img :src="'images/frontimages/banner-startbooking_bg.jpg'" alt="ios_download.png"/>
+       <div class="container">
+         <div class="row justify-content-start">
+           <div class=" col-md-6 cta-content">
+            <div class="cta_text_stop padding-top-lg">
+              Stop Waiting...
+            </div>
+            <div class="cta_text_start">
+              Start Booking!
+            </div>
+          </div>
+         </div>
+       </div>
       <!-- <div class="overlay">
         <img :src="'images/frontimages/banner-startbooking.png'" alt="ios_download.png"/>
       </div> -->
@@ -306,7 +310,6 @@ export default {
     left: 10%;
     color: #fff;
     letter-spacing: 2px;
-    width: 100%;
   }
   section.cta .cta-content .cta_text_start{
     padding-top: 2%;
@@ -338,6 +341,12 @@ export default {
   }
   .top_countries{
     margin-bottom: 1rem;
+  }
+  .s8bannerimg{
+    text-align: center;
+  }
+  .s8bannerimg img{
+    max-width:270px;
   }
   .tweets img{
     border-radius: 10px;

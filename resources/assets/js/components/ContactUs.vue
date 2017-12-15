@@ -3,7 +3,7 @@
     <div class="container h-100 margin-top-xl padding-top-xl padding-bottom-xl">
       <div class="row h-100">
         <div class="col-md-6">
-          <div class="contactusform ">
+          <div class="contactusform headingcolor">
             <h2>Email us </h2>
             <div v-if="errormessage == 'Name'" class="text-danger d-inline">{{errormessage}} </div><div v-if="errormessage == 'Email'" class="text-danger d-inline">{{errormessage}} </div><div v-if="errormessage == 'Message'" class="text-danger d-inline">{{errormessage}} </div><div v-if="errormessage" class="text-danger d-inline">Feild is Empty</div>
             <div class="name padding-md">
@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="col-md-6 ">
-          <div class="address col-md-12">
+          <div class="address col-md-12 headingcolor">
             <h2>Location</h2>
             <div class="locationcontent padding-md">
               <div class="location">
