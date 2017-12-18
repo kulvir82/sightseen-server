@@ -9,15 +9,24 @@ class UserController extends Controller
   public function sendSms(Request $request)
   {
     $model = new UsersModel;
+    
     $pindigits = 4;
+    $data = array();
+    
     $sid = env('TWILIO_ACCOUNT_SID');
     $token = env('TWILIO_AUTH_TOKEN');
     $twilioNumber = env('TWILIO_NUMBER');
+    
     $pin = $this->generatePIN($pindigits);
+    
     $client = new Client($sid, $token);
+    
     $id = $model->ExistingUser($request);
+    $data['new_user'] = false;
+    
     if(empty($id)){
       $id = $model->createUser($request);
+      $data['new_user'] = true;
     }
     // Use the client to do fun stuff like send text messages!
     $client->messages->create(
@@ -30,8 +39,10 @@ class UserController extends Controller
             'body' => $pin
         )
     );
+    
     $data['id'] = $id;
     $data['pin'] = $pin;
+    
     return response()->json($data);
   }
   public function generatePIN($digits)
