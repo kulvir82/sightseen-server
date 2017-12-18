@@ -27,8 +27,11 @@
             <td class="form_header" align="left">
               Pickup Location
             </td>
+            <td class="form_header" align="left">
+              Voucher
+            </td>
           </tr>
-          <tr v-for="booking in bookings">
+          <tr v-for="(booking,index) in bookings">
               <td class="form_header2">{{ booking.sight_seen_name }}</td>
               <td class="form_header2">{{ booking.no_of_pax }}</td>
               <td class="form_header2">{{ booking.cost_per_person }}</td>
@@ -36,6 +39,19 @@
               <td class="form_header2">{{ booking.total }}</td>
               <td class="form_header2">{{ booking.booking_time }}</td>
               <td class="form_header2">{{ booking.location }}</td>
+              <td class="form_header2">
+                <template v-if="booking.voucher">  
+                  <img :src="booking.voucher" width="100" height="50"/>
+                  <span>
+                    <input class="voucher_file" type="file" name="file" id="file" @change="addVoucher(index, booking.id, $event)">
+                    Edit
+                  </span>
+                </template>
+                <template v-else>
+                  <input class="voucher_file" type="file" name="file" id="file" @change="addVoucher(index, booking.id, $event)">
+                  Add
+                </template>
+              </td>
           </tr>
         </tbody>
       </table>
@@ -47,13 +63,38 @@
     props: ['data'],
 		data (){
 			return {
-				bookings: null,
+				bookings: [],
 			}
 		},
 		methods: {
       redirectToBookings (){
         var view  = ['bookings','/bookings','','get'];
         bus.$emit('open-view',view);
+      },
+      addVoucher (index, id, e){
+        var files = e.target.files || e.dataTransfer.files;
+        if (!files.length)
+          return;
+        
+        var image = new Image();
+        var reader = new FileReader();
+        var vm = this;
+
+        reader.onload = (e) => {
+          vm.bookings[index].voucher = e.target.result;
+        };
+        reader.readAsDataURL(files[0]);
+
+        var form_data = new FormData();
+        form_data.append('file', files[0]);
+        form_data.append('booking_id', id);
+        this.$http.post('/addvoucher',form_data).then(function (response){
+          // alert(response.data);
+        },
+        function (error){
+          alert(response.data);
+          vm.bookings[index].voucher = '';
+        });
       }
 		},
 		created (){
@@ -63,5 +104,13 @@
 </script>
 
 <style>
-	
+	.voucher_file{
+    position: absolute;
+    bottom: 0;
+    width:50px;
+    opacity: 0;
+  }
+  td.form_header2{
+    position: relative;
+  }
 </style>

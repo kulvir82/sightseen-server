@@ -62,6 +62,7 @@ class BookingDetail extends Model
             $data[$i]['booking_time'] = $cartItem->booking_time;
             $data[$i]['booking_id'] = $cartItem->booking_id;
             $data[$i]['location'] = $cartItem->pickup_location;
+            $data[$i]['voucher'] = $cartItem->voucher;
             $i++;
         }
         return $data;
@@ -85,6 +86,7 @@ class BookingDetail extends Model
                 $data[$j]['booking_date'] = date("Y-m-d",strtotime($row->booking_time));
                 $data[$j]['booking_id'] = $row->booking_id;
                 $data[$j]['location'] = $row->pickup_location;
+                $data[$j]['voucher'] = $row->voucher;
                 $data[$j]['booking_count'] = $query->count();
                 $j++;
             }
