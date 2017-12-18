@@ -34,7 +34,11 @@
               <td class="form_header2">{{ booking.total_sale_amount }}</td>
               <td class="form_header2">{{ booking.totaldiscount }}</td>
               <td class="form_header2">{{ booking.tax_amount }}</td>
-              <td class="form_header2">{{ booking.status }}</td>
+              <td class="form_header2">
+                <select @change="changeBookingStatus(booking.id, $event)">
+                  <option v-for="status in ['Confirmed','Canceled','Pending']" :selected="status==booking.status">{{ status}}</option>
+                </select>
+              </td>
               <td class="form_header2">{{ booking.payment_status }}</td>
               <td class="form_header2">
                  <a title="View" href="javascript:void(0)" @click="redirectToBookingDetail(booking.id)">View</a>
@@ -57,7 +61,7 @@
     props: ['data'],
 		data (){
 			return {
-				bookings: null,
+				bookings: [],
         pagination:{
           total: 0,
           per_page: 2,
@@ -70,13 +74,21 @@
 		methods: {
 			getBookings (){
 				this.$http.get('/bookings?page='+this.pagination.current_page).then(function(response){
-					this.bookings = response.data;
+					this.bookings = response.data.data;
           this.pagination = response.data;
 				});
 			},
       redirectToBookingDetail (booking_id){
         var view  = ['bookingdetail','/getbookingdetail/'+booking_id,'','get'];
         bus.$emit('open-view',view);
+      },
+      changeBookingStatus(booking_id, e){
+        var form_data = new FormData();
+        form_data.append('status', e.srcElement.value);
+        form_data.append('booking_id', booking_id);
+        this.$http.post('/updatebooking',form_data).then(response => {
+          alert(response.data);
+        });
       }
 		},
     filters: {

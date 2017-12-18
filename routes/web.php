@@ -43,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/addTax','CityExplorer@addTax');
   Route::get('/getTax/{country_id}','CityExplorer@getTax');
   Route::post('/addvoucher', 'UserBookingController@addVoucher');
+  Route::post('/updatebooking', 'UserBookingController@updateBooking');
 });
 Route::get('/getcountries','CityExplorer@getCountry');
 Route::post('/getcities','CityExplorer@getCity');

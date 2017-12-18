@@ -38,4 +38,10 @@ class UserBookingController extends Controller
         
         return response()->json("Voucher added successfully.", 200);
     }
+
+    public function updateBooking(Request $request)
+    {
+        UserBooking::where('id', $request->booking_id)->update(['status'=>$request->status]);
+        return response()->json("Successfully updated");
+    }
 }
