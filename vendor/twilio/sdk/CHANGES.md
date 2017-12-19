@@ -1,6 +1,65 @@
 twilio-php Changelog
 ====================
 
+[2017-12-01] Version 5.16.1
+----------------------------
+**Api**
+- Use the correct properties for Dependent Phone Numbers of an Address *(breaking change)*
+- Update Call Recordings with the correct properties
+
+**Preview**
+- Add `status` and `email` query param filters for AuthorizationDocument list endpoint
+
+**Proxy**
+- Added DELETE support to Interaction
+- Standardized enum values to dash-case
+- Rename Service#friendly_name to Service#unique_name
+
+**Video**
+- Remove beta flag from `media_region` and `video_codecs`
+
+**Wireless**
+- Bug fix: Changed `operator_mcc` and `operator_mnc` in `DataSessions` subresource from `integer` to `string`
+
+
+[2017-11-17] Version 5.16.0
+----------------------------
+**Sync**
+- Add TTL support for Sync objects *(breaking change)*
+  - The required `data` parameter on the following actions is now optional: "Update Document", "Update Map Item", "Update List Item"
+  - New actions available for updating TTL of Sync objects: "Update List", "Update Map", "Update Stream"
+
+**Video**
+- [bi] Rename `RoomParticipant` to `Participant`
+- Add Recording Settings resource
+- Expose EncryptionKey and MediaExternalLocation properties in Recording resource
+
+
+[2017-11-10] Version 5.15.6
+----------------------------
+**Accounts**
+- Add AWS credential type
+
+**Preview**
+- Removed `iso_country` as required field for creating a HostedNumberOrder.
+
+**Proxy**
+- Added new fields to Service: geo_match_level, number_selection_behavior, intercept_callback_url, out_of_session_callback_url
+
+
+[2017-11-03] Version 5.15.5
+----------------------------
+**Library**
+- Issue 451: Do not set CURLOPT_INFILESIZE by default
+- PR #454: Fix the JsonSerializable. Thanks @vinu!
+
+**Api**
+- Add programmable video keys
+
+**Video**
+- Add `Participants`
+
+
 [2017-10-27] Version 5.15.4
 ----------------------------
 **Chat**

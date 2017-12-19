@@ -11,6 +11,7 @@ namespace Twilio\Rest\Notify\V1\Service;
 
 use Twilio\ListResource;
 use Twilio\Options;
+use Twilio\Serialize;
 use Twilio\Values;
 use Twilio\Version;
 
@@ -29,7 +30,7 @@ class UserList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid,);
+        $this->solution = array('serviceSid' => $serviceSid);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Users';
     }
@@ -44,7 +45,10 @@ class UserList extends ListResource {
     public function create($identity, $options = array()) {
         $options = new Values($options);
 
-        $data = Values::of(array('Identity' => $identity, 'Segment' => $options['segment'],));
+        $data = Values::of(array(
+            'Identity' => $identity,
+            'Segment' => Serialize::map($options['segment'], function($e) { return $e; }),
+        ));
 
         $payload = $this->version->create(
             'POST',
@@ -116,7 +120,7 @@ class UserList extends ListResource {
     public function page($options = array(), $pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
         $options = new Values($options);
         $params = Values::of(array(
-            'Identity' => $options['identity'],
+            'Identity' => Serialize::map($options['identity'], function($e) { return $e; }),
             'Segment' => $options['segment'],
             'PageToken' => $pageToken,
             'Page' => $pageNumber,

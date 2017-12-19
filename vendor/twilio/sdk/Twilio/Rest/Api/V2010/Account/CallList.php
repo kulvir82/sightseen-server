@@ -36,7 +36,7 @@ class CallList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('accountSid' => $accountSid,);
+        $this->solution = array('accountSid' => $accountSid);
 
         $this->uri = '/Accounts/' . rawurlencode($accountSid) . '/Calls.json';
     }
@@ -61,7 +61,7 @@ class CallList extends ListResource {
             'FallbackUrl' => $options['fallbackUrl'],
             'FallbackMethod' => $options['fallbackMethod'],
             'StatusCallback' => $options['statusCallback'],
-            'StatusCallbackEvent' => $options['statusCallbackEvent'],
+            'StatusCallbackEvent' => Serialize::map($options['statusCallbackEvent'], function($e) { return $e; }),
             'StatusCallbackMethod' => $options['statusCallbackMethod'],
             'SendDigits' => $options['sendDigits'],
             'IfMachine' => $options['ifMachine'],

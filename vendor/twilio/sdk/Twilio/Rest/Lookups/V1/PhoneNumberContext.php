@@ -27,7 +27,7 @@ class PhoneNumberContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('phoneNumber' => $phoneNumber,);
+        $this->solution = array('phoneNumber' => $phoneNumber);
 
         $this->uri = '/PhoneNumbers/' . rawurlencode($phoneNumber) . '';
     }
@@ -43,8 +43,8 @@ class PhoneNumberContext extends InstanceContext {
 
         $params = Values::of(array(
             'CountryCode' => $options['countryCode'],
-            'Type' => $options['type'],
-            'AddOns' => $options['addOns'],
+            'Type' => Serialize::map($options['type'], function($e) { return $e; }),
+            'AddOns' => Serialize::map($options['addOns'], function($e) { return $e; }),
         ));
 
         $params = array_merge($params, Serialize::prefixedCollapsibleMap($options['addOnsData'], 'AddOns'));

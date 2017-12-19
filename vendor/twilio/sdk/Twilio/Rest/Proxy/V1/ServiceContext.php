@@ -44,7 +44,7 @@ class ServiceContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid,);
+        $this->solution = array('sid' => $sid);
 
         $this->uri = '/Services/' . rawurlencode($sid) . '';
     }
@@ -85,9 +85,13 @@ class ServiceContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'FriendlyName' => $options['friendlyName'],
+            'UniqueName' => $options['uniqueName'],
             'DefaultTtl' => $options['defaultTtl'],
             'CallbackUrl' => $options['callbackUrl'],
+            'GeoMatchLevel' => $options['geoMatchLevel'],
+            'NumberSelectionBehavior' => $options['numberSelectionBehavior'],
+            'InterceptCallbackUrl' => $options['interceptCallbackUrl'],
+            'OutOfSessionCallbackUrl' => $options['outOfSessionCallbackUrl'],
         ));
 
         $payload = $this->version->update(

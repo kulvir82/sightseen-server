@@ -30,7 +30,7 @@ class InteractionContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid, 'sid' => $sid,);
+        $this->solution = array('serviceSid' => $serviceSid, 'sessionSid' => $sessionSid, 'sid' => $sid);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Sessions/' . rawurlencode($sessionSid) . '/Interactions/' . rawurlencode($sid) . '';
     }
@@ -56,6 +56,15 @@ class InteractionContext extends InstanceContext {
             $this->solution['sessionSid'],
             $this->solution['sid']
         );
+    }
+
+    /**
+     * Deletes the InteractionInstance
+     * 
+     * @return boolean True if delete succeeds, false otherwise
+     */
+    public function delete() {
+        return $this->version->delete('delete', $this->uri);
     }
 
     /**

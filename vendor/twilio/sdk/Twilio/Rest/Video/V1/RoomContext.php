@@ -11,16 +11,20 @@ namespace Twilio\Rest\Video\V1;
 
 use Twilio\Exceptions\TwilioException;
 use Twilio\InstanceContext;
+use Twilio\Rest\Video\V1\Room\ParticipantList;
 use Twilio\Rest\Video\V1\Room\RoomRecordingList;
 use Twilio\Values;
 use Twilio\Version;
 
 /**
  * @property \Twilio\Rest\Video\V1\Room\RoomRecordingList recordings
+ * @property \Twilio\Rest\Video\V1\Room\ParticipantList participants
  * @method \Twilio\Rest\Video\V1\Room\RoomRecordingContext recordings(string $sid)
+ * @method \Twilio\Rest\Video\V1\Room\ParticipantContext participants(string $sid)
  */
 class RoomContext extends InstanceContext {
     protected $_recordings = null;
+    protected $_participants = null;
 
     /**
      * Initialize the RoomContext
@@ -33,7 +37,7 @@ class RoomContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid,);
+        $this->solution = array('sid' => $sid);
 
         $this->uri = '/Rooms/' . rawurlencode($sid) . '';
     }
@@ -62,7 +66,7 @@ class RoomContext extends InstanceContext {
      * @return RoomInstance Updated RoomInstance
      */
     public function update($status) {
-        $data = Values::of(array('Status' => $status,));
+        $data = Values::of(array('Status' => $status));
 
         $payload = $this->version->update(
             'POST',
@@ -85,6 +89,19 @@ class RoomContext extends InstanceContext {
         }
 
         return $this->_recordings;
+    }
+
+    /**
+     * Access the participants
+     * 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantList 
+     */
+    protected function getParticipants() {
+        if (!$this->_participants) {
+            $this->_participants = new ParticipantList($this->version, $this->solution['sid']);
+        }
+
+        return $this->_participants;
     }
 
     /**

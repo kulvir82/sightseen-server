@@ -31,11 +31,13 @@ use Twilio\Version;
  * @property integer maxParticipants
  * @property boolean recordParticipantsOnConnect
  * @property string videoCodecs
+ * @property string mediaRegion
  * @property string url
  * @property array links
  */
 class RoomInstance extends InstanceResource {
     protected $_recordings = null;
+    protected $_participants = null;
 
     /**
      * Initialize the RoomInstance
@@ -65,11 +67,12 @@ class RoomInstance extends InstanceResource {
             'maxParticipants' => Values::array_get($payload, 'max_participants'),
             'recordParticipantsOnConnect' => Values::array_get($payload, 'record_participants_on_connect'),
             'videoCodecs' => Values::array_get($payload, 'video_codecs'),
+            'mediaRegion' => Values::array_get($payload, 'media_region'),
             'url' => Values::array_get($payload, 'url'),
             'links' => Values::array_get($payload, 'links'),
         );
 
-        $this->solution = array('sid' => $sid ?: $this->properties['sid'],);
+        $this->solution = array('sid' => $sid ?: $this->properties['sid']);
     }
 
     /**
@@ -112,6 +115,15 @@ class RoomInstance extends InstanceResource {
      */
     protected function getRecordings() {
         return $this->proxy()->recordings;
+    }
+
+    /**
+     * Access the participants
+     * 
+     * @return \Twilio\Rest\Video\V1\Room\ParticipantList 
+     */
+    protected function getParticipants() {
+        return $this->proxy()->participants;
     }
 
     /**

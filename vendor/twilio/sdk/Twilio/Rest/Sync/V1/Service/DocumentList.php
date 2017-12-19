@@ -30,7 +30,7 @@ class DocumentList extends ListResource {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('serviceSid' => $serviceSid,);
+        $this->solution = array('serviceSid' => $serviceSid);
 
         $this->uri = '/Services/' . rawurlencode($serviceSid) . '/Documents';
     }
@@ -46,7 +46,8 @@ class DocumentList extends ListResource {
 
         $data = Values::of(array(
             'UniqueName' => $options['uniqueName'],
-            'Data' => Serialize::json_object($options['data']),
+            'Data' => Serialize::jsonObject($options['data']),
+            'Ttl' => $options['ttl'],
         ));
 
         $payload = $this->version->create(

@@ -37,7 +37,7 @@ class InstalledAddOnContext extends InstanceContext {
         parent::__construct($version);
 
         // Path Solution
-        $this->solution = array('sid' => $sid,);
+        $this->solution = array('sid' => $sid);
 
         $this->uri = '/InstalledAddOns/' . rawurlencode($sid) . '';
     }
@@ -78,7 +78,7 @@ class InstalledAddOnContext extends InstanceContext {
         $options = new Values($options);
 
         $data = Values::of(array(
-            'Configuration' => Serialize::json_object($options['configuration']),
+            'Configuration' => Serialize::jsonObject($options['configuration']),
             'UniqueName' => $options['uniqueName'],
         ));
 
