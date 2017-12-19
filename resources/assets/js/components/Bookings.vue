@@ -1,5 +1,22 @@
 <template>
 	<div id="bookings">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0" style ="margin-left:10px;margin-top:5px" class="input_table_new">
+      <tr>
+        <td align="left" width="60%">
+           <select name="country" id="country" v-model="country" class="country_list" onchange="changeCities()">
+              <option value="">Select Country</option>
+              <option v-for="country in countries" :value="country.id">{{country.country_name}}</option>
+           </select>
+           <select  id="city" name="city" v-model="city">
+             <option value="">Select City</option>
+           </select>
+          <input type="submit" name="report_search"  class="travel_buttons1" @click="getBookings()" autocomplete="off">
+       </td>
+       <td align="left" width="20%"><a class="travel_buttons" href="javascript:;" @click="refreshBookings()">All Records</a></td>
+         <td align="right" class="fontGreen">Total Records:</td>
+         <td class="fontGreen">{{pagination.total}}</td>
+      </tr>
+    </table>
 		<table width="100%" cellspacing="1" cellpadding="2" border="0" align="center" class="listing_table" id="sortabletable">
         <tbody>
           <tr>
@@ -69,11 +86,14 @@
           to: 0,
           current_page: 1
         },
+        countries: [],
+        country: '',
+        city: '',
 			}
 		},
 		methods: {
 			getBookings (){
-				this.$http.get('/bookings?page='+this.pagination.current_page).then(function(response){
+				this.$http.get('/bookings?page='+this.pagination.current_page+"&country="+this.country+"&city="+this.city).then(function(response){
 					this.bookings = response.data.data;
           this.pagination = response.data;
 				});
@@ -89,7 +109,19 @@
         this.$http.post('/updatebooking',form_data).then(response => {
           alert(response.data);
         });
-      }
+      },
+      getcountries () {
+        this.$http.get('/getcountries').then(function(response){
+          this.countries  = response.data;
+        });
+      },
+      refreshBookings () {
+        this.pagination.current_page = 1;
+        this.country = '';
+        this.city = '';
+        this.getBookings();
+        this.getcountries();
+      },
 		},
     filters: {
       indexCount (index, page) {
@@ -99,6 +131,7 @@
     },
 		created (){
       // console.log(this.data);
+      this.getcountries();
 			this.bookings= this.data.data;
       this.pagination = this.data;
 		}

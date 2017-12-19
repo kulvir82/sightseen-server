@@ -39,13 +39,16 @@
               <td class="form_header2">{{ booking.total }}</td>
               <td class="form_header2">{{ booking.booking_time }}</td>
               <td class="form_header2">{{ booking.location }}</td>
-              <td class="form_header2">
+              <td class="form_header2 voucher">
                 <template v-if="booking.voucher">  
-                  <img :src="booking.voucher" width="100" height="50"/>
-                  <span>
+                  <div>
+                    <img :src="booking.voucher" width="100" height="50"/>
+                  </div>
+                  <div>
                     <input class="voucher_file" type="file" name="file" id="file" @change="addVoucher(index, booking.id, $event)">
                     Edit
-                  </span>
+                  </div>
+                  <div @click="removeVoucher(index,booking.id)">Remove</div>
                 </template>
                 <template v-else>
                   <input class="voucher_file" type="file" name="file" id="file" @change="addVoucher(index, booking.id, $event)">
@@ -95,6 +98,11 @@
           alert(response.data);
           vm.bookings[index].voucher = '';
         });
+      },
+      removeVoucher (index,booking_id){
+        this.$http.post('/removevoucher',{'booking_id': booking_id}).then(function(response){
+          this.bookings[index].voucher = '';
+        });
       }
 		},
 		created (){
@@ -104,11 +112,23 @@
 </script>
 
 <style>
+  .voucher div{
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    margin-top: 1.5rem;
+    cursor: pointer;
+  }
+  .voucher div:first-child{
+    margin-top: 0;
+  }
 	.voucher_file{
     position: absolute;
     bottom: 0;
-    width:50px;
+    top: 0;
+    width: 25px;
     opacity: 0;
+    cursor: pointer;
   }
   td.form_header2{
     position: relative;

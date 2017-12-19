@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserBooking;
+use App\Models\Sightseen;
 use App\Models\BookingDetail;
 use Illuminate\Contracts\Filesystem\Filesystem;
 class UserBookingController extends Controller
 {
     public function index(Request $request)
     {
-    	$bookings = UserBooking::with('user')->paginate(10);
+
+        $bookings = UserBooking::getBookings($request);
+    	
     	return response()->json($bookings);
     }
 
@@ -37,6 +40,13 @@ class UserBookingController extends Controller
         }
         
         return response()->json("Voucher added successfully.", 200);
+    }
+
+
+    public function removeVoucher(Request $request)
+    {
+        BookingDetail::where('id', $request->booking_id)->update(['voucher'=> '']);
+        return response()->json("Voucher removed successfully.", 200);
     }
 
     public function updateBooking(Request $request)
