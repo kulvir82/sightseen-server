@@ -123,7 +123,7 @@
 import { VueEditor } from 'vue2-editor'
 export default {
   name:'editsightseen',
-  props:['data'],
+  props:['data','page','country','city'],
   components: {
        VueEditor
     },
@@ -137,13 +137,18 @@ export default {
       refreshedImages:null,
       sightseen:this.data,
       countries:null,
+      current_page:null,
     }
   },
   methods:{
     redirectToSightseen: function(){
-      // this.$router.push({ name: 'sightseen' });
-      var view  = ['sightseen','/getsightseen?page=',1,'get'];
-      bus.$emit('open-view',view);
+      if(localStorage.getItem('pagestate')){
+          let storage_data = JSON.parse(localStorage.getItem('pagestate'));
+          if(storage_data.length > 0){
+            var view  = ['sightseen','/getsightseen?page='+storage_data[0]+"&country="+storage_data[1]+"&city="+storage_data[2],'','get'];
+            bus.$emit('open-view',view);
+          }
+      }
     },
     refreshImages:function () {
 
@@ -211,7 +216,7 @@ export default {
   created (){
     this.getcountries();
     this.refreshImages();
-  }
+  },
 }
 </script>
 

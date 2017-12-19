@@ -4,7 +4,7 @@
       <div class="container h-100 padding-top-lg ">
         <div class="row h-100 paddig-top-xl padding-bottom-lg">
           <div class="col-xl-12 col-md-12 col-sm-12 padding-xl">
-            <div class="t_and_c_title margin-top-lg padding-xl text-center headingcolor">
+            <div class="t_and_c_title margin-top-lg padding-xl text-center ">
               <h1>Terms & Conditions</h1>
             </div>
           </div>

@@ -124,6 +124,11 @@ export default {
             this.records = true;
           }
         });
+        var pagestate = [this.pagination.current_page,this.country,this.city];
+        localStorage.setItem('pagestate',JSON.stringify(pagestate));
+        var view = ['sightseen','getsightseen?page='+this.pagination.current_page+"&country="+this.country+"&city="+this.city,'','get'];
+        bus.$emit('open-view',view);
+
     },
     getcountries () {
       this.$http.get('/getcountries').then(function(response){
@@ -146,6 +151,8 @@ export default {
       bus.$emit('open-view',view)
     },
     redirectToEditSightseen (sightId){
+      var pagestate = [this.pagination.current_page,this.country,this.city];
+      localStorage.setItem('pagestate',JSON.stringify(pagestate));
       var view  = ['editsightseen','/editsightseen?id=',sightId,'get']
       bus.$emit('open-view',view)
     },
