@@ -29,16 +29,22 @@ class UserController extends Controller
       $data['new_user'] = true;
     }
     // Use the client to do fun stuff like send text messages!
-    $client->messages->create(
-        // the number you'd like to send the message to
-        '+'.$request->phnum,
-        array(
-            // A Twilio phone number you purchased at twilio.com/console
-            'from' => $twilioNumber,
-            // the body of the text message you'd like to send
-            'body' => $pin
-        )
-    );
+    try{
+      $client->messages->create(
+          // the number you'd like to send the message to
+          '+'.$request->phnum,
+          array(
+              // A Twilio phone number you purchased at twilio.com/console
+              'from' => $twilioNumber,
+              // the body of the text message you'd like to send
+              'body' => $pin
+          )
+      );
+    }
+    catch(\Exception $e)
+    {
+      return response()->json("Something went wrong, Try again");
+    }
     
     $data['id'] = $id;
     $data['pin'] = $pin;
