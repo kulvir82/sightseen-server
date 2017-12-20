@@ -72,7 +72,7 @@ class CityExplorerModel extends Model
   	}
 
     public function getPopularSightSeen(){
-      $sightseens = Sightseen::select('ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
+      $sightseens = Sightseen::select(DB::raw('round(ce_sightseen.price, 2) as price'),'ce_sightseen.*',' ce_countries.country_name','ce_cities.city_name')
                     ->join('ce_countries','ce_countries.id','=','ce_sightseen.country_id')
                     ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
                     ->orderBy('popularity', 'desc')
@@ -83,13 +83,13 @@ class CityExplorerModel extends Model
 
     public function getSightSeenFromCountry($request)
     {
-      $sightseen =  Sightseen::where('ce_sightseen.country_id',$request->country)
+      $sightseens =  Sightseen::where('ce_sightseen.country_id',$request->country)
                     ->join('ce_countries','ce_countries.id','=','ce_sightseen.country_id')
                     ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
-                    ->select('ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
+                    ->select(DB::raw('round(ce_sightseen.price, 2) as price'),'ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
                     ->get();
 
-      return $sightseen;
+      return $sightseens;
     }
 
     public function getSightSeenFromCity($request)
@@ -97,7 +97,7 @@ class CityExplorerModel extends Model
       $sightseen =  Sightseen::where('ce_sightseen.city_id',$request->city)
                     ->join('ce_countries','ce_countries.id','=','ce_sightseen.country_id')
                     ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
-                    ->select('ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
+                    ->select(DB::raw('round(ce_sightseen.price, 2) as price'),'ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
                     ->get();
 
       return $sightseen;
