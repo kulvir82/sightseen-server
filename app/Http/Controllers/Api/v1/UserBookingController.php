@@ -37,7 +37,7 @@ Class UserBookingController extends Controller
         $res = $bookingDetail->updateBookingDetail($data, $request->booking_id);
         $booking = UserBooking::find($request->booking_id);
     	$booking->totaldiscount = $res[0];
-    	$booking->total_sale_amount = $res[1];
+    	$booking->total_sale_amount = $res[1] + $request->tax_amount;
         $booking->tax_amount = $request->tax_amount;
         $booking->save();
 
