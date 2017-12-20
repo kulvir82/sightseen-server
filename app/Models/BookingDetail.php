@@ -88,7 +88,7 @@ class BookingDetail extends Model
                 $data[$j]['location'] = $row->pickup_location;
                 $data[$j]['voucher'] = $row->voucher;
                 $data[$j]['booking_count'] = $query->count();
-                $data[$j]['booking_total'] = $row->total_sale_amount;
+                $data[$j]['booking_total'] = $booking->total_sale_amount;
                 $j++;
             }
             $finalData[$i] = $data;
