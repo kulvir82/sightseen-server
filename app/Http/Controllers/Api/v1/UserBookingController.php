@@ -28,20 +28,20 @@ Class UserBookingController extends Controller
         return response()->json(['booking_id'=>$booking->id,'message'=>'Item successfully added to cart','success'=>true], 201);
     }
 
-    public function update(Request $request, UserBooking $booking)
+    public function update(Request $request)
     {
     	
     	$bookingDetail = new BookingDetail;
         $data = $request->booking_detail;
         // return response()->json($data);
-        $res = $bookingDetail->updateBookingDetail($data, $booking->id);
+        $res = $bookingDetail->updateBookingDetail($data, $request->booking_id);
 
     	$booking->totaldiscount = $res[0];
     	$booking->total_sale_amount = $res[1];
         $booking->tax_amount = $request->tax_amount;
         $booking->save();
 
-        return response()->json(['booking_id'=>$booking->id,'message'=>'Cart successfully updated','success'=>true], 200);
+        return response()->json(['booking_id'=>$request->booking_id,'message'=>'Cart successfully updated','success'=>true], 200);
     }
     public function getCartItems(Request $request)
     {

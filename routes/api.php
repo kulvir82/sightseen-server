@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::post('/sendsms','Api\v1\UserController@sendSms');
-Route::get('/getuserdetail/{id}', 'Api\v1\UserController@getUserDetail');
+Route::get('/getuserdetail', 'Api\v1\UserController@getUserDetail');
 Route::put('/updateuser','Api\v1\UserController@updateUser');
 Route::post('/updateprofile','Api\v1\UserController@updateProfile');
 Route::post('/displayprofile','Api\v1\UserController@displayProfile');
@@ -27,12 +27,12 @@ Route::get('/getsightseenfromcity','Api\v1\CityExplorer@getSightSeenFromCity');
 Route::get('getTax','Api\v1\UserBookingController@getTax');
 // booking Api's routes
 Route::post('addToCart', 'Api\v1\UserBookingController@store');
-Route::put('updateCart/{booking}', 'Api\v1\UserBookingController@update');
-Route::get('getCartItems/{id}', 'Api\v1\UserBookingController@getCartItems');
-Route::get('getCartCount/{id}','Api\v1\UserBookingController@getCartCount');
-Route::delete('deleteCartItem/{id}','Api\v1\UserBookingController@deleteCartItem');
-Route::get('getBookings/{id}','Api\v1\UserBookingController@getBookings');
-Route::put('cancelBooking/{id}','Api\v1\UserBookingController@cancelBooking');
+Route::put('updateCart', 'Api\v1\UserBookingController@update');
+Route::get('getCartItems', 'Api\v1\UserBookingController@getCartItems');
+Route::get('getCartCount','Api\v1\UserBookingController@getCartCount');
+Route::delete('deleteCartItem','Api\v1\UserBookingController@deleteCartItem');
+Route::get('getBookings','Api\v1\UserBookingController@getBookings');
+Route::put('cancelBooking','Api\v1\UserBookingController@cancelBooking');
 Route::post('payment','Api\v1\PaymentsController@charge');
 //
 use GuzzleHttp\Client;
