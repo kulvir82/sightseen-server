@@ -29,18 +29,18 @@
     						<tr>
     							<td nowrap class="input_form_caption_td">Country: </td>
     							<td>
-    								<select name="country" class="country_list" id="country" onchange="changeCities()">
+    								<select name="country" class="country_list" id="country" v-model="country" @change="getCities(country)">
     									<!-- <option value="" >Select Country</option> -->
-    									<option v-for="country in countries" :value="country.id " :selected="sightseen.country_id == country.id">{{ country.country_name }}</option>
+    									<option v-for="country in countries" :value="country.id">{{ country.country_name }}</option>
     								</select>
     							</td>
     						</tr>
     						<tr>
     							<td nowrap class="input_form_caption_td">City: </td>
     							<td>
-    								<select  id="city"  name="city">
-    									<option value="" >Select City</option>
-                      <option v-for="city in sightseen.cities" :value="city.id" :selected="sightseen.city_id == city.id">{{ city.city_name}}</option>
+    								<select id="city" name="city" v-model="city">
+    									<!-- <option value="" >Select City</option> -->
+                      <option v-for="city in cities" :value="city.id">{{ city.city_name}}</option>
     								</select>
     							</td>
     						</tr>
@@ -121,9 +121,11 @@
 </template>
 <script>
 import { VueEditor } from 'vue2-editor'
+import { mixin } from "../mixins/mixin"
 export default {
   name:'editsightseen',
-  props:['data','page','country','city'],
+  mixins: [mixin],
+  props:['data'],
   components: {
        VueEditor
     },
@@ -136,20 +138,10 @@ export default {
       image4:'image4',
       refreshedImages:null,
       sightseen:this.data,
-      countries:null,
       current_page:null,
     }
   },
   methods:{
-    redirectToSightseen: function(){
-      if(localStorage.getItem('pagestate')){
-          let storage_data = JSON.parse(localStorage.getItem('pagestate'));
-          if(storage_data.length > 0){
-            var view  = ['sightseen','/getsightseen?page='+storage_data[0]+"&country="+storage_data[1]+"&city="+storage_data[2],'','get'];
-            bus.$emit('open-view',view);
-          }
-      }
-    },
     refreshImages:function () {
 
       $.ajax({
@@ -207,14 +199,11 @@ export default {
         this.redirectToSightseen();
       });
     },
-    getcountries:function() {
-      this.$http.get('/getcountries').then(function(response){
-            this.countries  = response.data;
-        });
-    },
   },
   created (){
-    this.getcountries();
+    this.city = this.sightseen.city_id;
+    this.cities = this.sightseen.cities;
+    this.country = this.sightseen.country_id;
     this.refreshImages();
   },
 }

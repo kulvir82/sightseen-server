@@ -3,14 +3,15 @@
     <table width="98%" border="0" cellspacing="0" cellpadding="0" style ="margin-left:10px;margin-top:5px" class="input_table_new">
       <tr>
         <td align="left" width="60%">
-           <select name="country" id="country" v-model="country" class="country_list" onchange="changeCities()">
+           <select name="country" id="country" v-model="country" class="country_list" @change="getCities(country)">
               <option value="">Select Country</option>
               <option v-for="country in countries" :value="country.id">{{country.country_name}}</option>
            </select>
            <select  id="city" name="city" v-model="city">
              <option value="">Select City</option>
+             <option v-for="city in cities" :value="city.id">{{ city.city_name}}</option>
            </select>
-          <input type="submit" name="report_search"  class="travel_buttons1" @click="getBookings()" autocomplete="off">
+          <input type="submit" name="report_search"  class="travel_buttons1" @click="searchBookings()" autocomplete="off">
        </td>
        <td align="left" width="20%"><a class="travel_buttons" href="javascript:;" @click="refreshBookings()">All Records</a></td>
          <td align="right" class="fontGreen">Total Records:</td>
@@ -74,8 +75,10 @@
 </template>
 
 <script>
+  import { mixin } from "../mixins/mixin"
 	export default{
     props: ['data'],
+    mixins: [mixin],
 		data (){
 			return {
 				bookings: [],
@@ -86,14 +89,21 @@
           to: 0,
           current_page: 1
         },
-        countries: [],
-        country: '',
-        city: '',
+        isFilter: false
 			}
 		},
 		methods: {
+      searchBookings ()
+      {
+        this.isFilter = true;
+        this.getBookings();
+      },
 			getBookings (){
-				this.$http.get('/bookings?page='+this.pagination.current_page+"&country="+this.country+"&city="+this.city).then(function(response){
+        let query = '';
+        if(this.isFilter)
+          query = "&country="+this.country+"&city="+this.city;
+
+				this.$http.get('/bookings?page='+this.pagination.current_page+query).then(function(response){
 					this.bookings = response.data.data;
           this.pagination = response.data;
 				});
@@ -110,17 +120,12 @@
           alert(response.data);
         });
       },
-      getcountries () {
-        this.$http.get('/getcountries').then(function(response){
-          this.countries  = response.data;
-        });
-      },
       refreshBookings () {
         this.pagination.current_page = 1;
         this.country = '';
         this.city = '';
+        this.isFilter = false;
         this.getBookings();
-        this.getcountries();
       },
 		},
     filters: {
@@ -130,8 +135,6 @@
       }
     },
 		created (){
-      // console.log(this.data);
-      this.getcountries();
 			this.bookings= this.data.data;
       this.pagination = this.data;
 		}

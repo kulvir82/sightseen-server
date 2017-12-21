@@ -21,8 +21,7 @@ let mix = require('laravel-mix');
            'resources/assets/js/front/new-age.min.js'
         ], 'public/js/app.js')
       .sass('resources/assets/sass/app.scss', 'public/css')
-      .scripts(['resources/assets/js/customajax.js',
-                'resources/assets/js/jquery.filer.min.js'
+      .scripts(['resources/assets/js/jquery.filer.min.js'
              ], 'public/js/main.js')
       .styles([
        'resources/assets/css/global.css',

@@ -25,24 +25,28 @@ export default {
       event.target.className = "active";
       var view  = ['sightseen','/getsightseen?page=',1,'get'];
       bus.$emit('open-view',view);
+      localStorage.removeItem('pagestate');
     },
     redirectToAddSightseen (event){
       $('ul.my_nav li a').removeClass("active");
       event.target.className = "active";
       var view  = ['addsightseen','','','get'];
       bus.$emit('open-view',view);
+      localStorage.removeItem('pagestate');
     },
     redirectToBookings (event){
       $('ul.my_nav li a').removeClass("active");
       event.target.className = "active";
       var view  = ['bookings','/bookings','','get'];
       bus.$emit('open-view',view);
+      localStorage.removeItem('pagestate');
     },
     redirectToSettings (event){
       $('ul.my_nav li a').removeClass("active");
       event.target.className = "active";
       var view  = ['settings','','','get'];
       bus.$emit('open-view',view);
+      localStorage.removeItem('pagestate');
     }
   }
 }

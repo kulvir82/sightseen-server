@@ -21,12 +21,13 @@
       </tr>
         <tr>
           <td align="left" width="60%">
-             <select name="country" id="country" v-model="country" class="country_list" onchange="changeCities()">
+             <select name="country" id="country" v-model="country" class="country_list" @change="getCities(country)">
                 <option value="">Select Country</option>
                 <option v-for="country in countries" :value="country.id">{{country.country_name}}</option>
              </select>
              <select  id="city" name="city" v-model="city">
                <option value="">Select City</option>
+               <option v-for="city in cities" :value="city.id">{{ city.city_name }}</option>
              </select>
             <input type="submit" name="report_search"  class="travel_buttons1" @click="searchSight()" autocomplete="off">
          </td>
@@ -81,15 +82,16 @@
 </template>
 
 <script>
+import { mixin } from "../mixins/mixin"
 export default {
   name:'sightseen',
+  mixins: [mixin],
   props: ['data'],
   data: function() {
       return{
         sightseen:this.data.data,
         records: false,
         sightseenLinks:null,
-        countries:null,
         pagination:{
           total: 0,
           per_page: 2,
@@ -97,8 +99,7 @@ export default {
           to: 0,
           current_page: 1
         },
-        country: '',
-        city: ''
+        isFilter: false
       }
   },
   methods:{
@@ -106,15 +107,19 @@ export default {
       this.pagination.current_page = 1;
       this.country = '';
       this.city = '';
+      this.isFilter = false;
       this.getSightSeen();
-      this.getcountries();
     },
     searchSight (){
-      this.pagination.current_page = 1;
+      this.isFilter = true;
       this.getSightSeen();
     },
     getSightSeen () {
-        this.$http.get("/getsightseen?page="+this.pagination.current_page+"&country="+this.country+"&city="+this.city).then(function(response){
+        let query = '';
+        if(this.isFilter)
+          query = "&country="+this.country+"&city="+this.city;
+
+        this.$http.get("/getsightseen?page="+this.pagination.current_page+query).then(function(response){
           this.sightseen = response.data.data;
           this.pagination = response.data;
           if(response.data.total > 0){
@@ -124,16 +129,8 @@ export default {
             this.records = true;
           }
         });
-        var pagestate = [this.pagination.current_page,this.country,this.city];
-        localStorage.setItem('pagestate',JSON.stringify(pagestate));
-        var view = ['sightseen','getsightseen?page='+this.pagination.current_page+"&country="+this.country+"&city="+this.city,'','get'];
-        bus.$emit('open-view',view);
+        this.setPageState(this.pagination.current_page);
 
-    },
-    getcountries () {
-      this.$http.get('/getcountries').then(function(response){
-        this.countries  = response.data;
-      });
     },
     deleteSightSeen (id){
       var r = confirm("Are you sure you want to delete this sight seen?");
@@ -147,16 +144,17 @@ export default {
       }
     },
     redirectToAddSightseen (){
+      this.setPageState(this.pagination.current_page);
       var view  = ['addsightseen','','','get']
       bus.$emit('open-view',view)
     },
     redirectToEditSightseen (sightId){
-      var pagestate = [this.pagination.current_page,this.country,this.city];
-      localStorage.setItem('pagestate',JSON.stringify(pagestate));
+      this.setPageState(this.pagination.current_page);
       var view  = ['editsightseen','/editsightseen?id=',sightId,'get']
       bus.$emit('open-view',view)
     },
     redirectTosingleSightseen (sightId){
+      this.setPageState(this.pagination.current_page);
       var view  = ['singlesight','/singlesight?id=',sightId,'get']
       bus.$emit('open-view',view)
     }
@@ -171,8 +169,15 @@ export default {
     }
   },
   created (){
-    this.getcountries();
+    // this.getcountries();
     this.pagination = this.data;
+    if(localStorage.getItem('pagestate')){
+      let storage_data = JSON.parse(localStorage.getItem('pagestate'));
+      if(storage_data.length > 0){
+        this.country = storage_data[1];
+        this.city = storage_data[2];
+      }
+    }
   }
 }
 </script>

@@ -30,7 +30,7 @@
     						<tr>
     							<td nowrap class="input_form_caption_td">Country: </td>
     							<td>
-    								<select name="country"  id="country" class="country_list" onchange="changeCities()" required>
+    								<select name="country" id="country" class="country_list" v-model="country" @change="getCities(country)" required>
 
     									<option value="">Select Countries</option>
     							 		<option v-for="country in countries"  :value="country.id ">{{ country.country_name }}</option>
@@ -43,7 +43,8 @@
       						<td nowrap class="input_form_caption_td">City: </td>
       						<td>
       							<select  id="city" name="city" required>
-      								<option value=""  selected>Select City</option>
+      								<option value="" selected>Select City</option>
+                      <option v-for="city in cities" :value="city.id">{{ city.city_name}}</option>
       							</select><div v-if="errorMessage == 'city'" class="errorMessage">
       								  {{'enter the city'}}
       							</div>
@@ -126,16 +127,16 @@
 </template>
 
 <script>
-
+import { mixin } from "../mixins/mixin"
 import { VueEditor } from 'vue2-editor'
 export default {
  name:'addsightseen',
+  mixins: [mixin],
  components: {
       VueEditor
    },
  data: function() {
    return{
-      countries:null,
       errorMessage:null,
       infocontent:'',
       descontent:'',
@@ -153,11 +154,6 @@ export default {
    }
  },
   methods:{
-    redirectToSightseen (){
-      // this.$router.push({ name: 'sightseen' });
-      var view  = ['sightseen','/getsightseen?page=',1,'get'];
-      bus.$emit('open-view',view);
-    },
     createSightSeen () {
       if($('#title').val() == ''){
         this.errorMessage = 'title';
@@ -250,15 +246,10 @@ export default {
         }
       }
     },
-    getcountries () {
-      this.$http.get('/getcountries').then(function(response){
-          this.countries  = response.data;
-        });
-    },
 
   },
   created (){
-    this.getcountries();
+    
   }
 }
 </script>

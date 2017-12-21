@@ -76,9 +76,17 @@ export default {
   },
   methods: {
     redirectToSightseen: function(){
-      // this.$router.push({ name: 'sightseen' });
-      var view  = ['sightseen','/getsightseen?page=',1,'get'];
-      bus.$emit('open-view',view);
+      if(localStorage.getItem('pagestate')){
+        let storage_data = JSON.parse(localStorage.getItem('pagestate'));
+        if(storage_data.length > 0){
+          let query = '';
+          if(storage_data[2])
+            query = "&country="+storage_data[1]+"&city="+storage_data[2];
+
+          var view  = ['sightseen','/getsightseen?page='+storage_data[0]+query,'','get'];
+          bus.$emit('open-view',view);
+        }
+      }
     },
   }
 }
