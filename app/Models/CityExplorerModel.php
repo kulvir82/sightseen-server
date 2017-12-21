@@ -139,7 +139,7 @@ class CityExplorerModel extends Model
         foreach($feedbacks as $feedback)
         {
           $res[$j]['comment'] = $feedback->comment;
-          $res[$j]['datetime'] = date("Y-m-d", strtotime($feedback->created_at));
+          $res[$j]['date'] = date("Y-m-d", strtotime($feedback->created_at));
           $res[$j]['username'] = $feedback->user->username;
           $j++;
         }
