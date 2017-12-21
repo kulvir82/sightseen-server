@@ -14,4 +14,9 @@ class Sightseen extends Model
     {
         return $this->hasMany('App\Models\BookingDetail', 'sight_seen_id');
     }
+
+    public function feedbacks()
+    {
+    	return $this->hasMany('App\Models\Feedback', 'sightseen_id');
+    }
 }

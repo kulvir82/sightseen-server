@@ -53,6 +53,7 @@ class BookingDetail extends Model
         foreach($cartItems as $cartItem){
             $data[$i]['id'] = $cartItem->id;
             $data[$i]['sight_seen_name'] = $cartItem->sightseen->title;
+            $data[$i]['sightseen_id'] = $cartItem->sight_seen_id;
             $data[$i]['discount_amount'] = $cartItem->discount;
             $data[$i]['discount'] = $cartItem->sightseen->discount;
             $data[$i]['no_of_pax'] = $cartItem->no_of_pax;
@@ -62,6 +63,7 @@ class BookingDetail extends Model
             $data[$i]['booking_time'] = $cartItem->booking_time;
             $data[$i]['booking_id'] = $cartItem->booking_id;
             $data[$i]['location'] = $cartItem->pickup_location;
+            $data[$i]['is_pickup'] = $cartItem->sightseen->pickup ? true : false;
             $data[$i]['voucher'] = $cartItem->voucher;
             $i++;
         }
@@ -80,12 +82,14 @@ class BookingDetail extends Model
             foreach($query as $row){
                 $data[$j]['id'] = $row->id;
                 $data[$j]['sight_seen_name'] = $row->sightseen->title;
+                $data[$j]['sightseen_id'] = $row->sight_seen_id;
                 $data[$j]['no_of_pax'] = $row->no_of_pax;
                 $data[$j]['cost_per_person'] = $row->cost_per_pax;
                 $data[$j]['total'] = $row->total;
                 $data[$j]['booking_date'] = date("Y-m-d",strtotime($row->booking_time));
                 $data[$j]['booking_id'] = $row->booking_id;
                 $data[$j]['location'] = $row->pickup_location;
+                $data[$j]['is_pickup'] = $row->sightseen->pickup ? true : false;
                 $data[$j]['voucher'] = $row->voucher;
                 $data[$j]['booking_count'] = $query->count();
                 $data[$j]['booking_total'] = $booking->total_sale_amount;

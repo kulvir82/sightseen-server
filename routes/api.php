@@ -34,6 +34,8 @@ Route::delete('deleteCartItem','Api\v1\UserBookingController@deleteCartItem');
 Route::get('getBookings','Api\v1\UserBookingController@getBookings');
 Route::put('cancelBooking','Api\v1\UserBookingController@cancelBooking');
 Route::post('payment','Api\v1\PaymentsController@charge');
+Route::post('addfeedback', 'Api\v1\FeedbacksController@store');
+Route::get('feedbacks', 'Api\v1\FeedbacksController@feedbacks');
 //
 use GuzzleHttp\Client;
 

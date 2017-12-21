@@ -78,6 +78,9 @@ class CityExplorerModel extends Model
                     ->orderBy('popularity', 'desc')
                     ->take(10)
                     ->get();
+      
+      $sightseens = $this->setSightSeenData($sightseens); 
+
       return $sightseens;
     }
 
@@ -88,6 +91,8 @@ class CityExplorerModel extends Model
                     ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
                     ->select(DB::raw('round(ce_sightseen.price, 2) as price'),'ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
                     ->get();
+
+      $sightseens = $this->setSightSeenData($sightseens);              
 
       return $sightseens;
     }
@@ -100,8 +105,52 @@ class CityExplorerModel extends Model
                     ->select(DB::raw('round(ce_sightseen.price, 2) as price'),'ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
                     ->get();
 
+      $sightseens = $this->setSightSeenData($sightseens); 
+
       return $sightseen;
     }
+
+    public function setSightSeenData($sightseens)
+    {
+      $data = array();
+      $i= 0;
+      
+      foreach($sightseens as $sightseen)
+      {
+        $data[$i]['id'] = $sightseen->id;
+        $data[$i]['title'] = $sightseen->title;
+        $data[$i]['image1'] = $sightseen->image1;
+        $data[$i]['image2'] = $sightseen->image2;
+        $data[$i]['image3'] = $sightseen->image3;
+        $data[$i]['image4'] = $sightseen->image4;
+        $data[$i]['description'] = $sightseen->description;
+        $data[$i]['information'] = $sightseen->information;
+        $data[$i]['price'] = $sightseen->price;
+        $data[$i]['popularity'] = $sightseen->popularity;
+        $data[$i]['discount'] = $sightseen->discount;
+        $data[$i]['pickup'] = $sightseen->pickup;
+        $data[$i]['country_name'] = $sightseen->country_name;
+        $data[$i]['city_name'] = $sightseen->city_name;
+        $data[$i]['city_id'] = $sightseen->city_id;
+        $data[$i]['country_id'] = $sightseen->country_id;
+        $feedbacks = $sightseen->feedbacks->take(3);
+        $res = array();
+        $j=0;  
+        foreach($feedbacks as $feedback)
+        {
+          $res[$j]['comment'] = $feedback->comment;
+          $res[$j]['datetime'] = date("Y-m-d H:i", strtotime($feedback->created_at));
+          $res[$j]['username'] = $feedback->user->username;
+          $j++;
+        }
+        $data[$i]['feedbacks'] = $res;
+
+        $i++;
+      }
+
+      return $data;
+    }
+
     public function getProductDetail($request)
     {
       $ids = explode(',',$request->product_ids);
