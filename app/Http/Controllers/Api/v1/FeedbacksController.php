@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Feedback;	
-
+use DB;
 class FeedbacksController extends Controller
 {
     public function store(Request $request)
@@ -17,7 +17,7 @@ class FeedbacksController extends Controller
 
     public function feedbacks(Request $request)
     {
-    	$feedbacks = Feedback::select('user_id','comment','created_at')
+    	$feedbacks = Feedback::select('user_id','comment',DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
     				->where(['sightseen_id'=>$request->sightseen_id])
     				->with(['user' => function ($query){
     					$query->select('id','username');
