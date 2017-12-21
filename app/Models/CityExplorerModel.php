@@ -72,7 +72,7 @@ class CityExplorerModel extends Model
   	}
 
     public function getPopularSightSeen(){
-      $sightseens = Sightseen::select(DB::raw('round(ce_sightseen.price, 2) as price'),'ce_sightseen.*',' ce_countries.country_name','ce_cities.city_name')
+      $sightseens = Sightseen::select(DB::raw('round(ce_sightseen.price, 2) as price'),'ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
                     ->join('ce_countries','ce_countries.id','=','ce_sightseen.country_id')
                     ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
                     ->orderBy('popularity', 'desc')
