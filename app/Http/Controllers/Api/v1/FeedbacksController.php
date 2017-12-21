@@ -17,7 +17,12 @@ class FeedbacksController extends Controller
 
     public function feedbacks(Request $request)
     {
-    	$feedbacks = Feedback::where(['sightseen_id'=>$request->sightseen_id])->get();
+    	$feedbacks = Feedback::select('user_id','comment','created_at')
+    				->where(['sightseen_id'=>$request->sightseen_id])
+    				->with(['user' => function ($query){
+    					$query->select('id','username');
+    				}])
+    				->get();
     	return response()->json(['feedbacks' => $feedbacks, 'success'=> true],200);
     }
 }
