@@ -99,7 +99,7 @@ class CityExplorerModel extends Model
 
     public function getSightSeenFromCity($request)
     {
-      $sightseen =  Sightseen::where('ce_sightseen.city_id',$request->city)
+      $sightseens =  Sightseen::where('ce_sightseen.city_id',$request->city)
                     ->join('ce_countries','ce_countries.id','=','ce_sightseen.country_id')
                     ->join('ce_cities','ce_cities.id','=','ce_sightseen.city_id' )
                     ->select(DB::raw('round(ce_sightseen.price, 2) as price'),'ce_sightseen.*','ce_countries.country_name','ce_cities.city_name')
@@ -107,7 +107,7 @@ class CityExplorerModel extends Model
 
       $sightseens = $this->setSightSeenData($sightseens); 
 
-      return $sightseen;
+      return $sightseens;
     }
 
     public function setSightSeenData($sightseens)
@@ -133,17 +133,7 @@ class CityExplorerModel extends Model
         $data[$i]['city_name'] = $sightseen->city_name;
         $data[$i]['city_id'] = $sightseen->city_id;
         $data[$i]['country_id'] = $sightseen->country_id;
-        $feedbacks = $sightseen->feedbacks->take(3);
-        $res = array();
-        $j=0;  
-        foreach($feedbacks as $feedback)
-        {
-          $res[$j]['comment'] = $feedback->comment;
-          $res[$j]['date'] = date("Y-m-d", strtotime($feedback->created_at));
-          $res[$j]['username'] = $feedback->user->username;
-          $j++;
-        }
-        $data[$i]['feedbacks'] = $res;
+        $data[$i]['comment_count'] = $sightseen->feedbacks->count();
 
         $i++;
       }
