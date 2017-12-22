@@ -111,6 +111,7 @@ export default {
       this.getSightSeen();
     },
     searchSight (){
+      this.pagination.current_page = 1;
       this.isFilter = true;
       this.getSightSeen();
     },
@@ -136,7 +137,7 @@ export default {
       var r = confirm("Are you sure you want to delete this sight seen?");
       if (r == true) {
         this.$http.get('/deletesightseen/'+id).then(function(response){
-          this.refreshSightSeen();
+          this.getSightSeen();
         });
       }
       else {

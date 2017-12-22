@@ -107,8 +107,10 @@
 					this.bookings = response.data.data;
           this.pagination = response.data;
 				});
+        this.setPageState(this.pagination.current_page);
 			},
       redirectToBookingDetail (booking_id){
+        this.setPageState(this.pagination.current_page);
         var view  = ['bookingdetail','/getbookingdetail/'+booking_id,'','get'];
         bus.$emit('open-view',view);
       },
@@ -137,6 +139,14 @@
 		created (){
 			this.bookings= this.data.data;
       this.pagination = this.data;
+     
+      if(localStorage.getItem('pagestate')){
+        let storage_data = JSON.parse(localStorage.getItem('pagestate'));
+        if(storage_data.length > 0){
+          this.country = storage_data[1];
+          this.city = storage_data[2];
+        }
+      }
 		}
 	}
 </script>

@@ -19,9 +19,7 @@ class FeedbacksController extends Controller
     {
     	$feedbacks = Feedback::select('user_id','comment',DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
     				->where(['sightseen_id'=>$request->sightseen_id])
-    				->with(['user' => function ($query){
-    					$query->select('id','username');
-    				}])
+    				->with(['user:id,username'])
     				->get();
     	return response()->json(['feedbacks' => $feedbacks, 'success'=> true],200);
     }

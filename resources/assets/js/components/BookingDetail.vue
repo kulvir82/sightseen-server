@@ -62,18 +62,20 @@
 </template>
 
 <script>
+  import { mixin } from "../mixins/mixin"
 	export default{
     props: ['data'],
+    mixins: [mixin],
 		data (){
 			return {
 				bookings: [],
 			}
 		},
 		methods: {
-      redirectToBookings (){
-        var view  = ['bookings','/bookings','','get'];
-        bus.$emit('open-view',view);
-      },
+      // redirectToBookings (){
+      //   var view  = ['bookings','/bookings','','get'];
+      //   bus.$emit('open-view',view);
+      // },
       addVoucher (index, id, e){
         var files = e.target.files || e.dataTransfer.files;
         if (!files.length)
