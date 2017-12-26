@@ -49,7 +49,7 @@ Class UserBookingController extends Controller
         $booking = UserBooking::where('userid', $userId)->where('status', '!=','Confirmed')->first();
         if(count($booking) > 0){
             $bookingDetail = new BookingDetail;
-            $cartItems = $bookingDetail->getCartItems($booking->id);
+            $cartItems = $bookingDetail->getCartItems($booking);
             return response()->json(['cartItems'=> $cartItems,'success'=>true],200);
         }else{
             return response()->json(['success'=>false,'message'=>'No item in cart'],200);
