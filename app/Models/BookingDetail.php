@@ -13,11 +13,6 @@ class BookingDetail extends Model
         return $this->belongsTo('App\Models\Sightseen','sight_seen_id');
     }
 
-    public function traveler()
-    {
-        return $this->belongsTo('App\Models\TravelerDetail','id');
-    }
-
     public function saveBookingDetail($data, $bookingId)
     {
 
@@ -54,7 +49,7 @@ class BookingDetail extends Model
 
     }
     public function getCartItems($booking){
-        $cartItems = BookingDetail::where('booking_id', $booking->id)->get();
+        $cartItems = BookingDetail::select('booking_details.*','traveler_details.first_name','traveler_details.last_name')->where('booking_id', $booking->id)->leftjoin('traveler_details', 'traveler_details.booking_detail_id','=','booking_details.id')->get();
         $data = array();
         $i = 0;
         foreach($cartItems as $cartItem){
@@ -71,9 +66,9 @@ class BookingDetail extends Model
             $data[$i]['booking_id'] = $cartItem->booking_id;
             $data[$i]['location'] = $cartItem->pickup_location;
             $data[$i]['is_pickup'] = $cartItem->sightseen->pickup ? true : false;
-            $data[$i]['voucher'] = $cartItem->voucher;
-            $data[$i]['traveler']['first_name'] = ($cartItem->traveler ? $cartItem->traveler->first_name : ($booking->user->first_name ? $booking->user->first_name : ''));
-            $data[$i]['traveler']['last_name'] = ($cartItem->traveler ? $cartItem->traveler->last_name : ($booking->user->last_name ? $booking->user->last_name : ''));
+            $data[$i]['voucher'] = $cartItem->voucher; 
+            $data[$i]['traveler']['first_name'] = ($cartItem->first_name ? $cartItem->first_name : ($booking->user->first_name ? $booking->user->first_name : ''));
+            $data[$i]['traveler']['last_name'] = ($cartItem->last_name ? $cartItem->last_name : ($booking->user->last_name ? $booking->user->last_name : ''));
             $i++;
         }
         return $data;
@@ -85,7 +80,7 @@ class BookingDetail extends Model
         $i = 0;
         foreach($bookings as $booking)
         {
-            $query = BookingDetail::where('booking_id', $booking->id)->get();
+            $query = BookingDetail::select('booking_details.*','traveler_details.first_name','traveler_details.last_name')->where('booking_id', $booking->id)->leftjoin('traveler_details', 'traveler_details.booking_detail_id','=','booking_details.id')->get();
             $j = 0;
             $data = array();
             foreach($query as $row){
@@ -102,8 +97,8 @@ class BookingDetail extends Model
                 $data[$j]['voucher'] = $row->voucher;
                 $data[$j]['booking_count'] = $query->count();
                 $data[$j]['booking_total'] = $booking->total_sale_amount;
-                $data[$j]['traveler']['first_name'] = ($row->traveler ? $row->traveler->first_name : ($booking->user->first_name ? $booking->user->first_name :''));
-                $data[$j]['traveler']['last_name'] = ($row->traveler ? $row->traveler->last_name : ($booking->user->last_name ? $booking->user->last_name :''));
+                $data[$j]['traveler']['first_name'] = ($row->first_name ? $row->first_name : ($booking->user->first_name ? $booking->user->first_name :''));
+                $data[$j]['traveler']['last_name'] = ($row->last_name ? $row->last_name : ($booking->user->last_name ? $booking->user->last_name :''));
                 $j++;
             }
             $finalData[$i] = $data;
