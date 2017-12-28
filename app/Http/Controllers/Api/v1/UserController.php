@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request ;
 use Twilio\Rest\Client;
 use App\Models\UsersModel;
+use App\Models\User;
 use App\Models\DeviceToken;
 class UserController extends Controller
 {
@@ -82,5 +83,19 @@ class UserController extends Controller
   {
     DeviceToken::updateOrCreate(['user_id' => $request->user_id],['user_id' => $request->user_id, 'token' => $request->device_token,'platform' => $request->platform]);
     return response()->json(['success' => true],200);
+  }
+
+  public function deleteAccount(Request $request)
+  {
+    try
+    {
+      User::where('id', $request->user_id)->update(['is_deleted' => 1]);
+      DeviceToken::where('user_id', $request->user_id)->delete();
+      return response()->json(['success'=>true,'message'=>'Your account has been deleted successfully'],200);
+    }
+    catch(\Exception $e)
+    {
+      return response()->json(['success'=>false,'message'=>$e->getMessage()], 500);
+    }
   }
 }

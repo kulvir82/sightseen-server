@@ -22,6 +22,7 @@ Route::post('testnotification', function(){
 Route::post('/sendsms','Api\v1\UserController@sendSms');
 Route::get('/getuserdetail', 'Api\v1\UserController@getUserDetail');
 Route::put('/updateuser','Api\v1\UserController@updateUser');
+Route::put('/deleteaccount','Api\v1\UserController@deleteAccount');
 Route::post('/updateprofile','Api\v1\UserController@updateProfile');
 Route::post('/displayprofile','Api\v1\UserController@displayProfile');
 Route::get('/getCityList','CityExplorer@getCity');
