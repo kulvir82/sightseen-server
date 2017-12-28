@@ -35,13 +35,21 @@ Class UserBookingController extends Controller
         $data = $request->booking_detail;
         // return response()->json($data);
         $res = $bookingDetail->updateBookingDetail($data, $request->booking_id);
-        $booking = UserBooking::find($request->booking_id);
-    	$booking->totaldiscount = $res[0];
-    	$booking->total_sale_amount = $res[1];
-        $booking->tax_amount = $request->tax_amount;
-        $booking->save();
+    	
+        if($res)
+        {
+            $booking = UserBooking::find($request->booking_id);
+            $booking->totaldiscount = $res[0];
+    	    $booking->total_sale_amount = $res[1];
+            $booking->tax_amount = $request->tax_amount;
+            $booking->save();
 
-        return response()->json(['booking_id'=>$request->booking_id,'message'=>'Cart successfully updated','success'=>true], 200);
+            return response()->json(['booking_id'=>$request->booking_id,'message'=>'Cart successfully updated','success'=>true], 200);
+        }
+        else
+        {
+            return response()->json(['message'=>'Traveler name cannot be empty','success'=>false], 200);
+        }
     }
     public function getCartItems(Request $request)
     {

@@ -42,7 +42,10 @@ class BookingDetail extends Model
     	        $totalSaleAmount += $finalTotal;
         		BookingDetail::where('id', $req['id'])->update(['booking_id'=> $bookingId,'no_of_pax'=>$req['no_of_pax'],'cost_per_pax'=>$req['cost_per_person'],'total'=> $finalTotal,'booking_time'=>$req['booking_time'],'discount'=>$req['discount'], 'pickup_location' => $req['location']]);
 
-                TravelerDetail::updateOrCreate(['booking_detail_id'=>$req['id']],['first_name'=>$req['traveler']['first_name'], 'last_name' => $req['traveler']['last_name']]);
+                if(!empty($req['traveler']['first_name']) || !empty($req['traveler']['last_name']))
+                    TravelerDetail::updateOrCreate(['booking_detail_id'=>$req['id']],['first_name'=>$req['traveler']['first_name'], 'last_name' => $req['traveler']['last_name']]);
+                else
+                    return false;
     	   }
         }
     	return [$totalDiscount,$totalSaleAmount];
