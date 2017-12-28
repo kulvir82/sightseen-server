@@ -37,9 +37,11 @@ class UsersModel extends Model
   {
     $user = User::where('phone_number', $request->phnum)->first();
     if(count($user))
+    {
       $user->is_deleted = 0;
       $user->save();
       return $user->id;
+    }
     else
       return '';
   }
