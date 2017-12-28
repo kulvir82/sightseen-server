@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/refreshimages','CityExplorer@getImages');
   Route::post('/searchsightseen','CityExplorer@searchSight');
   Route::get('/bookings','UserBookingController@index');
-  Route::get('/getbookingdetail/{booking_id}','UserBookingController@getBookingDetail');
+  Route::get('/getbookingdetail/{id}','UserBookingController@getBookingDetail');
   Route::post('/addTax','CityExplorer@addTax');
   Route::get('/getTax/{country_id}','CityExplorer@getTax');
   Route::post('/addvoucher', 'UserBookingController@addVoucher');

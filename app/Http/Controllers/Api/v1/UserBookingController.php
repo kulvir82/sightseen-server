@@ -16,7 +16,7 @@ Class UserBookingController extends Controller
         if($request->booking_id > 0)
         	$booking = UserBooking::find($request->booking_id);
         else
-        	$booking = UserBooking::create(['userid'=>$request->user_id,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Payment Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
+        	$booking = UserBooking::create(['userid'=>$request->user_id,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
         
         $bookingDetail = new BookingDetail;
         $res = $bookingDetail->saveBookingDetail($request, $booking->id);

@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request ;
 use Twilio\Rest\Client;
 use App\Models\UsersModel;
+use App\Models\DeviceToken;
 class UserController extends Controller
 {
   public function sendSms(Request $request)
@@ -76,4 +77,10 @@ class UserController extends Controller
     return response()->json($user, 200);
   }
 
+
+  public function addDeviceToken(Request $request)
+  {
+    DeviceToken::updateOrCreate(['user_id' => $request->user_id],['user_id' => $request->user_id, 'device_token' => $request->device_token,'platform' => $request->platform]);
+    return response()->json(['success' => true],200);
+  }
 }

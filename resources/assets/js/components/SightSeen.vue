@@ -131,7 +131,7 @@ export default {
           }
         });
         this.setPageState(this.pagination.current_page);
-
+        localStorage.setItem("lastcomponent", JSON.stringify(['sightseen','/getsightseen?page='+this.pagination.current_page+query,"",'get']));
     },
     deleteSightSeen (id){
       var r = confirm("Are you sure you want to delete this sight seen?");

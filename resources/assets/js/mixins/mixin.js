@@ -6,6 +6,7 @@ export const mixin = {
 			countries: [],
 			country: '',
 			city: '',
+			selected_status: '',
 		}
 	},
 	created ()
@@ -31,7 +32,7 @@ export const mixin = {
 		},
 		setPageState (page)
 		{
-			let pagestate = [page,this.country,this.city];
+			let pagestate = [page,this.country,this.city,this.selected_status];
       		localStorage.setItem('pagestate',JSON.stringify(pagestate));
 		},
 		redirectToSightseen: function(){

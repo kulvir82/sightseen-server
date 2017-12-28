@@ -7,9 +7,13 @@
               <option value="">Select Country</option>
               <option v-for="country in countries" :value="country.id">{{country.country_name}}</option>
            </select>
-           <select  id="city" name="city" v-model="city">
+           <select id="city" name="city" v-model="city">
              <option value="">Select City</option>
              <option v-for="city in cities" :value="city.id">{{ city.city_name}}</option>
+           </select>
+           <select id="booking_status" v-model="selected_status">
+            <option value="">Select Status</option>
+            <option v-for="status in ['Pending','Confirmed','Canceled']" :value="status">{{ status }}</option>
            </select>
           <input type="submit" name="report_search"  class="travel_buttons1" @click="searchBookings()" autocomplete="off">
        </td>
@@ -101,13 +105,14 @@
 			getBookings (){
         let query = '';
         if(this.isFilter)
-          query = "&country="+this.country+"&city="+this.city;
+          query = "&country="+this.country+"&city="+this.city+"&status="+this.selected_status;
 
 				this.$http.get('/bookings?page='+this.pagination.current_page+query).then(function(response){
 					this.bookings = response.data.data;
           this.pagination = response.data;
 				});
         this.setPageState(this.pagination.current_page);
+        localStorage.setItem("lastcomponent", JSON.stringify(['bookings','/bookings?page='+this.pagination.current_page+query,"",'get']));
 			},
       redirectToBookingDetail (booking_id){
         this.setPageState(this.pagination.current_page);
@@ -145,6 +150,7 @@
         if(storage_data.length > 0){
           this.country = storage_data[1];
           this.city = storage_data[2];
+          this.selected_status = storage_data[3];
         }
       }
 		}

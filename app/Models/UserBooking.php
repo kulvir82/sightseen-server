@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use PushNotification;
+use App\Models\UserBooking;
+use Illuminate\Contracts\Filesystem\Filesystem;
 
 class UserBooking extends Model
 {
@@ -22,7 +25,7 @@ class UserBooking extends Model
         	
         	$bookingids = BookingDetail::whereIn('sight_seen_id', $sightseenids)->pluck('booking_id');
         
-       		$bookings = UserBooking::with('user')->whereIn('id', $bookingids)->paginate(10);
+       		$bookings = UserBooking::with('user')->whereIn('id', $bookingids);
     	}
         elseif(!empty($request->country) || !empty($request->city))
         {
@@ -30,13 +33,64 @@ class UserBooking extends Model
 
         	$bookingids = BookingDetail::whereIn('sight_seen_id', $sightseenids)->pluck('booking_id');
         
-        	$bookings = UserBooking::with('user')->whereIn('id', $bookingids)->paginate(10);
+        	$bookings = UserBooking::with('user')->whereIn('id', $bookingids);
     	}	
-        else{
-            $bookings = UserBooking::with('user')->paginate(10);
+        else
+        {
+            $bookings = UserBooking::with('user');
         }
 
-        return $bookings;
+        if(!empty($request->status))
+            $bookings = $bookings->where('status', $request->status);
+
+        return $bookings->paginate(10);
+    }
+
+
+    public function addVoucher($request)
+    {
+        $file = $request->file;
+        
+        $s3 = \Storage::disk('s3');
+        
+        $path = "vouchers/".time()."_".$file->getClientOriginalName();
+        
+        try{
+            $s3->put($path, file_get_contents($file), 'public');
+            
+            $url = $s3->url($path);
+            
+            $booking_detail = BookingDetail::where('id', $request->id)->first();
+
+            $booking_detail->voucher = $url;
+
+            $booking_detail->save();
+
+
+            $device = UserBooking::join('device_tokens', 'device_tokens.user_id', '=', 'user_bookings.userid')
+                                    ->select('token','platform')
+                                    ->where('user_bookings.id', $request->booking_id)
+                                    ->first();
+
+            if(count($device) > 0)
+            {
+                if($device->platform == 'ios')
+                    $platform = "IOS";
+                else
+                    $platform = "Android";
+
+                PushNotification::app($platform)
+                ->to($device->token)
+                ->send("Your voucher for ".$booking_detail->sightseen->title." has been added");
+            }    
+
+            return true;
+            
+        }
+        catch(\Exception $e)
+        {
+            return false;
+        }
     }
 }
 

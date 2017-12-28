@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
+// use PushNotification;
+
+// Route::post('testnotification', function(){
+// 	PushNotification::app('IOS')
+//                 ->to(strToLower('A14A8379B450C843A86F13C144CEDFBE2B439142B33B394C094780D90D2048FB'))
+//                 ->send("Your voucher for Chaophraya dinner Cruise on sic has been added");
+// });
+
 Route::post('/sendsms','Api\v1\UserController@sendSms');
 Route::get('/getuserdetail', 'Api\v1\UserController@getUserDetail');
 Route::put('/updateuser','Api\v1\UserController@updateUser');
@@ -36,7 +44,9 @@ Route::put('cancelBooking','Api\v1\UserBookingController@cancelBooking');
 Route::post('payment','Api\v1\PaymentsController@charge');
 Route::post('addfeedback', 'Api\v1\FeedbacksController@store');
 Route::get('feedbacks', 'Api\v1\FeedbacksController@feedbacks');
+Route::post('addtoken', 'Api\v1\UserController@addDeviceToken');
 //
+
 use GuzzleHttp\Client;
 
 Route::get('getCurrency', function(){
@@ -45,6 +55,7 @@ Route::get('getCurrency', function(){
   $response = json_decode((string) $response->getBody(), true);
   return response()->json(['value'=>$response['rates']['INR']],200);
 });
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
