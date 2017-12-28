@@ -15,11 +15,12 @@ class CreateTravelerDetailsTable extends Migration
     {
         Schema::create('traveler_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name',100);
-            $table->string('last_name',100);
+            $table->string('first_name',100)->nullable();
+            $table->string('last_name',100)->nullable();
             $table->integer('booking_detail_id');
             $table->timestamps();
         });
+        
     }
 
     /**
