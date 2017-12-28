@@ -13,13 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-// use PushNotification;
-
-// Route::post('testnotification', function(){
-// 	PushNotification::app('IOS')
-//                 ->to(strToLower('A14A8379B450C843A86F13C144CEDFBE2B439142B33B394C094780D90D2048FB'))
-//                 ->send("Your voucher for Chaophraya dinner Cruise on sic has been added");
-// });
+Route::post('testnotification', function(){
+	PushNotification::app('IOS')
+                ->to(strToLower('A14A8379B450C843A86F13C144CEDFBE2B439142B33B394C094780D90D2048FB'))
+                ->send("Your voucher for Chaophraya dinner Cruise on sic has been added");
+});
 
 Route::post('/sendsms','Api\v1\UserController@sendSms');
 Route::get('/getuserdetail', 'Api\v1\UserController@getUserDetail');

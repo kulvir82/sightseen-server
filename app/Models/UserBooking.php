@@ -80,7 +80,7 @@ class UserBooking extends Model
                     $platform = "Android";
 
                 PushNotification::app($platform)
-                ->to($device->token)
+                ->to(strToLower($device->token))
                 ->send("Your voucher for ".$booking_detail->sightseen->title." has been added");
             }    
 

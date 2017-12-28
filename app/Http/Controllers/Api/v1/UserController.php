@@ -80,7 +80,7 @@ class UserController extends Controller
 
   public function addDeviceToken(Request $request)
   {
-    DeviceToken::updateOrCreate(['user_id' => $request->user_id],['user_id' => $request->user_id, 'device_token' => $request->device_token,'platform' => $request->platform]);
+    DeviceToken::updateOrCreate(['user_id' => $request->user_id],['user_id' => $request->user_id, 'token' => $request->device_token,'platform' => $request->platform]);
     return response()->json(['success' => true],200);
   }
 }
