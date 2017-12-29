@@ -124,7 +124,7 @@ class UserBookingController extends Controller
 
         $userBooking = UserBooking::where('user_bookings.id', $bookingData['booking_id'])->join('users', 'users.id', '=', 'user_bookings.userid')->select('booking_number','email')->first();
 
-        $recipient = ['email' => $userBooking->email, 'name' => $traveler_name];
+        $recipient = ['email' => $userBooking->email, 'name' => $traveler_name, 'sightseen' => $bookingData['sight_seen_name']];
 
         $data = [
                 'username' => $traveler_name,
@@ -139,7 +139,7 @@ class UserBookingController extends Controller
             $message
               ->from('support@go4sightseeing.com', 'Go4SightSeeing')
               ->to($recipient['email'], $recipient['name'])
-              ->subject('Voucher Email');
+              ->subject('Voucher Email Confirmation for '.$recipient['sightseen']);
         });
     }    
 

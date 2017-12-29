@@ -4,7 +4,7 @@ return array(
 
     'IOS' => array(
         'environment' =>'development',
-        'certificate' =>'../apns-go4ss-dev.pem',
+        'certificate' =>'/var/www/apns-go4ss-prod.pem',
         'passPhrase'  =>'go4ss563',
         'service'     =>'apns'
     ),
