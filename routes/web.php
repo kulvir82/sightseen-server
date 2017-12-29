@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 
 Route::get('/', function () { return view('frontview/index'); });
@@ -45,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/addvoucher', 'UserBookingController@addVoucher');
   Route::post('/updatebooking', 'UserBookingController@updateBooking');
   Route::post('/removevoucher', 'UserBookingController@removeVoucher');
+  Route::post('/sendvoucheremail', 'UserBookingController@sendVoucherEmail');
 });
 Route::get('/getcountries','CityExplorer@getCountry');
 Route::post('/getcities','CityExplorer@getCity');
@@ -58,3 +60,13 @@ Route::post('/verifypincode','UsersController@verifyPin');
 Route::get('/addtocart','UsersController@addProductToUsersCart');
 Route::post('/productsdata','CityExplorer@getProductDetail');
 Route::get('/getPopularSightSeen', 'SightSeensController@getPopularSightSeen');
+
+Route::get('/sendmail', function (Request $request) {
+  $attach =  $request->file_url;
+  Mail::send('emails.voucher', ['sightseen'=>'Chaophraya dinner Cruise on sic has been', 'file'=>$attach], function ($message) {
+    $message
+      ->from('support@go4sightseeing.com', 'Go4SightSeeing')
+      ->to('sharmaabhi805@gmail.com', 'Receiver Name')
+      ->subject('Voucher Email');
+  });
+});

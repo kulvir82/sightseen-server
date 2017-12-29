@@ -49,6 +49,7 @@
                     Edit
                   </div>
                   <div @click="removeVoucher(index,booking.id)">Remove</div>
+                  <div class="send_email_btn" @click="sendVoucherEmail(booking)">{{ send_mail }}</div>
                 </template>
                 <template v-else>
                   <input class="voucher_file" type="file" name="file" id="file" @change="addVoucher(index, booking.id, booking.booking_id, $event)">
@@ -69,6 +70,8 @@
 		data (){
 			return {
 				bookings: [],
+        send_mail: 'Send Email',
+        isProcessing: true,
 			}
 		},
 		methods: {
@@ -106,6 +109,18 @@
         this.$http.post('/removevoucher',{'booking_id': booking_id}).then(function(response){
           this.bookings[index].voucher = '';
         });
+      },
+      sendVoucherEmail (booking)
+      {
+        this.send_mail = 'Sending...';
+        if(this.isProcessing)
+        {
+          this.isProcessing = false;
+          this.$http.post('/sendvoucheremail',{'booking':booking}).then( response => {
+            this.isProcessing = true;
+            this.send_mail = 'Send Email';
+          });
+        }
       }
 		},
 		created (){
@@ -135,5 +150,9 @@
   }
   td.form_header2{
     position: relative;
+  }
+  .send_email_btn{
+    color: #444;
+    font-size: 1.2rem;
   }
 </style>

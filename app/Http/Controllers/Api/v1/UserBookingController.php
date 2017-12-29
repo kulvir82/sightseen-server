@@ -23,6 +23,7 @@ Class UserBookingController extends Controller
         
         $booking->totaldiscount += $res[0];
         $booking->total_sale_amount += $res[1];
+        $booking->booking_number = str_random(10);
         $booking->save();
 
         return response()->json(['booking_id'=>$booking->id,'message'=>'Item successfully added to cart','success'=>true], 201);
