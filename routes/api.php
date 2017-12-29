@@ -20,6 +20,7 @@ Route::post('testnotification', function(){
 });
 
 Route::post('/sendsms','Api\v1\UserController@sendSms');
+Route::get('/getcodebycall', 'Api\v1\UserController@getCodeByCall');
 Route::get('/getuserdetail', 'Api\v1\UserController@getUserDetail');
 Route::put('/updateuser','Api\v1\UserController@updateUser');
 Route::put('/deleteaccount','Api\v1\UserController@deleteAccount');

@@ -8,22 +8,32 @@ use App\Models\User;
 use App\Models\DeviceToken;
 class UserController extends Controller
 {
+
+  protected $sid;
+  protected $token;
+  protected $twilioNumber;
+
+  public function __construct()
+  {
+    $this->sid = env('TWILIO_ACCOUNT_SID');
+    $this->token = env('TWILIO_AUTH_TOKEN');
+    $this->twilioNumber = env('TWILIO_NUMBER');
+  }
+
   public function sendSms(Request $request)
   {
     $model = new UsersModel;
     
     $pindigits = 4;
+
     $data = array();
-    
-    $sid = env('TWILIO_ACCOUNT_SID');
-    $token = env('TWILIO_AUTH_TOKEN');
-    $twilioNumber = env('TWILIO_NUMBER');
     
     $pin = $this->generatePIN($pindigits);
     
-    $client = new Client($sid, $token);
+    $client = new Client($this->sid, $this->token);
     
     $id = $model->ExistingUser($request);
+
     $data['new_user'] = false;
     
     if(empty($id)){
@@ -37,7 +47,7 @@ class UserController extends Controller
           '+'.$request->phnum,
           array(
               // A Twilio phone number you purchased at twilio.com/console
-              'from' => $twilioNumber,
+              'from' => $this->twilioNumber,
               // the body of the text message you'd like to send
               'body' => $pin
           )
@@ -45,7 +55,7 @@ class UserController extends Controller
     }
     catch(\Exception $e)
     {
-      return response()->json("Something went wrong, Try again");
+      return response()->json($e->getMessage());
     }
     
     $data['id'] = $id;
@@ -53,6 +63,34 @@ class UserController extends Controller
     
     return response()->json($data);
   }
+
+  public function getCodeByCall(Request $request)
+  {
+    $digit = implode(" ", str_split($request->sms_code));
+
+    $message = "Your verification code is $digit";
+    
+    $client = new Client($this->sid, $this->token);
+
+    try
+    {
+      $client->calls->create(
+            // the number you'd like to send the message to
+            '+'.$request->phnum,
+            
+            $this->twilioNumber,
+                // the body of the text message you'd like to send
+            array('url' => 'http://twimlets.com/message?Message='.urlencode($message))
+        );
+
+      return response()->json(['success'=>true],200);
+    }
+    catch(\Exception $e)
+    {
+      return response()->json(['success'=>true, 'message'=>'Something went wrong, Try again', 'error'=> $e->getMessage()],200);
+    }
+  }
+
   public function generatePIN($digits)
   {
     $i = 0; //counter
