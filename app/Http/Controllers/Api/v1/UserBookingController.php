@@ -18,7 +18,7 @@ Class UserBookingController extends Controller
         else{
 					//need the 10digit random booking number as well as booking number does not have defualt value
 					$booking_number = str_random(10);
-					$booking = UserBooking::create(['userid'=>$request->user_id,'booking_number'->$booking_number,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
+					$booking = UserBooking::create(['userid'=>$request->user_id,'booking_number'=>$booking_number,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
 
 				}
 
