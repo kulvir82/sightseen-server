@@ -9,21 +9,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 Class UserBookingController extends Controller
 {
-	
+
 	// save user bookings
 	public function store(Request $request)
     {
         if($request->booking_id > 0)
         	$booking = UserBooking::find($request->booking_id);
-        else
-        	$booking = UserBooking::create(['userid'=>$request->user_id,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
-        
+        else{
+					//need the 10digit random booking number as well as booking number does not have defualt value
+					$booking_number = str_random(10);
+					$booking = UserBooking::create(['userid'=>$request->user_id,'booking_number'->$booking_number,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
+
+				}
+
         $bookingDetail = new BookingDetail;
         $res = $bookingDetail->saveBookingDetail($request, $booking->id);
-        
+
         $booking->totaldiscount += $res[0];
         $booking->total_sale_amount += $res[1];
-        $booking->booking_number = str_random(10);
         $booking->save();
 
         return response()->json(['booking_id'=>$booking->id,'message'=>'Item successfully added to cart','success'=>true], 201);
@@ -31,12 +34,12 @@ Class UserBookingController extends Controller
 
     public function update(Request $request)
     {
-    	
+
     	$bookingDetail = new BookingDetail;
         $data = $request->booking_detail;
         // return response()->json($data);
         $res = $bookingDetail->updateBookingDetail($data, $request->booking_id);
-    	
+
         $booking = UserBooking::find($request->booking_id);
         $booking->totaldiscount = $res[0];
 	    $booking->total_sale_amount = $res[1];
@@ -44,7 +47,7 @@ Class UserBookingController extends Controller
         $booking->save();
 
         return response()->json(['booking_id'=>$request->booking_id,'message'=>'Cart successfully updated','success'=>true], 200);
-        
+
     }
     public function getCartItems(Request $request)
     {
@@ -88,7 +91,7 @@ Class UserBookingController extends Controller
     public function getTax(Request $request)
     {
         return response()->json(['tax'=>10,'success'=>true],200);
-    }  
+    }
 
     public function getBookings(Request $request)
     {
@@ -102,8 +105,8 @@ Class UserBookingController extends Controller
     {
         UserBooking::where('id', $request->id)->update(['status'=>'Canceled']);
         return response()->json(['message'=>'Booking canceled successfully','success'=>true],200);
-    } 
+    }
 }
 
-	
+
 ?>
