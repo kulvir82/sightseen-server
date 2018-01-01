@@ -14,8 +14,8 @@ class AddLatLngColumn extends Migration
     public function up()
     {
         Schema::table('ce_sightseen', function (Blueprint $table){
-            $table->float('latitude');
-            $table->float('longitude');
+            $table->float('latitude',12,8);
+            $table->float('longitude',12,8);
         });
 
         Schema::table('user_bookings', function (Blueprint $table){
