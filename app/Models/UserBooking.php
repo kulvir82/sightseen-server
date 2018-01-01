@@ -55,7 +55,7 @@ class UserBooking extends Model
         
         $path = "vouchers/".time()."_".$file->getClientOriginalName();
         
-        try{
+        // try{
             $s3->put($path, file_get_contents($file), 'public');
             
             $url = $s3->url($path);
@@ -75,22 +75,31 @@ class UserBooking extends Model
             if(count($device) > 0)
             {
                 if($device->platform == 'ios')
-                    $platform = "IOS";
+                    $platform = "apn";
                 else
-                    $platform = "Android";
+                    $platform = "gcm";
 
-                PushNotification::app($platform)
-                ->to(strToLower($device->token))
-                ->send("Your voucher for ".$booking_detail->sightseen->title." has been added");
+                $push = PushNotification::setService($platform);
+                $push->setMessage([
+                        'aps' => [
+                            'alert' => [
+                                'title' => 'Voucher Confirmation',
+                                'body' => '"Your voucher for ".$booking_detail->sightseen->title." has been added"'
+                            ],
+                            'sound' => 'default'
+                        ]
+                    ])
+                    ->setDevicesToken($device->token)    
+                    ->send();
             }    
 
             return true;
             
-        }
-        catch(\Exception $e)
-        {
-            return false;
-        }
+        // }
+        // catch(\Exception $e)
+        // {
+        //     return false;
+        // }
     }
 }
 
