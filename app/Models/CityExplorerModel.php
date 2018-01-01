@@ -131,6 +131,8 @@ class CityExplorerModel extends Model
         $data[$i]['pickup'] = $sightseen->pickup;
         $data[$i]['country_name'] = $sightseen->country_name;
         $data[$i]['city_name'] = $sightseen->city_name;
+        $data[$i]['latitude'] = $sightseen->latitude;
+        $data[$i]['longitude'] = $sightseen->longitude;
         $data[$i]['city_id'] = $sightseen->city_id;
         $data[$i]['country_id'] = $sightseen->country_id;
         $data[$i]['comment_count'] = $sightseen->feedbacks->count();
