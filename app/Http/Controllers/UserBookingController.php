@@ -39,10 +39,11 @@ class UserBookingController extends Controller
         
         $res = $bookingModel->addVoucher($request);
 
-        if($res)
-            return response()->json("Voucher added successfully.", 200);
+        if($res['error']!='')
+            return response()->json($res['error'], 500);
+            
         else
-            return response()->json("Error while adding voucher. Try again", 500);
+            return response()->json("Voucher added successfully.", 200);
     }
 
 

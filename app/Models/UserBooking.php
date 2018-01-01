@@ -55,7 +55,7 @@ class UserBooking extends Model
         
         $path = "vouchers/".time()."_".$file->getClientOriginalName();
         
-        // try{
+        try{
             $s3->put($path, file_get_contents($file), 'public');
             
             $url = $s3->url($path);
@@ -93,13 +93,13 @@ class UserBooking extends Model
                     ->send();
             }    
 
-            return true;
+            return ['error'=>''];
             
-        // }
-        // catch(\Exception $e)
-        // {
-        //     return false;
-        // }
+        }
+        catch(\Exception $e)
+        {
+            return ['error'=>$e];
+        }
     }
 }
 
