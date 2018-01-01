@@ -163,8 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
-        // 'Davibennun\LaravelPushNotification\LaravelPushNotificationServiceProvider',
-        Edujugon\PushNotification\Providers\PushNotificationServiceProvider::class,
+        'Davibennun\LaravelPushNotification\LaravelPushNotificationServiceProvider',
         /*
          * Package Service Providers...
          */
@@ -231,8 +230,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
-        // 'PushNotification' => 'Davibennun\LaravelPushNotification\Facades\PushNotification',
-        'PushNotification' => Edujugon\PushNotification\Facades\PushNotification::class,
+        'PushNotification' => 'Davibennun\LaravelPushNotification\Facades\PushNotification',
     ],
 
 ];
