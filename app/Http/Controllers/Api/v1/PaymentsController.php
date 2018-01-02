@@ -19,12 +19,12 @@ class PaymentsController extends Controller
 
         Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
-        try{
+        try
+        {
+        	$user = User::find($request->payment['user_id']);
 
 	        if($request->payment['stripe_token'])
 	        {
-
-	        	$user = User::find($request->payment['user_id']);
 	        	
 	        	$customer = Customer::create(array(
 		            'email' => $user->email,
@@ -50,7 +50,28 @@ class PaymentsController extends Controller
 	            'currency' => 'usd'
 	        ));
 
-	        UserBooking::where('id',$request->payment['booking_id'])->update(['card_no'=>$request->payment['card_no'],'status'=>'Confirmed','payment_status'=>'Success']);
+	        $booking = UserBooking::find($request->payment['booking_id']);
+	        $booking->card_no = $request->payment['card_no'];
+	        $booking->status = 'Confirmed';
+	        $booking->payment_status = 'Success';
+	        $booking->save();
+
+	        // $recipient = ['email'=>$user->email,'name'=>$user->first_name.' '.$user->last_name,'booking_id'=>$booking_booking_number];
+
+	        // $booking_detail = BookingDetail::where('booking_id', $booking->id)
+	        // 				->select('no_of_pax',DB::raw("DATE_FORMAT(booking_time, '%Y-%m-%d') as booking_date"),'title','first_name','last_name')
+	        // 				->leftjoin('ce_sightseen','ce_sightseen.id','=','booking_details.sight_seen_id')
+	        // 				->leftjoin('traveler_details','traveler_details.booking_detail_id','=','booking_details.id')
+	        // 				->get()->toArray();
+
+	        // $data = ['booking_detail'=>$booking_detail,'booking_number'=>$booking->booking_number];				
+
+	        // Mail::send('emails.booking', $data, function ($message) use($recipient) {
+         //    $message
+         //      ->from('support@go4sightseeing.com', 'Go4SightSeeing')
+         //      ->to($recipient['email'], $recipient['name'])
+         //      ->subject('Your Booking in Processing with Booking ID : '.$recipient['booking_id']]);
+        	// });
 
 	        return response()->json(['message'=>"Payment Succssefully done",'success'=>true]);
 

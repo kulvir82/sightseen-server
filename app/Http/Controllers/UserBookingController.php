@@ -54,6 +54,42 @@ class UserBookingController extends Controller
         return response()->json("Voucher removed successfully.", 200);
     }
 
+    public function sendVoucherEmail(Request $request)
+    {
+
+        $bookingData = $request->booking;
+
+        $traveler_name = $bookingData['traveler']['first_name']." ".$bookingData['traveler']['last_name'];
+
+        $userBooking = UserBooking::where('user_bookings.id', $bookingData['booking_id'])->join('users', 'users.id', '=', 'user_bookings.userid')->select('booking_number','email')->first();
+
+        $recipient = ['email' => $userBooking->email, 'name' => $traveler_name, 'sightseen' => $bookingData['sight_seen_name']];
+
+        $data = [
+                'username' => $traveler_name,
+                'sightseen' => $bookingData['sight_seen_name'],
+                'persons' => $bookingData['no_of_pax'],
+                'date' => $bookingData['booking_date'],
+                'booking_number' => $userBooking->booking_number,
+                'attachment' => $bookingData['voucher']
+            ];
+
+        Mail::send('emails.voucher', $data, function ($message) use($recipient) {
+            $message
+              ->from('support@go4sightseeing.com', 'Go4SightSeeing')
+              ->to($recipient['email'], $recipient['name'])
+              ->subject('Voucher Email Confirmation for '.$recipient['sightseen']);
+        });
+    }    
+
+    public function updateBooking(Request $request)
+    {
+        UserBooking::where('id', $request->booking_id)->update(['status'=>$request->status]);
+        
+
+        return response()->json("Successfully updated");
+    }
+
     // public function sendVoucherEmail(Request $request)
     // {
 
@@ -115,41 +151,5 @@ class UserBookingController extends Controller
     //     }
 
     // }
-
-    public function sendVoucherEmail(Request $request)
-    {
-
-        $bookingData = $request->booking;
-
-        $traveler_name = $bookingData['traveler']['first_name']." ".$bookingData['traveler']['last_name'];
-
-        $userBooking = UserBooking::where('user_bookings.id', $bookingData['booking_id'])->join('users', 'users.id', '=', 'user_bookings.userid')->select('booking_number','email')->first();
-
-        $recipient = ['email' => $userBooking->email, 'name' => $traveler_name, 'sightseen' => $bookingData['sight_seen_name']];
-
-        $data = [
-                'username' => $traveler_name,
-                'sightseen' => $bookingData['sight_seen_name'],
-                'persons' => $bookingData['no_of_pax'],
-                'date' => $bookingData['booking_date'],
-                'booking_number' => $userBooking->booking_number,
-                'attachment' => $bookingData['voucher']
-            ];
-
-        Mail::send('emails.voucher', $data, function ($message) use($recipient) {
-            $message
-              ->from('support@go4sightseeing.com', 'Go4SightSeeing')
-              ->to($recipient['email'], $recipient['name'])
-              ->subject('Voucher Email Confirmation for '.$recipient['sightseen']);
-        });
-    }    
-
-    public function updateBooking(Request $request)
-    {
-        UserBooking::where('id', $request->booking_id)->update(['status'=>$request->status]);
-        
-
-        return response()->json("Successfully updated");
-    }
 
 }
