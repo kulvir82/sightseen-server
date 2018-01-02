@@ -102,7 +102,7 @@ class BookingDetail extends Model
                 $data[$j]['traveler']['last_name'] = ($row->last_name ? $row->last_name : ($booking->user->last_name ? $booking->user->last_name :''));
                 $j++;
             }
-            $finalData[$i] = $data;
+            $finalData[$i]['booking_detail'] = $data;
             $i++;
         }
         return $finalData;
