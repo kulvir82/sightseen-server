@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Mail\PaymentIsDone;
+use Mail;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Customer;
@@ -25,7 +27,7 @@ class PaymentsController extends Controller
 
 	        if($request->payment['stripe_token'])
 	        {
-	        	
+
 	        	$customer = Customer::create(array(
 		            'email' => $user->email,
 		            'source'  => $request->payment['stripe_token']
@@ -56,26 +58,25 @@ class PaymentsController extends Controller
 	        $booking->payment_status = 'Success';
 	        $booking->save();
 
-	        // $recipient = ['email'=>$user->email,'name'=>$user->first_name.' '.$user->last_name,'booking_id'=>$booking_booking_number];
+	        $recipient = ['email'=>$user->email,'name'=>$user->first_name.' '.$user->last_name,'booking_id'=>$booking_booking_number];
 
-	        // $booking_detail = BookingDetail::where('booking_id', $booking->id)
-	        // 				->select('no_of_pax',DB::raw("DATE_FORMAT(booking_time, '%Y-%m-%d') as booking_date"),'title','first_name','last_name')
-	        // 				->leftjoin('ce_sightseen','ce_sightseen.id','=','booking_details.sight_seen_id')
-	        // 				->leftjoin('traveler_details','traveler_details.booking_detail_id','=','booking_details.id')
-	        // 				->get()->toArray();
+	        $booking_detail = BookingDetail::where('booking_id', $booking->id)
+	        				->select('no_of_pax',DB::raw("DATE_FORMAT(booking_time, '%Y-%m-%d') as booking_date"),'title','first_name','last_name')
+	        				->leftjoin('ce_sightseen','ce_sightseen.id','=','booking_details.sight_seen_id')
+	        				->leftjoin('traveler_details','traveler_details.booking_detail_id','=','booking_details.id')
+	        				->get()->toArray();
 
-	        // $data = ['booking_detail'=>$booking_detail,'booking_number'=>$booking->booking_number];				
+	        $data = ['booking_detail'=>'122342342344','booking_number'=>'qwehwyewbbryw1321'];
 
-	        // Mail::send('emails.booking', $data, function ($message) use($recipient) {
-         //    $message
-         //      ->from('support@go4sightseeing.com', 'Go4SightSeeing')
-         //      ->to($recipient['email'], $recipient['name'])
-         //      ->subject('Your Booking in Processing with Booking ID : '.$recipient['booking_id']]);
-        	// });
+	        Mail::queue(new PaymentIsDone, $data, function ($message) {
+            $message
+              ->to('dhindsa.saab38@gmail.com', 'navinder')
+              ->subject('Your Booking in Processing with Booking ID : '.$recipient['booking_id']);
+        	});
 
 	        return response()->json(['message'=>"Payment Succssefully done",'success'=>true]);
 
-        } 
+        }
 
         catch (\Exception $ex) {
 
