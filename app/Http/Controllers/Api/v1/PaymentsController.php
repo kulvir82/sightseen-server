@@ -66,11 +66,11 @@ class PaymentsController extends Controller
 	        				->leftjoin('traveler_details','traveler_details.booking_detail_id','=','booking_details.id')
 	        				->get()->toArray();
 
-	        $data = ['booking_detail'=>'122342342344','booking_number'=>'qwehwyewbbryw1321'];
+	        $data = ['booking_detail'=> $booking_detail, 'booking_number'=> $booking->booking_number];
 
 	        Mail::queue(new PaymentIsDone, $data, function ($message) {
             $message
-              ->to('dhindsa.saab38@gmail.com', 'navinder')
+              ->to($recipient['email'], $recipient['name'])
               ->subject('Your Booking in Processing with Booking ID : '.$recipient['booking_id']);
         	});
 
