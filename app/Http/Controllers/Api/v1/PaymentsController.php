@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Mail\PaymentIsDone;
 use Mail;
+use DB;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Customer;
@@ -11,6 +12,7 @@ use Stripe\Charge;
 use App\Models\User;
 use App\Models\UserCard;
 use App\Models\UserBooking;
+use App\Models\BookingDetail;
 use App\Http\Controllers\Controller;
 
 
@@ -68,8 +70,8 @@ class PaymentsController extends Controller
 
 	        $data = ['booking_detail'=> $booking_detail, 'booking_number'=> $booking->booking_number];
 
-	        Mail::queue(new PaymentIsDone, $data, function ($message) {
-            $message
+	        Mail::send('emails.booking', $data, function ($message) use($recipient) {
+            $message->from('support@go4sightseeing.com', 'Go4SightSeeing')
               ->to($recipient['email'], $recipient['name'])
               ->subject('Your Booking in Processing with Booking ID : '.$recipient['booking_id']);
         	});

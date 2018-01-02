@@ -30,7 +30,6 @@
         margin: 10px 0;
     }
     .order_info_header{
-        height: 40px;
         background: #f00;
         padding-left: 20px;
         color: #fff;
@@ -52,7 +51,7 @@
                 <p>Thanks for your order on Go4SightSeeing!</p>
 	            <p class="red">We are in the midst of processing your order. Thank you for your patience!</p>
 	            <h5>Booking NO.</h5>
-                <h2>{{ 17KK122958823 }}</h2>
+                <h2>{{ $booking_number }}</h2>
 	        </div>
             <div class="order_detail order_info_detail">
                 <div class="order_info_header">
@@ -63,7 +62,7 @@
                         <p> Travel Date: {{ $booking['booking_date'] }} </p>
                         <p> <b> {{ $booking['title'] }} </b> </p>
                         <p> {{ $booking['first_name'] }} {{ $booking['last_name'] }} </p>
-                        <p> {{ $bookings['no_of_pax'] }} Traveler </p>
+                        <p> {{ $booking['no_of_pax'] }} Traveler </p>
                         </br>
                     @endforeach
                 </div>
