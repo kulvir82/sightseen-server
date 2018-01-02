@@ -58,7 +58,7 @@ class PaymentsController extends Controller
 	        $booking->payment_status = 'Success';
 	        $booking->save();
 
-	        $recipient = ['email'=>$user->email,'name'=>$user->first_name.' '.$user->last_name,'booking_id'=>$booking_booking_number];
+	        $recipient = ['email'=>$user->email,'name'=>$user->first_name.' '.$user->last_name,'booking_id'=>$booking->booking_number];
 
 	        $booking_detail = BookingDetail::where('booking_id', $booking->id)
 	        				->select('no_of_pax',DB::raw("DATE_FORMAT(booking_time, '%Y-%m-%d') as booking_date"),'title','first_name','last_name')
