@@ -95,7 +95,7 @@ Class UserBookingController extends Controller
 
     public function getBookings(Request $request)
     {
-        $bookings = UserBooking::where('userid', $request->id)->where('status', '!=', 'Payment Pending')->get();
+        $bookings = UserBooking::where('userid', $request->id)->where('status', '!=', 'Payment Pending')->latest()->take(25)->get();
         $bookingDetail = new BookingDetail;
         $allBookings = $bookingDetail->getBookings($bookings);
         return response()->json(['bookings'=>$allBookings,'success'=>true], 200);
