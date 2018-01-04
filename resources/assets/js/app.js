@@ -52,6 +52,7 @@ import AboutUs from './components/AboutUs.vue';
 import ContactUs from './components/ContactUs.vue';
 import TermsConditions from './components/Terms&Conditions.vue';
 import Support from './components/Support.vue';
+import PrivacyPolicy from './components/PrivacyPolicy.vue';
 
 
 
@@ -83,6 +84,7 @@ const router = new VueRouter({
       { path: '/contactus', component: ContactUs, name: 'contactus' },
       { path: '/termsconditions', component: TermsConditions, name: 'termsconditions' },
       { path: '/support', component: Support, name: 'support' },
+      { path: '/privacypolicy', component: PrivacyPolicy, name: 'privacypolicy' },
     ],
     history: true,
     saveScrollPosition: false,

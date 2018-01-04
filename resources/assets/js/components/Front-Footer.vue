@@ -25,7 +25,11 @@
               </ul>
             </div>
             <div class="col-lg-4 col-md-4">
-
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#termsconditions" v-on:click="redirectToPrivacyPolicy()">Privacy Policy</a>
+                  </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -73,6 +77,9 @@ export default {
     },
     redirectToSupport:function(){
       this.$router.push({ name: 'support'});
+    },
+    redirectToPrivacyPolicy:function(){
+      this.$router.push({ name: 'privacypolicy'});
     },
   }
 
