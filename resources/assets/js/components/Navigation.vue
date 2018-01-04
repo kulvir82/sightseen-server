@@ -10,7 +10,7 @@
           </router-link> -->
           <li><a href="javascript:void(0)" @click="redirectToBookings($event)">Bookings</a></li>
           <li><a href="javascript:void(0)" @click="redirectToSettings($event)">Settings</a></li>
-          <li><a href="logout">Logout</a></li>
+          <li><a href="javascript:void(0)" @click="logout()">Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -47,6 +47,10 @@ export default {
       var view  = ['settings','','','get'];
       bus.$emit('open-view',view);
       localStorage.removeItem('pagestate');
+    },
+    logout (){
+      localStorage.clear();
+      window.location.href = '/logout';
     }
   }
 }
