@@ -18,7 +18,7 @@ Class UserBookingController extends Controller
         else{
 					//need the 10digit random booking number as well as booking number does not have defualt value
 					$booking_number = str_random(10);
-					$booking = UserBooking::create(['userid'=>$request->user_id,'booking_number'=>$booking_number,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
+					$booking = UserBooking::create(['userid'=>$request->user_id,'booking_number'=>$booking_number,'total_sale_amount'=>0,'card_no'=>$request->booking_detail['card_no'],'status'=>'Payment Pending','payment_status'=>'Pending','totaldiscount'=>0,'total_cost'=>0,'tax_amount' => 0]);
 
 				}
 
@@ -52,7 +52,7 @@ Class UserBookingController extends Controller
     public function getCartItems(Request $request)
     {
         $userId = $request->id;
-        $booking = UserBooking::where('userid', $userId)->where('status', '!=','Confirmed')->first();
+        $booking = UserBooking::where('userid', $userId)->where('status', 'Payment Pending')->first();
         if(count($booking) > 0){
             $bookingDetail = new BookingDetail;
             $cartItems = $bookingDetail->getCartItems($booking);
@@ -72,7 +72,7 @@ Class UserBookingController extends Controller
         {
             $card_no = $cards->card_no;
         }
-        $booking = UserBooking::where('userid', $userId)->where('status', '!=','Confirmed')->first();
+        $booking = UserBooking::where('userid', $userId)->where('status', 'Payment Pending')->first();
         if(count($booking) > 0){
             $cartCount = BookingDetail::where('booking_id',$booking->id)->count();
             return response()->json(['booking_id'=>$booking->id,'cart_count'=> $cartCount,'card_no'=>$card_no],200);
@@ -95,7 +95,7 @@ Class UserBookingController extends Controller
 
     public function getBookings(Request $request)
     {
-        $bookings = UserBooking::where('userid', $request->id)->where('status','Confirmed')->get();
+        $bookings = UserBooking::where('userid', $request->id)->where('status', '!=', 'Payment Pending')->get();
         $bookingDetail = new BookingDetail;
         $allBookings = $bookingDetail->getBookings($bookings);
         return response()->json(['bookings'=>$allBookings,'success'=>true], 200);

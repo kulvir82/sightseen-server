@@ -13,7 +13,7 @@
            </select>
            <select id="booking_status" v-model="selected_status">
             <option value="">Select Status</option>
-            <option v-for="status in ['Pending','Confirmed','Canceled']" :value="status">{{ status }}</option>
+            <option v-for="status in ['Payment Pending','Voucher Pending','Confirmed','Canceled']" :value="status">{{ status }}</option>
            </select>
           <input type="submit" name="report_search"  class="travel_buttons1" @click="searchBookings()" autocomplete="off">
        </td>
@@ -27,6 +27,9 @@
           <tr>
             <td class="form_header" align="left">
               Sr.No.
+            </td>
+            <td class="form_header" align="left">
+              Booking No.
             </td>
             <td class="form_header" align="left">
               Username
@@ -52,13 +55,14 @@
           </tr>
           <tr v-for="(booking, index) in bookings">
               <td class="form_header2">{{ index | indexCount(pagination.current_page) }}</td>
+              <td class="form_header2">{{ booking.booking_number }}</td>
               <td class="form_header2">{{ booking.user.username }}</td>
               <td class="form_header2">{{ booking.total_sale_amount }}</td>
               <td class="form_header2">{{ booking.totaldiscount }}</td>
               <td class="form_header2">{{ booking.tax_amount }}</td>
               <td class="form_header2">
                 <select @change="changeBookingStatus(booking.id, $event)">
-                  <option v-for="status in ['Confirmed','Canceled','Pending']" :selected="status==booking.status">{{ status}}</option>
+                  <option v-for="status in ['Payment Pending','Voucher Pending','Confirmed','Canceled']" :selected="status==booking.status">{{ status}}</option>
                 </select>
               </td>
               <td class="form_header2">{{ booking.payment_status }}</td>
@@ -131,6 +135,7 @@
         this.pagination.current_page = 1;
         this.country = '';
         this.city = '';
+        this.selected_status = '';
         this.isFilter = false;
         this.getBookings();
       },

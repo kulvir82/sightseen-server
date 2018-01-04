@@ -56,7 +56,7 @@ class PaymentsController extends Controller
 
 	        $booking = UserBooking::find($request->payment['booking_id']);
 	        $booking->card_no = $request->payment['card_no'];
-	        $booking->status = 'Confirmed';
+	        $booking->status = 'Voucher Pending';
 	        $booking->payment_status = 'Success';
 	        $booking->save();
 
@@ -79,7 +79,6 @@ class PaymentsController extends Controller
 	        return response()->json(['message'=>"Payment Succssefully done",'success'=>true]);
 
         }
-
         catch (\Exception $ex) {
 
     		return response()->json(['message'=>$ex->getMessage(),'success'=>false]);

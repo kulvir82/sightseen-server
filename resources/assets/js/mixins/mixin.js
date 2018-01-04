@@ -54,10 +54,14 @@ export const mixin = {
 				if(storage_data.length > 0)
 				{
 					let query = '';
-		          	if(storage_data[2])
-		            	query = "&country="+storage_data[1]+"&city="+storage_data[2];
+		          	if(storage_data[1])
+		            	query = "&country="+storage_data[1];
+		            if(storage_data[2])
+		            	query += "&city="+storage_data[2];
+		            if(storage_data[3])
+		            	query += "&status="+storage_data[3];
 					
-					var view  = ['bookings','/bookings?page='+storage_data[0]+"&country="+storage_data[1]+"&city="+storage_data[2],'','get'];
+					var view  = ['bookings','/bookings?page='+storage_data[0]+query,'','get'];
 					bus.$emit('open-view',view);
 				}
 	      	}

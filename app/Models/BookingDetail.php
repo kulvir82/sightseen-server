@@ -86,7 +86,7 @@ class BookingDetail extends Model
             $data = array();
             foreach($query as $row){
                 $data[$j]['id'] = $row->id;
-                $data[$j]['sight_seen_name'] = $row->sightseen->title;
+                $data[$j]['sight_seen_name'] = $row->sightseen ? $row->sightseen->title : 'Sightseen not Available';
                 $data[$j]['sightseen_id'] = $row->sight_seen_id;
                 $data[$j]['no_of_pax'] = $row->no_of_pax;
                 $data[$j]['cost_per_person'] = $row->cost_per_pax;
@@ -94,7 +94,7 @@ class BookingDetail extends Model
                 $data[$j]['booking_date'] = date("Y-m-d",strtotime($row->booking_time));
                 $data[$j]['booking_id'] = $row->booking_id;
                 $data[$j]['location'] = $row->pickup_location;
-                $data[$j]['is_pickup'] = $row->sightseen->pickup ? true : false;
+                $data[$j]['is_pickup'] = $row->sightseen ? ($row->sightseen->pickup ? true : false) : false;
                 $data[$j]['voucher'] = $row->voucher;
                 $data[$j]['booking_count'] = $query->count();
                 $data[$j]['booking_total'] = $booking->total_sale_amount;

@@ -67,6 +67,11 @@ class UserBooking extends Model
             $booking_detail->save();
 
 
+            $exists = BookingDetail::where('booking_id', $request->booking_id)->whereNull('voucher')->exists();
+
+            if(!$exists)
+                UserBooking::where('id', $request->booking_id)->update(['status' => 'Confirmed']);
+
             $device = UserBooking::join('device_tokens', 'device_tokens.user_id', '=', 'user_bookings.userid')
                                     ->select('token','platform')
                                     ->where('user_bookings.id', $request->booking_id)

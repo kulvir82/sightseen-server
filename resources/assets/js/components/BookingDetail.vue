@@ -48,7 +48,7 @@
                     <input class="voucher_file" type="file" name="file" id="file" @change="addVoucher(index, booking.id, booking.booking_id, $event)">
                     Edit
                   </div>
-                  <div @click="removeVoucher(index,booking.id)">Remove</div>
+                  <div @click="removeVoucher(index,booking.id,booking.booking_id)">Remove</div>
                   <div class="send_email_btn" @click="sendVoucherEmail(booking)">{{ send_mail }}</div>
                 </template>
                 <template v-else>
@@ -105,8 +105,8 @@
           vm.bookings[index].voucher = '';
         });
       },
-      removeVoucher (index,booking_id){
-        this.$http.post('/removevoucher',{'booking_id': booking_id}).then(function(response){
+      removeVoucher (index,id,booking_id){
+        this.$http.post('/removevoucher',{'id': id, 'booking_id': booking_id}).then(function(response){
           this.bookings[index].voucher = '';
         });
       },

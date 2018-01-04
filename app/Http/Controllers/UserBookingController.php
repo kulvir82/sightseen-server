@@ -49,7 +49,9 @@ class UserBookingController extends Controller
 
     public function removeVoucher(Request $request)
     {
-        BookingDetail::where('id', $request->booking_id)->update(['voucher'=> '']);
+        BookingDetail::where('id', $request->id)->update(['voucher'=> null]);
+
+        UserBooking::where('id', $request->booking_id)->update(['status'=> 'Voucher Pending']);
         
         return response()->json("Voucher removed successfully.", 200);
     }
