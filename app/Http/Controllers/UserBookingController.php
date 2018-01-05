@@ -72,7 +72,7 @@ class UserBookingController extends Controller
                 'sightseen' => $bookingData['sight_seen_name'],
                 'persons' => $bookingData['no_of_pax'],
                 'date' => $bookingData['booking_date'],
-                'booking_number' => $userBooking->booking_number,
+                'booking_number' => strtoupper($userBooking->booking_number),
                 'attachment' => $bookingData['voucher']
             ];
 

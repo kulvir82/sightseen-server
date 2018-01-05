@@ -68,12 +68,12 @@ class PaymentsController extends Controller
 	        				->leftjoin('traveler_details','traveler_details.booking_detail_id','=','booking_details.id')
 	        				->get()->toArray();
 
-	        $data = ['booking_detail'=> $booking_detail, 'booking_number'=> $booking->booking_number];
+	        $data = ['booking_detail'=> $booking_detail, 'booking_number'=> strtoupper($booking->booking_number)];
 
 	        Mail::send('emails.booking', $data, function ($message) use($recipient) {
             $message
               ->to($recipient['email'], $recipient['name'])
-              ->subject('Your Booking in Processing with Booking ID : '.$recipient['booking_id']);
+              ->subject('Your Booking in Processing with Booking ID : '.strtoupper($recipient['booking_id']));
         	});
 
 	        return response()->json(['message'=>"Payment Succssefully done",'success'=>true]);
