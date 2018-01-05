@@ -98,7 +98,7 @@ class BookingDetail extends Model
                 $data[$j]['voucher'] = $row->voucher;
                 $data[$j]['booking_count'] = $query->count();
                 $data[$j]['booking_total'] = $booking->total_sale_amount;
-                $data[$j]['booking_number'] = $booking->booking_number;
+                $data[$j]['booking_number'] = strtoupper($booking->booking_number);
                 $data[$j]['traveler']['first_name'] = ($row->first_name ? $row->first_name : ($booking->user->first_name ? $booking->user->first_name :''));
                 $data[$j]['traveler']['last_name'] = ($row->last_name ? $row->last_name : ($booking->user->last_name ? $booking->user->last_name :''));
                 $j++;

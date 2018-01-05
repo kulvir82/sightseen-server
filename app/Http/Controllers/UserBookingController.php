@@ -78,7 +78,6 @@ class UserBookingController extends Controller
 
         Mail::send('emails.voucher', $data, function ($message) use($recipient) {
             $message
-              ->from('support@go4sightseeing.com', 'Go4SightSeeing')
               ->to($recipient['email'], $recipient['name'])
               ->subject('Voucher Email Confirmation for '.$recipient['sightseen']);
         });
