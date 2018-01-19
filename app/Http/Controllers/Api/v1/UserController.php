@@ -22,6 +22,18 @@ class UserController extends Controller
 
   public function sendSms(Request $request)
   {
+
+    // for guest user
+    if($request->phnum=="7777700000")
+    {
+
+      $data['new_user'] = false;
+      $data['id'] = 1111;
+      $data['pin'] = 5555;
+    
+      return response()->json($data);
+    }//
+
     $model = new UsersModel;
     
     $pindigits = 4;
