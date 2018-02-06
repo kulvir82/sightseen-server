@@ -14,8 +14,8 @@
   <div class="container h-100 padding-top-lg padding-bottom-lg">
     <div class="row h-100">
       <div class="t_and_c_content padding-sm">
-      <p class="p1" style="text-align: center;"><span class="s1"><strong> Terms And Conditions</strong></span></p>
-<p class="p2">&nbsp;</p>
+      <h2 class="p1" style="text-align: center;"><span class="s1"><strong> Terms And Conditions</strong></span>&nbsp;</h2>
+<h2 class="p1" style="text-align: center;">&nbsp;</h2>
 <p class="p1"><span class="s1">Please read these terms of use (&ldquo;this Terms of Use&rdquo;) carefully before using this website, www.go4sightseeing.com (&ldquo;this Website&rdquo;) and the services offered by 9711368 CANADA INC, Maple labs and <a href="http://go4sightseeing.com"><span class="s2">go4sightseeing.com</span></a>. </span></p>
 <p class="p3">&nbsp;</p>
 <p class="p1"><span class="s1"><strong>1.&nbsp;Your Agreement</strong><br /> </span></p>
@@ -44,12 +44,12 @@
 <p class="p1" style="padding-left: 30px;"><span class="s1">4.2.1 Go4sightseeing cannot guarantee the identity of any other users with whom you may interact with in the course of using this Website. Go4sightseeing cannot guarantee the authenticity and accuracy of any content, materials or information which other users or the Operators may provide. All Content accessed by you using this Website is at your own risk and you will be solely responsible for any damage or loss to any party resulting therefrom.</span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">4.2.2 Under no circumstances will Go4sightseeing be liable in any way for any Content, including but not limited to any errors or omissions in any Content, or any loss or damage of any kind incurred in connection with the use of or exposure to any Content posted, emailed, accessed, transmitted, or otherwise made available via this Website.</span></p>
 <p class="p1"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">5.&nbsp;Intellectual Property Rights<br /> </span></p>
-<p class="p1"><span class="s1">5.1 Intellectual Property<br /> </span></p>
-<p class="p1"><span class="s1">5.1.1 All intellectual property rights subsisting in respect of this Website belong to Go4sightseeing or have been licensed to Go4sightseeing for use on this Website. This Website, the Services and the Content are protected by copyright and other intellectual property rights as collective works and/or compilations, pursuant to applicable copyright laws, international conventions, and other intellectual property laws. You undertake that:</span></p>
-<p class="p1"><span class="s1">(a) You shall not modify, publish, transmit, participate in the transfer or sale of, reproduce, create derivative works based on, distribute, perform, display, or in any way exploit, any part of this Website and the Content, software, materials, or the Services in whole or in part;</span></p>
-<p class="p1"><span class="s1">(b) You shall only download or copy the Content (and other items displayed on this Website or related to the Services) for personal and non-commercial use only, provided that you maintain all copyright and other notices contained in such Content; and</span></p>
-<p class="p1"><span class="s1">(c) You shall not store any significant portion of any Content in any form. Copying or storing of any Content other than personal and noncommercial use is expressly prohibited without prior written permission from Go4sightseeing or from the copyright holder identified in such Contents copyright notice.</span></p>
+<p class="p1"><span class="s1"><strong>5.&nbsp;Intellectual Property Rights</strong><br /> </span></p>
+<p class="p1" style="padding-left: 30px;"><span class="s1">5.1 Intellectual Property<br /> </span></p>
+<p class="p1" style="padding-left: 30px;"><span class="s1">5.1.1 All intellectual property rights subsisting in respect of this Website belong to Go4sightseeing or have been licensed to Go4sightseeing for use on this Website. This Website, the Services and the Content are protected by copyright and other intellectual property rights as collective works and/or compilations, pursuant to applicable copyright laws, international conventions, and other intellectual property laws. You undertake that:</span></p>
+<p class="p1" style="padding-left: 60px;"><span class="s1">(a) You shall not modify, publish, transmit, participate in the transfer or sale of, reproduce, create derivative works based on, distribute, perform, display, or in any way exploit, any part of this Website and the Content, software, materials, or the Services in whole or in part;</span></p>
+<p class="p1" style="padding-left: 60px;"><span class="s1">(b) You shall only download or copy the Content (and other items displayed on this Website or related to the Services) for personal and non-commercial use only, provided that you maintain all copyright and other notices contained in such Content; and</span></p>
+<p class="p1" style="padding-left: 60px;"><span class="s1">(c) You shall not store any significant portion of any Content in any form. Copying or storing of any Content other than personal and noncommercial use is expressly prohibited without prior written permission from Go4sightseeing or from the copyright holder identified in such Contents copyright notice.</span></p>
 <p class="p1"><span class="s1"> <br /> </span></p>
 <p class="p1"><span class="s1"><strong>6.&nbsp;User Submissions</strong><br /> </span></p>
 <p class="p1"><span class="s1">6.1 Uploading of Information<br /> </span></p>
@@ -91,7 +91,7 @@
 <p class="p3">&nbsp;</p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">7.3.4 You will be responsible for withholding, filing, and reporting all taxes, duties and other governmental assessments associated with your activity in connection with using this Website and/or the Services.</span></p>
 <p class="p1"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">8.&nbsp;Registration and Security<br /> </span></p>
+<p class="p1"><span class="s1"><strong>8.&nbsp;Registration and Security</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">8.1 Opening of the Go4sightseeing Account<br /> <br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">8.1.1 In the course of using the Services, you may be required to open and maintain an account with Go4sightseeing (&ldquo;Go4sightseeing Account&rdquo;).</span></p>
 <p class="p1"><span class="s1"> <br /> <br /> </span></p>
@@ -105,7 +105,7 @@
 <p class="p3">&nbsp;</p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">8.2.4 Go4sightseeing reserves the right to refuse registration of or to cancel a Go4sightseeing Account at its sole discretion. You shall be responsible for maintaining the confidentiality of your password.</span></p>
 <p class="p1"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">9.&nbsp;Reviews - Further correspondence - Rights to User Content<br /> </span></p>
+<p class="p1"><span class="s1"><strong>9.&nbsp;Reviews - Further correspondence - Rights to User Content</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">9.1. By completing a booking, you agree to receive confirmation messages (in the form of emails and/or app notifications), as well as an invitation email(s) or app notification(s) for you to complete our guest review form which we will send to you after you finish an activity. Leaving a review is optional. For clarity, the confirmation and guest review emails are transactional and are not part of the newsletters or marketing mails, from which you can unsubscribe. The completed guest review may be uploaded onto the relevant activity page on the Go4sightseeing platform within 72 hours of the submission for the sole purpose of informing (future) customers of your opinion of the service (level) and quality of the Activity. Upon submitting a review, your account will be awarded Go4sightseeing credits, which may be used towards your next booking subject to terms and conditions. Each account may only submit one review per activity booked once or multiple times within the same calendar month. Fraud and abuse will result in the forfeiture of Go4sightseeing credits. Go4sightseeing further reserves the right to deduct any credits directly from your Go4sightseeing account without prior notice.<br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">9.2. By posting a review, you grant Go4sightseeing the full, perpetual, free, transferable and irrevocable rights to all submitted user content. Go4sightseeing reserves the right to translate, edit, adjust, refuse or remove reviews at its sole discretion.<br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">9.3. You confirm you will comply with these Guest Review Guidelines. In addition, you represent and warrant that<br /> <br /> </span></p>
@@ -116,7 +116,7 @@
 <p class="p1" style="padding-left: 30px;"><span class="s1">9.4. Reviews may not contain obscenities, profanity, inappropriate content, hate speech and offensive content, promotion of illegal conduct, other people&rsquo;s personal information such as names, phone numbers or email addresses, and irrelevant content such as promotional, invite and reward information. Moreover, reviews may not defame, abuse, harass, or violate the legal rights of others.<br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">9.5. You further grant Go4sightseeing the right to pursue at law any person or entity that violates your or Go4sightseeing's rights in the content by a breach of the Terms of Use. You agree you will be solely responsible for any user content you provide or submit.<br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">9.6. Content submitted by users will be considered non-confidential and Go4sightseeing is under no obligation to treat such content as proprietary information. Without limiting the foregoing, Go4sightseeing reserves the right to use the content as it deems appropriate, including, without limitation, deleting, editing, modifying, rejecting, or refusing to post it. Go4sightseeing is under no obligation to offer you any payment for content that you submit or the opportunity to edit, delete or otherwise modify content once it has been submitted to Go4sightseeing. Go4sightseeing shall have no duty to attribute authorship of content to you, and shall not be obligated to enforce any form of attribution by third parties. Please refer to the Terms of Use on the Platform for more details.<br /> </span></p>
-<p class="p1"><span class="s1">10.&nbsp;Tickets, Vouchers, Fees and Payment<br /> </span></p>
+<p class="p1"><span class="s1"><strong>10.&nbsp;Tickets, Vouchers, Fees and Payment</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">10.1 Purchase and Use of the Vouchers<br /> <br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">10.1.1 Through this Website, you may purchase vouchers from Go4sightseeing for the Services (&ldquo;Vouchers&rdquo;) offered by the Operators in the various destinations. Subject to the policy of the relevant Operator, you will receive an email confirmation of your purchase that will contain a Voucher confirmation number (&ldquo;Confirmation Number&rdquo;) and a printable version of your Voucher.</span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">10.1.2 In order to use your Voucher, you must appear in person at the meeting point designated by the relevant Operator on time, and present such documents and/or information as may be required by the Operator, that may include your Confirmation Number and/or your printed Voucher. If you fail to appear on time or to provide the required documents or information, no refunds will be granted.</span></p>
@@ -146,7 +146,7 @@
 <p class="p1" style="padding-left: 60px;"><span class="s1"> <br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">10.8 The above terms and conditions &amp; return policies are appliable to all Go4sightseeing users worldwide.<br /> </span></p>
 <p class="p3" style="padding-left: 60px;">&nbsp;</p>
-<p class="p1"><span class="s1">11.&nbsp;Discounts<br /> </span></p>
+<p class="p1"><span class="s1"><strong>11.&nbsp;Discounts</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">11.1 Go4sightseeing Credits<br /> <br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">11.1.1 Go4sightseeing Credits are points that are awarded to you and will be accumulated in your Go4sightseeing Account until expiry. Points are awarded on the actual participated and unrefunded activities purchased from Go4sightseeing&rsquo;s platforms, based on the award program at the time of purchase. Every Ten (10) Go4sightseeing Points carries a value of Hong Kong ONE Dollar (HKD1.00) and the conversion of these Hong Kong Dollar denominated points are based on the exchange rate Go4sightseeing used on the date of your redemption. These points can be used to redeem any of our products on our platform or to reduce the total check out price.</span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">11.1.2 The Go4sightseeing&rsquo;s Credits may be obtained through the following means and the amount of credit received may vary with each purchase and is at the sole discretion of Go4sightseeing&rsquo;s:<br /> </span></p>
@@ -171,32 +171,21 @@
 <p class="p1" style="padding-left: 90px;"><span class="s1">(c) Refusal of the provision of the Services to you; or</span></p>
 <p class="p1" style="padding-left: 90px;"><span class="s1">(d) Any other measures as deemed appropriate by Go4sightseeing at its sole discretion.</span></p>
 <p class="p1" style="padding-left: 90px;"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">12.&nbsp;Go4sightseeing Referral Program<br /> </span></p>
-<p class="p1" style="padding-left: 30px;"><span class="s1">12.1 The Program<br /> <br /> </span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1">12.1.1 On certain Go4sightseeing Sites, Go4sightseeing may offer members the chance to earn Go4sightseeing Coupons, when they invite friends to become members of a Go4sightseeing Site and those friends make a confirmed booking through an authorized Go4sightseeing invitation channel (&ldquo;Go4sightseeing Authorized Channel&rdquo;) (e.g. an invitation sent through Go4sightseeing&rsquo;s website, Facebook or another social media channel as supported by Go4sightseeing).</span></p>
-<p class="p1"><span class="s1"> <br /> <br /> </span></p>
-<p class="p1" style="padding-left: 30px;"><span class="s1">12.2 Terms<br /> </span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1">12.2.1 You may only earn Go4sightseeing Coupons via Go4sightseeing&rsquo;s authorized member invite mechanisms. Referrals outside of Go4sightseeing Authorized Channel will not result in any Go4sightseeing Coupons. You understand that Go4sightseeing Coupons are not transferable, may not be auctioned, bartered or sold, and may not be pooled with other members.</span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1">12.2.2 You will only receive Go4sightseeing Coupons for the first confirmed booking made by a friend who makes his or her first booking on the Go4sightseeing Sites and subsequently completes his or her first booking as a result of an invite from you via a Go4sightseeing Authorized Channel. If your friend does not follow the directions in the invite email or other valid invite mechanism to accept the invitation, you may not receive Go4sightseeing Coupons, and Go4sightseeing will have no liability to you for your friend&rsquo;s failure to follow directions.</span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1">12.2.3 You agree that having multiple Go4sightseeing Accounts is a violation of this Terms of Use and that sending invites to alternate email addresses or accounts or otherwise attempting to circumvent the Go4sightseeing Referral Program system may, without limiting any of Go4sightseeing&rsquo;s other rights or remedies, result in forfeiture of your membership and all Go4sightseeing Coupons in your Go4sightseeing Account.</span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1">12.2.4 You must not conduct your own promotion in connection with the Go4sightseeing Referral Program. You may not engage in any promotional, marketing, or other advertising activities on behalf of Go4sightseeing, including the use of any trademarks of Go4sightseeing.</span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1">12.2.5 Go4sightseeing reserves the right to void referrals and Go4sightseeing Coupons earned if it is suspected that the referrals or Go4sightseeing Coupons were earned in a fraudulent manner, in a manner that violates this Terms of Use or in a manner otherwise not intended by Go4sightseeing.</span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1">12.2.6 Go4sightseeing Coupons will be emailed to your designated email address within 24 hours of one of your qualifying invitees completing his or her confirmed booking on Go4sightseeing&rsquo;s website</span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1">12.2.7 Go4sightseeing reserves the right to modify the values and rewards of the Go4sightseeing Referral Program based on each user's activity.</span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1">12.2.8 Go4sightseeing Referral Program is void where prohibited by law. Go4sightseeing reserves the right to modify or terminate the Go4sightseeing Referral Program at any time. Should there be any tax liability for the accumulation and/or use of Go4sightseeing Coupons, such taxes are the sole responsibility of the participant. You understand that your Go4sightseeing Account may not accurately reflect the Go4sightseeing Coupons you have actually earned. Go4sightseeing will have no liability for any errors displayed in your Go4sightseeing Account.</span></p>
-<p class="p1" style="padding-left: 90px;"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">13.&nbsp;Privacy Policy<br /> </span></p>
+<p class="p1"><strong><span class="s1">12. Loyality Program</span></strong></p>
+<p class="p1" style="padding-left: 30px;">12.1&nbsp; Go4sightseeing's authorized members can be part of Loyality program of Go4sightseeing. We are in process of bringing you great discounts and coupons as part of our Loyality program.&nbsp;</p>
+<p class="p1" style="padding-left: 30px;">&nbsp;</p>
+<p class="p1"><span class="s1"><strong>13.&nbsp;Privacy Policy</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">13.1 Privacy Policy<br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">13.1.1 For Go4sightseeing&rsquo;s policy relating to its use of of your personal data, please review Go4sightseeing&rsquo;s current Privacy Policy, which is hereby incorporated by reference to this Terms of Use. Your acceptance of this Terms of Use constitutes your acceptance and agreement to be bound by our Privacy Policy.</span></p>
 <p class="p1"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">14.&nbsp;Indemnity<br /> </span></p>
+<p class="p1"><span class="s1"><strong>14.&nbsp;Indemnity</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">14.1 Go4sightseeing&rsquo;s Indemnification<br /> <br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">14.1.1 You will indemnify and hold Go4sightseeing, our holding companies, subsidiaries, affiliates, officers, directors and employees harmless from, including but not limited to all damages, liabilities, settlements, costs and attorney&rsquo;s fees, claims or demands made by any third party due to or arising out of your access to this Website, use of this Website, your violation of this Terms of Use, or the infringement of any intellectual property or other right of any person or entity by you or any third party using your Go4sightseeing User ID.</span></p>
 <p class="p1"><span class="s1"> <br /> <br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">14.2 Go4sightseeing&rsquo;s Involvement<br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">14.2.1 Go4sightseeing may, if necessary, participate in the defense of any claim or action and any negotiations for settlement. You will not make any settlement that may adversely affect the rights or obligations of Go4sightseeing without Go4sightseeing&rsquo;s prior written approval. Go4sightseeing reserves the right, at its expense and upon notice to you to assume exclusive defense and control of any claim or action.</span></p>
 <p class="p1"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">15.&nbsp;Disclaimers and Limitation of Liability<br /> </span></p>
+<p class="p1"><span class="s1"><strong>15.&nbsp;Disclaimers and Limitation of Liability</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">15.1 Parties&rsquo; Relationship<br /> <br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">15.1.1 Go4sightseeing has no special relationship with or fiduciary duty to you for accessing and using this Website and the Content. You acknowledge that Go4sightseeing has no control over, and no duty to take any action regarding:<br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">(a) Which users gain access to this Website;</span></p>
@@ -235,7 +224,7 @@
 <p class="p1" style="padding-left: 90px;"><span class="s1">(a) The amount of fees you paid to Go4sightseeing in the twelve months prior to the action giving rise to liability; or</span></p>
 <p class="p1" style="padding-left: 90px;"><span class="s1">(b) Hong Kong Dollars 500.00 in the aggregate for all claims.</span></p>
 <p class="p1" style="padding-left: 90px;"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">16.&nbsp;Interaction with Third Parties<br /> </span></p>
+<p class="p1"><span class="s1"><strong>16.&nbsp;Interaction with Third Parties</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">16.1 Links to Third Party Websites<br /> <br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">16.1.1 This Website may contain links to third party websites or services (&ldquo;Third Party Websites&rdquo;) that are not owned or controlled by Go4sightseeing, or the Services may be accessible by logging in through a Third Party Website. Links to Third Party Websites do not constitute an endorsement or recommendation by Go4sightseeing of such Third Party Websites or the information, products, advertising or other materials available on those Third Party Websites.</span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">16.1.2 When you access Third Party Websites, you do so at your own risk. You hereby represent and warrant that you have read and agree to be bound by all applicable policies of any Third Party Websites relating to your use of the Services and that you will act in accordance with those policies, in addition to your obligations under this Terms of Use.</span></p>
@@ -245,21 +234,21 @@
 <p class="p1" style="padding-left: 60px;"><span class="s1"> <br /> <br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">16.2 Go4sightseeing&rsquo;s Responsibility<br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">16.2.1 You agree that Go4sightseeing shall not be responsible or liable for any loss or damage of any sort incurred as the result of any such dealings. If there is a dispute between participants on this site, or between users and any third party, you understand and agree that Go4sightseeing is under no obligation to become involved. In the event that you have a dispute with one or more other users or third parties, you hereby release Go4sightseeing, its holding companies, subsidiaries, officers, directors, employees, agents, and successors in rights from claims, demands, and damages (actual and consequential) of every kind or nature, known or unknown, suspected or unsuspected, disclosed or undisclosed, arising out of or in any way related to such disputes.</span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">17.&nbsp;Termination<br /> </span></p>
+<p class="p1" style="padding-left: 60px;"><strong><span class="s1"> <br /> </span></strong></p>
+<p class="p1"><span class="s1"><strong>17.&nbsp;Termination</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">17.1 Termination by Go4sightseeing<br /> <br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">17.1.1 This Terms of Use shall remain in full force and effect while you use this Websites or the Services. Go4sightseeing may terminate or suspend your access to the Services or your membership at any time, for any reason, and without notice, which may result in the forfeiture and destruction of all information associated with your membership. Go4sightseeing may also terminate or suspend any and all Services and access to this Website immediately, without prior notice or liability, if you breach any of the terms or conditions of this Terms of Use.</span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1"> <br /></span><span class="s1">17.2 Effects of Termination<br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">17.2.1 Upon termination of your Go4sightseeing Account, your right to use the Services, access this Website, and any Content will immediately cease. All provisions of this Terms of Use which, by their nature, should survive termination, shall survive termination, including but not limited to ownership provisions, warranty disclaimers, and limitations of liability.</span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">17.2.2 If this Terms of Use is terminated as a result of your breach, Go4sightseeing reserves the right to cancel any outstanding Vouchers you may have purchased prior to said termination, without refund or liability to you.</span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">18.&nbsp;Passports, Visas &amp; Insurances<br /> </span></p>
+<p class="p1"><span class="s1"><strong>18.&nbsp;Passports, Visas &amp; Insurances</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">18.1 Your Responsibilities<br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">18.1.1 It is the responsibility of all passengers, regardless of nationality and destination, to check with the consulate of the country they are visiting for current entry requirements.</span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">18.1.2 As visa and health requirements are subject to changes without notice, Go4sightseeing recommends that you verify health and visa requirements with the appropriate consulate prior to departure.</span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">18.1.3 Go4sightseeing strongly recommends that you purchase a comprehensive travel insurance policy prior to departure.</span></p>
-<p class="p1" style="padding-left: 30px;"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">19.&nbsp;Governing Law &amp; Jurisdiction<br /> </span></p>
+<p class="p1" style="padding-left: 30px;"><strong><span class="s1"> <br /> </span></strong></p>
+<p class="p1"><span class="s1"><strong>19.&nbsp;Governing Law &amp; Jurisdiction</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">19.1 Governing Law<br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">19.1.1 This Terms of Use shall be governed by the laws of Hong Kong Special Administrative Region of the Peoples Republic of China. You agree to submit to the non-exclusive jurisdiction of the Hong Kong court.<br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">jurisdiction of the Hong Kong court.Go4sightseeing Travel Technology Limited acknowledges and agrees that it delegates all contractual responsibility in respect of such Operations to its affiliates as follow:</span></p>
@@ -267,17 +256,17 @@
 <p class="p1" style="padding-left: 60px;"><span class="s1">b. In respect of all transactions occurring in Taiwan, Go4sightseeing Travel Taiwan Limited is the responsible contractual party in respect of the above Operations;</span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">c. In respect of all transactions occurring in Korea, Go4sightseeing Travel Technology LLC is the responsible contractual party in respect of the above Operations;</span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">d. In respect of all other transactions, Go4sightseeing Travel Technology Limited is the responsible contractual party in respect of the above Operations.</span></p>
-<p class="p1" style="padding-left: 60px;"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">20.&nbsp;Miscellaneous<br /> </span></p>
+<p class="p1" style="padding-left: 60px;"><strong><span class="s1"> <br /> </span></strong></p>
+<p class="p1"><span class="s1"><strong>20.&nbsp;Miscellaneous</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">20.1 Severability<br /> <br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">20.1.1 If any provision of this Terms of Use is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary so that this Terms of Use shall otherwise remain in full force and effect and enforceable.</span></p>
 <p class="p1"><span class="s1"> <br /> <br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">20.2 Assignment<br /> </span></p>
 <p class="p1" style="padding-left: 60px;"><span class="s1">20.2.1 This Terms of Use is not assignable, transferable or sub-licensable by you except with Go4sightseeing&rsquo;s prior written consent. Go4sightseeing may transfer, assign or delegate this Terms of Use and its rights and obligations without prior notice to you.</span></p>
 <p class="p1"><span class="s1"> <br /> </span></p>
-<p class="p1"><span class="s1">21.&nbsp;Contact<br /> </span></p>
+<p class="p1"><span class="s1"><strong>21.&nbsp;Contact</strong><br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">21.1 Please contact Go4sightseeing at support@go4sightseeing.com to report any violations of this Terms of Use or to pose any questions regarding this Terms of Use or the Service.<br /> </span></p>
-<p class="p1" style="padding-left: 30px;"><span class="s1">Last updated on 6 Feb 2018</span></p>
+<p class="p1" style="padding-left: 30px;"><span class="s1" style="color: #3366ff;">Last updated on 6 Feb 2018</span></p>
       </div>
     </div>
   </div>
