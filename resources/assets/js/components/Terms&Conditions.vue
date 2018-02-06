@@ -5,7 +5,7 @@
         <div class="row h-100 paddig-top-xl padding-bottom-lg">
           <div class="col-xl-12 col-md-12 col-sm-12 padding-xl">
             <div class="t_and_c_title margin-top-lg padding-xl text-center ">
-                <h1>Privacy Policy</h1>
+                <h1>Terms And Conditions</h1>
             </div>
         </div>
       </div>
