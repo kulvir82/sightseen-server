@@ -4,7 +4,7 @@
       <div class="container h-100 padding-top-lg ">
         <div class="row h-100 paddig-top-xl padding-bottom-lg">
           <div class="col-xl-12 col-md-12 col-sm-12 padding-xl">
-            <div class="t_and_c_title margin-top-lg padding-xl text-center ">
+          <div class="t_and_c_content padding-sm">
               <p class="p1" style="text-align: center;"><span class="s1"><strong> Terms And Conditions</strong></span></p>
 <p class="p2">&nbsp;</p>
 <p class="p1"><span class="s1">Please read these terms of use (&ldquo;this Terms of Use&rdquo;) carefully before using this website, www.go4sightseeing.com (&ldquo;this Website&rdquo;) and the services offered by 9711368 CANADA INC, Maple labs and <a href="http://go4sightseeing.com"><span class="s2">go4sightseeing.com</span></a>. </span></p>
