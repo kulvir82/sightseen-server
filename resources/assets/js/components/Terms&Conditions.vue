@@ -4,8 +4,17 @@
       <div class="container h-100 padding-top-lg ">
         <div class="row h-100 paddig-top-xl padding-bottom-lg">
           <div class="col-xl-12 col-md-12 col-sm-12 padding-xl">
-          <div class="t_and_c_content padding-sm">
-              <p class="p1" style="text-align: center;"><span class="s1"><strong> Terms And Conditions</strong></span></p>
+            <div class="t_and_c_title margin-top-lg padding-xl text-center ">
+                <h1>Privacy Policy</h1>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container h-100 padding-top-lg padding-bottom-lg">
+    <div class="row h-100">
+      <div class="t_and_c_content padding-sm">
+      <p class="p1" style="text-align: center;"><span class="s1"><strong> Terms And Conditions</strong></span></p>
 <p class="p2">&nbsp;</p>
 <p class="p1"><span class="s1">Please read these terms of use (&ldquo;this Terms of Use&rdquo;) carefully before using this website, www.go4sightseeing.com (&ldquo;this Website&rdquo;) and the services offered by 9711368 CANADA INC, Maple labs and <a href="http://go4sightseeing.com"><span class="s2">go4sightseeing.com</span></a>. </span></p>
 <p class="p3">&nbsp;</p>
@@ -13,7 +22,7 @@
 <p class="p1"><span class="s1">1.1 Your Acknowledgement</span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">1.1.1 Please read these terms of use (&ldquo;this Terms of Use&rdquo;) carefully before using this website, www.go4sightseeing.com (&ldquo;this Website&rdquo;) and the services offered by 9711368 CANADA INC (&ldquo;go4sightseeing&rdquo;) or the third party operators (&ldquo;the Operator&rdquo;) through this Website (&ldquo;the Services&rdquo;). &ldquo;You&rdquo;and &ldquo;your&rdquo; when used in this Terms of Use includes any person who accesses the Website.</span></p>
 <p class="p3">&nbsp;</p>
-<p class="p1"><span class="s1"><strong>2.&nbsp;Change / Modifications of Terms of Use</strong><br /> </span></p>
+<p class="p1"><span class="s1"><strong>2.&nbsp;Change of Terms of Use</strong><br /> </span></p>
 <p class="p1"><span class="s1">&nbsp;2.1 Go4sightseeing's Modifications</span></p>
 <p class="p1" style="padding-left: 30px;">2.1.1 Go4sightseeing reserves the right, at its sole discretion, to change or modify any part of this Terms of Use at any time without prior notice. You should visit this page periodically to review the current Terms of Use to which you are bound. If Go4sightseeing changes or modifies this Terms of Use, Go4sightseeing will post the changes to or modifications of this Terms of Use on this page and will indicate at the top of this page the date on which this Terms of Use was last revised.</p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">2.1.2 Your continued use of this Website after any such changes or modifications constitutes your acceptance of the revised Terms of Use. If you do not agree to abide by the revised Terms of Use, do not use or access or continue to use or access this Website and/or the Services. It is your responsibility to regularly check this Website to ascertain if there are any changes to this Terms of Use and to review such changes.</span></p>
@@ -269,26 +278,9 @@
 <p class="p1"><span class="s1">21.&nbsp;Contact<br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">21.1 Please contact Go4sightseeing at support@go4sightseeing.com to report any violations of this Terms of Use or to pose any questions regarding this Terms of Use or the Service.<br /> </span></p>
 <p class="p1" style="padding-left: 30px;"><span class="s1">Last updated on 6 Feb 2018</span></p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-    <div class="container h-100 padding-top-lg padding-bottom-lg">
-      <div class="row h-100">
-        <div class="t_and_c_content padding-sm">
-          <p><strong>Go4SightSeeing </strong>is fast and fun way to explore and book unique Sight Seen, Shows, Activities and Experiences at the Lowest Prices Guaranteed.With just a few clicks, get ready to enjoy the Siam Nimrat show no big queues to get tickets , enjoy Santosa isLand under water park and other attractions.So Just click book and go to your favourite destination.</p>
-          <h2>What is special and great about BMSS</h2>
-          <ul>
-            <li>Easy way to explore new shows , sight seen, locations which click of button you can book it. </li>
-            <li>Easy cancellation no charges if cancel 48 hours before show.</li>
-            <li>Lowest price guaranteed.</li>
-            <li>Easy confirmation and paperless e-tickets for many popular attractions</li>
-            <li>Secure and easy booking and safe payment with credit cards or debit cards.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  </div>
   </div>
 </template>
 
