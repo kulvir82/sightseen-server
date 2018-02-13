@@ -61,6 +61,18 @@
                     <input type="radio" id="pickupNo" name="pickup" :value="0" v-model="sightseen.pickup">No
                   </td>
                 </tr>
+                <tr>
+                    <td nowrap class="input_form_caption_td">Latitude: </td>
+                    <td>
+                      <input type="text" id="latitude" name="latitude" v-model="sightseen.latitude" required/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td nowrap class="input_form_caption_td">Longitude: </td>
+                    <td>
+                      <input type="text" id="longitude" name="longitude" v-model="sightseen.longitude" required/>
+                    </td>
+                  </tr>
     						<tr>
     							<td nowrap class="input_form_caption_td">Information: </td>
     							<td><vue-editor id="information" v-model="sightseen.information"></vue-editor></td>
@@ -195,7 +207,9 @@ export default {
       var pickup = $("input[name=pickup]:checked").val();
       var info = this.sightseen.information;
       var description = this.sightseen.description;
-      this.$http.post('/updatesightseen',{id:id,price:price,country_id:country_id,title:title,city_id:city_id,pickup:pickup,info:info,description:description,discount: discount}).then(function (response) {
+      var latitude = this.sightseen.latitude;
+      var longitude = this.sightseen.longitude;
+      this.$http.post('/updatesightseen',{id:id,price:price,country_id:country_id,title:title,city_id:city_id,pickup:pickup,info:info,description:description,discount: discount,latitude: latitude,longitude: longitude}).then(function (response) {
         this.redirectToSightseen();
       });
     },

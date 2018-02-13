@@ -69,6 +69,18 @@
                       <input type="radio" id="pickupNo" name="pickup" value="0" checked required/>No
                     </td>
                   </tr>
+                  <tr>
+                    <td nowrap class="input_form_caption_td">Latitude: </td>
+                    <td>
+                      <input type="text" id="latitude" name="latitude" required/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td nowrap class="input_form_caption_td">Longitude: </td>
+                    <td>
+                      <input type="text" id="longitude" name="longitude" required/>
+                    </td>
+                  </tr>
     							<tr>
     								<td nowrap class="input_form_caption_td">Information: </td>
     								<td><vue-editor id="information" v-model="infocontent"></vue-editor><div v-if="errorMessage == 'information'" class="errorMessage">
@@ -183,6 +195,8 @@ export default {
         form_data.append('price', $('#price').val());
         form_data.append('discount', $('#discount').val());
         form_data.append('pickup', $("input[name=pickup]:checked").val());
+        form_data.append('latitude',$("input[name=latitude]").val());
+        form_data.append('longitude',$("input[name=longitude]").val());
         this.$http.post('/createsightseen',form_data).then(function (response) {
           this.redirectToSightseen();
         });
