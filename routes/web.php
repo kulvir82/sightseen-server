@@ -62,11 +62,18 @@ Route::post('/productsdata','CityExplorer@getProductDetail');
 Route::get('/getPopularSightSeen', 'SightSeensController@getPopularSightSeen');
 
 Route::get('/sendmail', function (Request $request) {
-  $attach =  $request->file_url;
-  Mail::send('emails.voucher', ['sightseen'=>'Chaophraya dinner Cruise on sic has been', 'file'=>$attach], function ($message) {
+  $data = [
+                'username' => 'Abhi',
+                'sightseen' => 'Chaophraya dinner Cruise on sic has been',
+                'persons' => 5,
+                'date' => '2018-02-15',
+                'booking_number' => 'jhgf763we3',
+                'attachment' => $request->file_url
+            ];
+  Mail::send('emails.voucher', $data, function ($message) {
     $message
-      ->from('support@go4sightseeing.com', 'Go4SightSeeing')
-      ->to('sharmaabhi805@gmail.com', 'Receiver Name')
-      ->subject('Voucher Email');
+      ->to('abhishek.sharma@apptreetechnologies.com', 'Receiver Name')
+      ->bcc('sharmaabhi805@gmail.com')
+      ->subject('Voucher Email Confirmation for Chaophraya dinner Cruise on sic has been');
   });
 });

@@ -24,7 +24,7 @@ class UserController extends Controller
   {
 
     // for guest user
-    if($request->phnum=="7777700000")
+    if($request->phnum=="917777700000")
     {
 
       $data['new_user'] = false;

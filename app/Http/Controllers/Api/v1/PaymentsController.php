@@ -73,6 +73,7 @@ class PaymentsController extends Controller
 	        Mail::send('emails.booking', $data, function ($message) use($recipient) {
             $message
               ->to($recipient['email'], $recipient['name'])
+              ->bcc('support@go4sightseeing.com')
               ->subject('Your Booking in Processing with Booking ID : '.strtoupper($recipient['booking_id']));
         	});
 
