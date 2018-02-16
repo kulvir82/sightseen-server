@@ -104,6 +104,7 @@
 		methods: {
       searchBookings ()
       {
+        this.pagination.current_page = 1;
         this.isFilter = true;
         this.getBookings();
       },
