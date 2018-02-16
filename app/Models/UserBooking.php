@@ -39,10 +39,13 @@ class UserBooking extends Model
         {
             $bookings = UserBooking::with('user');
         }
-
         if(!empty($request->status))
             $bookings = $bookings->where('status', $request->status);
 
+        if(!empty($request->booking_number))
+        {
+            $bookings = UserBooking::with('user')->where('booking_number', $request->booking_number);
+        }
         return $bookings->paginate(10);
     }
 

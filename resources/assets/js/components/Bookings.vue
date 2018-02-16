@@ -2,7 +2,7 @@
 	<div id="bookings">
     <table width="98%" border="0" cellspacing="0" cellpadding="0" style ="margin-left:10px;margin-top:5px" class="input_table_new">
       <tr>
-        <td align="left" width="60%">
+        <td align="left" width="80%">
            <select name="country" id="country" v-model="country" class="country_list" @change="getCities(country)">
               <option value="">Select Country</option>
               <option v-for="country in countries" :value="country.id">{{country.country_name}}</option>
@@ -15,9 +15,10 @@
             <option value="">Select Status</option>
             <option v-for="status in ['Payment Pending','Voucher Pending','Confirmed','Canceled']" :value="status">{{ status }}</option>
            </select>
+           <input type="text" v-model='booking_number' id="booking_number"/>
           <input type="submit" name="report_search"  class="travel_buttons1" @click="searchBookings()" autocomplete="off">
        </td>
-       <td align="left" width="20%"><a class="travel_buttons" href="javascript:;" @click="refreshBookings()">All Records</a></td>
+       <td align="left" width="10%"><a class="travel_buttons" href="javascript:;" @click="refreshBookings()">All Records</a></td>
          <td align="right" class="fontGreen">Total Records:</td>
          <td class="fontGreen">{{pagination.total}}</td>
       </tr>
@@ -109,7 +110,7 @@
 			getBookings (){
         let query = '';
         if(this.isFilter)
-          query = "&country="+this.country+"&city="+this.city+"&status="+this.selected_status;
+          query = "&country="+this.country+"&city="+this.city+"&status="+this.selected_status+"&booking_number="+this.booking_number;
 
 				this.$http.get('/bookings?page='+this.pagination.current_page+query).then(function(response){
 					this.bookings = response.data.data;
@@ -136,6 +137,7 @@
         this.country = '';
         this.city = '';
         this.selected_status = '';
+        this.booking_number = '';
         this.isFilter = false;
         this.getBookings();
       },
@@ -156,9 +158,16 @@
           this.country = storage_data[1];
           this.city = storage_data[2];
           this.selected_status = storage_data[3];
+          this.booking_number = storage_data[4];
         }
       }
-		}
+		},
+    watch: {
+      data (){
+        this.bookings= this.data.data;
+        this.pagination = this.data; 
+      }
+    }
 	}
 </script>
 

@@ -7,6 +7,7 @@ export const mixin = {
 			country: '',
 			city: '',
 			selected_status: '',
+			booking_number: ''
 		}
 	},
 	created ()
@@ -32,7 +33,7 @@ export const mixin = {
 		},
 		setPageState (page)
 		{
-			let pagestate = [page,this.country,this.city,this.selected_status];
+			let pagestate = [page,this.country,this.city,this.selected_status,this.booking_number];
       		localStorage.setItem('pagestate',JSON.stringify(pagestate));
 		},
 		redirectToSightseen: function(){
@@ -60,7 +61,8 @@ export const mixin = {
 		            	query += "&city="+storage_data[2];
 		            if(storage_data[3])
 		            	query += "&status="+storage_data[3];
-					
+		            if(storage_data[4])
+						query += "&booking_number="+storage_data[4];
 					var view  = ['bookings','/bookings?page='+storage_data[0]+query,'','get'];
 					bus.$emit('open-view',view);
 				}
