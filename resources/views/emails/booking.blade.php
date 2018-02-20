@@ -15,7 +15,7 @@
     .mailcontent{
         margin: auto;
         max-width: 50%;
-        color: #fff;
+        color: #000;
     }
     .order_detail{
         background: #fdf4d4;
