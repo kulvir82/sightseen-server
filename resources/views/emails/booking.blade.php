@@ -55,6 +55,16 @@
     .footer a{
       text-decoration: none;
     }
+    @media screen and (max-width: 768px){
+        .mailcontent{
+            max-width: 80%;
+        }
+    }
+    @media screen and (max-width: 500px){
+        .mailcontent{
+            max-width: 90%;
+        }
+    }
 </style>
 </head>
 <body>
