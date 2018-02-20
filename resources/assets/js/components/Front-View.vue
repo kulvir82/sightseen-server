@@ -260,7 +260,7 @@ export default {
     }
   },
   mounted:function(){
-    this.getTweets();
+    //this.getTweets();
   }
 }
 </script>

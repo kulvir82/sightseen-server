@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My First Email</title>
 <style type="text/css">
+    body {
+        font-family: Muli,Helvetica,Arial,sans-serif;
+    }
     .brandimg img{
         max-width: 150px;
         height: auto;
@@ -15,7 +18,7 @@
         color: #fff;
     }
     .order_detail{
-        background: #eacd5f;
+        background: #fdf4d4;
         padding: 10px 20px;
         margin: 10px 0;
     }
@@ -30,12 +33,27 @@
         margin: 10px 0;
     }
     .order_info_header{
+        height: 40px;
         background: #f00;
         padding-left: 20px;
         color: #fff;
+        font-size: 2em;
+        font-weight: bold;
+    }
+    .order_info_header span{
+      line-height: 40px;
     }
     .booking_info{
         padding: 10px 20px;
+    }
+    .note p{
+        color: #bbb;
+    }
+    .footer span{
+        color: #f00;
+    }
+    .footer a{
+      text-decoration: none;
     }
 </style>
 </head>
@@ -55,7 +73,7 @@
 	        </div>
             <div class="order_detail order_info_detail">
                 <div class="order_info_header">
-                    <h1> Order Info </h1>
+                    <span> Order Info </span>
                 </div>
                 <div class="booking_info">
                     @foreach($booking_detail as $booking)
@@ -66,6 +84,20 @@
                         </br>
                     @endforeach
                 </div>
+            </div>
+            <div class="order_detail footer">
+              <p>Look forward to having you back for your other travel plans. Have fun!</p>
+
+              <p>Cheers,</p> 
+              <p>Go4sightseeing Team.</p>
+              <br/>
+              <p>If you have questions or concerns, please call us or email us.</p>
+              <p>
+                Email: <a href="mailto:support@go4sightseeing.com"><span>support@go4sightseeing.com</span></a>     Website: <a href="https://www.go4sightseeing.com"><span>https://www.go4sightseeing.com</span></a>
+              </p>
+            </div>
+            <div class="note">
+                <p>If you have received this communication in error, please do not forward its contents; notify the sender and delete it and any attachments. This message may contain information that is confidential and legally privileged. Unless you are the addressee, you may not use, copy or disclose to anyone this message or any information contained within</p>
             </div>
         </div>
     </div>
