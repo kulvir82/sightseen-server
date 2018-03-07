@@ -53,7 +53,7 @@ Route::get('getCurrency', function(){
   $client = new Client();
   $response = $client->get('https://openexchangerates.org/api/latest.json?app_id=f5cdf62bf9e94f16bf512ec8542c255e');
   $response = json_decode((string) $response->getBody(), true);
-  return response()->json(['value'=>$response['rates']['INR']],200);
+  return response()->json(['value'=>$response['rates']['INR'],'skey' => env('STRIPE_PUBLIC_KEY')],200);
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

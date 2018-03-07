@@ -35,10 +35,10 @@
                     &nbsp;&nbsp; ON Canada ZIP L9K1T4
               </div>
               <div class="phone">
-                <strong><i class="fa fa-phone"></i></strong> +1(289)505-8058
+                <!-- <strong><i class="fa fa-phone"></i></strong> +1(289)505-8058 -->
               </div>
               <div class="email">
-                <strong><i class="fa fa-envelope"></i></strong> info@maplelabs.ca
+                <strong><i class="fa fa-envelope"></i></strong> support@go4sightseen.com
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
             <div class="helpline padding-md">
               <ul class="india-group">
                 <li><strong>India Office:</strong></li>
-                <li><strong>Call us for support</strong>: +919875950679</li>
+                <!-- <li><strong>Call us for support</strong>: +919875950679</li> -->
                 <li><strong>Timings</strong>: Available from 10 AM to 5 PM</li>
               </ul>
             </div>

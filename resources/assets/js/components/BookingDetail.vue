@@ -110,7 +110,6 @@
         });
       },
       sendVoucherEmail (booking, event){
-        console.log(event);
         event.target.innerText = 'Sending...';
         if(this.isProcessing)
         {
