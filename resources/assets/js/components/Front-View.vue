@@ -134,7 +134,7 @@
                 <!-- <div class="device">
                   <div class="screen"> -->
                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                    <img :src="'images/frontimages/BmssBannerAndroid.jpg'" class="img-fluid" alt="BmssBannerAndroid.jpg">
+                    <img :src="'images/frontimages/BmssBannerAndroid.jpg'" class="img-fluid" alt="BmssBannerAndroid.jpg"></a>
                   <!-- </div>
                   <div class="button">
                     You can hook the "home button" to some JavaScript events or just remove it
@@ -155,12 +155,16 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="feature-item">
-                    <img :src="'images/frontimages/android_download.png'" alt="android_download.png"/>
+                    <a href="https://play.google.com/store/apps/details?id=maple.com.go4ss.citydiscovery&hl=en" target="_blank">
+                      <img :src="'images/frontimages/android_download.png'" alt="android_download.png"/>
+                    </a>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="feature-item">
-                    <img :src="'images/frontimages/ios_download.png'" alt="ios_download.png"/>
+                    <a href="https://itunes.apple.com/us/app/go4sightseeing/id1327255721?ls=1&mt=8" target="_blank">
+                      <img :src="'images/frontimages/ios_download.png'" alt="ios_download.png"/>
+                    </a>
                   </div>
                 </div>
               </div>
