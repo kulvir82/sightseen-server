@@ -200,7 +200,7 @@
           new friends!</h2>
         <ul class="list-inline list-social">
           <li class="list-inline-item social-twitter">
-            <a href="https://twitter.com/BookmySeen">
+            <a href="https://twitter.com/Go4SightSeeing">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
