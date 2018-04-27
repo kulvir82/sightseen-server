@@ -1,15 +1,21 @@
 <template lang="html">
   <div id="frontapp">
-    <frontnav></frontnav>
+    <front-nav></front-nav>
     <div class="front">
       <router-view></router-view>
     </div>
-    <frontfooter></frontfooter>
+    <front-footer></front-footer>
   </div>
 </template>
 
 <script>
+import FrontNav from './Front-Nav.vue';
+import FrontFooter from './Front-Footer.vue';
 export default {
+  components: {
+    FrontNav,
+    FrontFooter
+  },
   methods:{
   
   },

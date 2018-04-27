@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import Navigation from './Navigation.vue';
 import SightSeen from './SightSeen.vue';
 import AddSightSeen from './AddSightSeen.vue';
 import EditSightSeen from './EditSightSeen.vue';
@@ -19,6 +20,7 @@ import Settings from './Settings.vue';
 export default {
     name: 'app',
     components: {
+      Navigation,
       sightseen: SightSeen,
       addsightseen: AddSightSeen,
       editsightseen: EditSightSeen,

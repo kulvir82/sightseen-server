@@ -41,7 +41,7 @@
 
           </div>
           <div class="col-md-8 mx-auto ">
-            <div class="row">
+            <div class="row" v-if="popularSightSeens">
               <div class="col-sm-12 text-center">
                 <div class="top-destinations">
                   <h3>Choose From Top Destinations</h3>
@@ -52,7 +52,7 @@
                   <img class="img-fluid" src="https://bookmysightseen.s3.ap-southeast-1.amazonaws.com/sightseenimages/gallery2.jpg">
                 </div> -->
                 <span class="popularsightlink">
-                  <a href="#frontsightseenlist" v-on:click="redirectToCountrySights(countries.thailand)">
+                  <router-link :to="{ name: 'frontsightseenlist', params: { country: countries.thailand } }">
                     <div class="sightseeninfo_wrap">
                       <div class="row">
                         <div class="col-sm-12">
@@ -72,13 +72,13 @@
                         </div>
                       </div>
                     </div>
-                  </a>
+                  </router-link>
                 </span>
               </div>
             </div>
           </div>
           <div class="col-md-4 mx-auto">
-            <div class="row">
+            <div class="row" v-if="countries.thailand">
               <div class="col-sm-12 text-center">
                 <div class="select-counteries">
                   <h3>Choose From Countries</h3>
@@ -86,18 +86,18 @@
               </div>
               <div class="col-md-6 col-sm-6 text-center ">
                   <div class="top_countries">
-                    <a class="badge-link" v-on:click="redirectToCountrySights(countries.thailand)"><img class="img-fluid" :src="'images/frontimages/thailand3x.png'" alt=""></a>
+                    <router-link class="badge-link" :to="{ name: 'frontsightseenlist', params: { country: (countries.thailand) } }"><img class="img-fluid" :src="'images/frontimages/thailand3x.png'" alt=""></router-link>
                   </div>
                   <div class="top_countries">
-                    <a class="badge-link" v-on:click="redirectToCountrySights(countries.singapore)"><img class="img-fluid" :src="'images/frontimages/singapore3x.png'" alt=""></a>
+                    <router-link class="badge-link" :to="{ name: 'frontsightseenlist', params: { country: (countries.singapore) } }"><img class="img-fluid" :src="'images/frontimages/singapore3x.png'" alt=""></router-link>
                   </div>
               </div>
               <div class="col-md-6 col-sm-6 text-center">
                   <div class="top_countries">
-                    <a class="badge-link" v-on:click="redirectToCountrySights(countries.dubai)" ><img class="img-fluid" :src="'images/frontimages/dubai3x.png'" alt=""></a>
+                    <router-link class="badge-link" :to="{ name: 'frontsightseenlist', params: { country: (countries.dubai) } }" ><img class="img-fluid" :src="'images/frontimages/dubai3x.png'" alt=""></router-link>
                   </div>
                   <div class="top_countries">
-                    <a class="badge-link " v-on:click="redirectToCountrySights(countries.malaysia)"><img class="img-fluid" :src="'images/frontimages/malaysia3x.png'" alt=""></a>
+                    <router-link class="badge-link " :to="{ name: 'frontsightseenlist', params: { country: (countries.malaysia) } }"><img class="img-fluid" :src="'images/frontimages/malaysia3x.png'" alt=""></router-link>
                   </div>
               </div>
             </div>
@@ -200,13 +200,12 @@
           new friends!</h2>
         <ul class="list-inline list-social">
           <li class="list-inline-item social-twitter">
-            <a href="https://twitter.com/BookmySeen">
+            <a href="https://twitter.com/Go4SightSeeing">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li class="list-inline-item social-facebook">
-            <a href="https://www.facebook.com/Bookmysightseen-2022848227997448/
-">
+            <a href="https://www.facebook.com/Go4SightSeeing/">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
@@ -226,7 +225,7 @@
 export default {
   data:function(){
     return{
-      popularSightSeens: [],
+      popularSightSeens: null,
       countries: {
         'malaysia' : null,
         'singapore' : null,
@@ -253,9 +252,6 @@ export default {
         this.countries.thailand  = response.data[2].id;
         this.countries.dubai  = response.data[3].id;
       });
-    },
-    redirectToCountrySights(country) {
-      this.$router.push({ name: 'frontsightseenlist', params: { country: country }});
     },
     getPopularSightSeen (){
       this.$http.get("/getPopularSightSeen").then(function(response){

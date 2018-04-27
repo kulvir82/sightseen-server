@@ -1,23 +1,23 @@
 <template>
   <nav v-else class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <router-link class="navbar-brand js-scroll-trigger" href="#page-top" :to="'/'">
-      <img :src="'/images/frontimages/Go4ss_logo.png'" />
+      <router-link class="navbar-brand js-scroll-trigger" to="/">
+        <img :src="'/images/frontimages/Go4ss_logo.png'" />
       </router-link>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fa fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto" v-if="countries.thailand">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" :href="'#frontsightseenlist/'+countries.thailand" v-on:click="redirectToCountrySights(countries.thailand)">SightSeens</a>
+            <router-link class="nav-link js-scroll-trigger" :to="{ name: 'frontsightseenlist', params: { country: countries.thailand } }" >SightSeens</router-link>
           </li>
           <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contactus" v-on:click="redirectToContactUs()">Contact Us</a>
+              <router-link class="nav-link js-scroll-trigger" to="/contact-us">Contact Us</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#aboutus" v-on:click="redirectToAboutUs()" >About Us</a>
+              <router-link class="nav-link js-scroll-trigger" to="/about-us">About Us</router-link>
             </li>
         </ul>
       </div>
@@ -50,16 +50,7 @@ export default {
         this.countries.thailand  = response.data[2].id;
         this.countries.dubai  = response.data[3].id;
       });
-    },
-    redirectToCountrySights(country) {
-      this.$router.push({ name: 'frontsightseenlist', params: { country: country }});
-    },
-    redirectToAboutUs:function(){
-      this.$router.push({ name: 'aboutus'});
-    },
-    redirectToContactUs:function(){
-      this.$router.push({ name: 'contactus'});
-    },
+    }
   },
   mounted:function(){
   }     

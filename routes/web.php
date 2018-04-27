@@ -61,6 +61,10 @@ Route::get('/addtocart','UsersController@addProductToUsersCart');
 Route::post('/productsdata','CityExplorer@getProductDetail');
 Route::get('/getPopularSightSeen', 'SightSeensController@getPopularSightSeen');
 
+  Route::get('/{any}', function(){
+      return view('frontview.index');
+    })->where('any', '.*');
+
 Route::get('/sendmail', function (Request $request) {
   $data = [
                 'username' => 'Abhi',

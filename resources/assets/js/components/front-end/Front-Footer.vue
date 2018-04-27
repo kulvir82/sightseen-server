@@ -7,27 +7,27 @@
             <div class="col-lg-4 col-md-4">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#aboutus" v-on:click="redirectToAboutUs()" >About Us</a>
+                  <router-link class="nav-link js-scroll-trigger" to="/about-us" >About Us</router-link>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#contactus" v-on:click="redirectToContactUs()">Contact Us</a>
+                    <router-link class="nav-link js-scroll-trigger" to="contact-us">Contact Us</router-link>
                 </li>
               </ul>
             </div>
             <div class="col-lg-4 col-md-4">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#termsconditions" v-on:click="redirectToTermsConditions()">Terms & Conditions</a>
+                    <router-link class="nav-link js-scroll-trigger" to="/terms-conditions">Terms & Conditions</router-link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#support"  v-on:click="redirectToSupport()">Support</a>
+                    <router-link class="nav-link js-scroll-trigger" to="/support">Support</router-link>
                 </li>
               </ul>
             </div>
             <div class="col-lg-4 col-md-4">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger" href="#privacypolicy" v-on:click="redirectToPrivacyPolicy()">Privacy Policy</a>
+                    <router-link class="nav-link js-scroll-trigger" to="/privacy-policy">Privacy Policy</router-link>
                   </li>
               </ul>
             </div>
@@ -37,10 +37,10 @@
           <p>&copy; 2017 go4sightseeing.com. All Rights Reserved.</p>
           <ul class="list-inline">
             <li class="list-inline-item">
-              <a href="#">Support</a>
+              <router-link to="/support">Support</router-link>
             </li>
             <li class="list-inline-item">
-             <a v-on:click="redirectToTermsConditions">Terms & Conditions</a>
+             <router-link to="terms-conditions">Terms & Conditions</router-link>
             </li>
            </ul>
         </div>
@@ -66,21 +66,7 @@ export default {
     }
   },
   methods:{
-    redirectToAboutUs:function(){
-      this.$router.push({ name: 'aboutus'});
-    },
-    redirectToContactUs:function(){
-      this.$router.push({ name: 'contactus'});
-    },
-    redirectToTermsConditions:function(){
-      this.$router.push({ name: 'termsconditions'});
-    },
-    redirectToSupport:function(){
-      this.$router.push({ name: 'support'});
-    },
-    redirectToPrivacyPolicy:function(){
-      this.$router.push({ name: 'privacypolicy'});
-    },
+    
   }
 
 }
