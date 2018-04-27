@@ -38,7 +38,7 @@
                 <!-- <strong><i class="fa fa-phone"></i></strong> +1(289)505-8058 -->
               </div>
               <div class="email">
-                <strong><i class="fa fa-envelope"></i></strong> support@go4sightseen.com
+                <strong><i class="fa fa-envelope"></i></strong> support@go4sightseeing.com
               </div>
             </div>
           </div>
