@@ -5,10 +5,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Book your favourite sight scene with click of a button">
+    <meta name="description" content="Discover online sightseeing tours across various Asian cities with Go4SS. Enjoy the blend of local sightseeing excursions. Visit our website & Book now">
     <meta name="author" content="">
-
-    <title>Go4SightSeeing - Book your favourite sight scene with click of a button</title>
+    <title> Go4SightSeeing - Book SightSeeing Tour & City Excursions Online</title>
     <link rel="shortcut icon" type="image/png" href="/images/frontimages/favicon.png"/>
     <!-- Bootstrap core CSS -->
     <link href="{{ mix('/css/front.css') }}" rel="stylesheet">
