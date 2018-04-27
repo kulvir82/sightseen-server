@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="col-sm-12 text-center">
-            <h2 class="heading">Explore Sight Seen Here</h2>
+            <h2 class="heading">Explore Sight Seeing Here</h2>
             <h1>👇🏽</h1>
           </div>
         </div>
@@ -123,7 +123,7 @@
     <section class="features" id="features">
       <div class="container">
         <div class="headingcolor text-center">
-          <h2>Book your favourite Sight Seen or Show with just CLICK of a Button!</h2>
+          <h2>Book your favourite Sight Seeing or Show with just CLICK of a Button!</h2>
           <p class="text-muted"></p>
           <hr>
         </div>
