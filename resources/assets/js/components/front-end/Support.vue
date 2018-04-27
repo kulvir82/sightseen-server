@@ -35,6 +35,12 @@
                 <input class="btn btn-primary" v-on:click="sendSupportMail()" type="submit" name="submit" value="Submit">
               </div>
             </div>
+            <div v-if="sendmessage == 'successful'" class="text-success">
+            Message send {{sendmessage}}.
+          </div>
+          <div v-if="sendmessage == 'unsucessfull'" class="text-success">
+            Message send {{sendmessage}}.
+          </div>
           </div>
         </div>
       </div>
@@ -50,6 +56,7 @@ export default {
       emailid:null,
       message:null,
       errormessage:null,
+      sendmessage:null,
     }
   },
   methods:{
@@ -62,7 +69,8 @@ export default {
         this.errormessage = 'Message';
       }else {
         this.$http.post('usersendmail',{username:this.username,emailid:this.emailid,message:this.message,resource:'SupportPage'}).then(function(response){
-            alert('sending message '+response.data);
+            this.errormessage == null;
+            this.sendmessage == this.response.data;
         });
       }
     }
