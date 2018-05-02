@@ -73,7 +73,21 @@ class UsersModel extends Model
   }
   public function getUsersDetail()
   {
-    $detail = CeUsers::select('id','username','email','phone_number',DB::raw("DATE_FORMAT(created_at, '%m-%d-%Y') as registerd_on"))->get();
+    $detail = CeUsers::select('id','username','email','phone_number',DB::raw("DATE_FORMAT(created_at, '%m-%d-%Y') as registerd_on"))->paginate(10);
+
+    foreach ($detail as $index =>$id) {
+      $bookings = UserBooking::select('id')->where('userid','=',$id->id)->get();
+      $detail[$index]['number_of_bookings'] = count($bookings);
+    }
+
+
+    return $detail;
+  }
+
+  public function searchUsersDetail($request)
+  {
+    $detail = CeUsers::select('id','username','email','phone_number',DB::raw("DATE_FORMAT(created_at, '%m-%d-%Y') as registerd_on"))->where('username','like','%'.$request->search.'%')->orWhere('email','like','%'.$request->search.'%')->paginate(10);
+
     foreach ($detail as $index =>$id) {
       $bookings = UserBooking::select('id')->where('userid','=',$id->id)->get();
       $detail[$index]['number_of_bookings'] = count($bookings);

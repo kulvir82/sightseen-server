@@ -128,5 +128,10 @@ class UsersController extends Controller
      $users_details = $model->getUsersDetail();
      return response()->json($users_details);
   }
-
+  public function searchUsersDetail(Request $request)
+  {
+     $model = new UsersModel;
+     $users_details = $model->searchUsersDetail($request);
+     return response()->json($users_details);
+  }
 }

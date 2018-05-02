@@ -48,6 +48,8 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/removevoucher', 'UserBookingController@removeVoucher');
   Route::post('/sendvoucheremail', 'UserBookingController@sendVoucherEmail');
   Route::get('/usersdetail', 'UsersController@getUsersDetail');
+  Route::post('/searchuserdetail', 'UsersController@searchUsersDetail');
+
 });
 
 Route::get('/getcountries','CityExplorer@getCountry');
