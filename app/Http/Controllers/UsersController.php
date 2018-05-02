@@ -122,4 +122,11 @@ class UsersController extends Controller
 
     }
   }
+  public function getUsersDetail()
+  {
+     $model = new UsersModel;
+     $users_details = $model->getUsersDetail();
+     return response()->json($users_details);
+  }
+
 }

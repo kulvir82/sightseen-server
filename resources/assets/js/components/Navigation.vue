@@ -5,6 +5,7 @@
           <li><a href="javascript:void(0)" @click="redirectToSightseen($event)">Sight Seen</a></li>
           <li><a href="javascript:void(0)" @click="redirectToAddSightseen($event)">Add Sightseen</a></li>
           <li><a href="javascript:void(0)" @click="">Reports</a></li>
+          <li><a href="javascript:void(0)" @click="redirectToUsersDetail($event)">Users</a></li>
           <!-- <router-link tag="li" to="/bookings">
             <a>Bookings</a>
           </router-link> -->
@@ -38,6 +39,13 @@ export default {
       $('ul.my_nav li a').removeClass("active");
       event.target.className = "active";
       var view  = ['bookings','/bookings','','get'];
+      bus.$emit('open-view',view);
+      localStorage.removeItem('pagestate');
+    },
+    redirectToUsersDetail (event){
+      $('ul.my_nav li a').removeClass("active");
+      event.target.className = "active";
+      var view  = ['userspage','/userspage','','get'];
       bus.$emit('open-view',view);
       localStorage.removeItem('pagestate');
     },
