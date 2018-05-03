@@ -53,7 +53,7 @@
       <div class="paginationstyle" id="gallerypaginate" >
         <vue-pagination
             :pagination="pagination"
-            @paginate="getSightSeen(pagination.current_page)"
+            @paginate="getUsersDetail(pagination.current_page)"
             :offset="4">
         </vue-pagination>
       </div>
@@ -66,25 +66,29 @@ export default {
 data(){
   return{
       details:[],
-      pagination:{},
+      pagination:{
+        total: 0,
+        per_page: 2,
+        from: 1,
+        to: 0,
+        current_page: 1
+      },
       records: false,
       search:null
   }
 },
 methods:{
-  getUsersDetail(){
-    this.$http.get('/usersdetail').then(function(response){
+  getUsersDetail(current_page){
+    this.$http.get('/usersdetail?page='+current_page).then(function(response){
       this.details = response.data.data;
       this.pagination = response.data
-      console.log(response);
     });
   },
   searchUser(){
-    console.log(this.search);
+
     this.$http.post('/searchuserdetail?search='+this.search).then(function(response){
-      console.log(response);
       this.details = response.data.data;
-      // this.pagination = response.data;
+      this.pagination = response.data;
     });
   }
 },
