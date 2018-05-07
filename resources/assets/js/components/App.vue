@@ -17,6 +17,7 @@ import SingleSight from './SingleSight.vue';
 import Bookings from './Bookings.vue';
 import BookingDetail from './BookingDetail.vue';
 import Settings from './Settings.vue';
+import UsersPage from './UsersPage.vue';
 export default {
     name: 'app',
     components: {
@@ -27,7 +28,8 @@ export default {
       singlesight: SingleSight,
       bookings: Bookings,
       bookingdetail: BookingDetail,
-      Settings
+      Settings,
+      userspage:UsersPage
     },
     data:function() {
       return {

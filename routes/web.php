@@ -47,7 +47,11 @@ Route::group(['middleware' => 'auth'], function () {
   Route::post('/updatebooking', 'UserBookingController@updateBooking');
   Route::post('/removevoucher', 'UserBookingController@removeVoucher');
   Route::post('/sendvoucheremail', 'UserBookingController@sendVoucherEmail');
+  Route::get('/usersdetail', 'UsersController@getUsersDetail');
+  Route::post('/searchuserdetail', 'UsersController@searchUsersDetail');
+
 });
+
 Route::get('/getcountries','CityExplorer@getCountry');
 Route::post('/getcities','CityExplorer@getCity');
 Route::get('/userTimeline','TwitterController@getTweets');
@@ -60,6 +64,7 @@ Route::post('/verifypincode','UsersController@verifyPin');
 Route::get('/addtocart','UsersController@addProductToUsersCart');
 Route::post('/productsdata','CityExplorer@getProductDetail');
 Route::get('/getPopularSightSeen', 'SightSeensController@getPopularSightSeen');
+
 
   Route::get('/{any}', function(){
       return view('frontview.index');

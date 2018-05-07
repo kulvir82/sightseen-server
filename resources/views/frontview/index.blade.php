@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Discover online sightseeing tours across various Asian cities with Go4SS. Enjoy the blend of local sightseeing excursions. Visit our website & Book now">
     <meta name="author" content="">
+    <meta name="google-site-verification" content="z2-dY2tjy8MvHT7HZEF3bpGfjc5_F5nzY6KgzgK5shA" />
     <title> Go4SightSeeing - Book SightSeeing Tour & City Excursions Online</title>
     <link rel="shortcut icon" type="image/png" href="/images/frontimages/favicon.png"/>
     <!-- Bootstrap core CSS -->
@@ -15,7 +16,15 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118346163-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
+      gtag('config', 'UA-118346163-1');
+    </script>
   </head>
 
   <body id="page-top">

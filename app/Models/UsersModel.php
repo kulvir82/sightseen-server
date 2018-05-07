@@ -9,8 +9,9 @@ use App\Models\Countries;
 use App\Models\Sightseen;
 use App\Models\CeUsers;
 use App\Models\User;
-use App\Models\UserBookings;
-use App\Models\BookingDetails;
+use DB;
+use App\Models\UserBooking;
+use App\Models\BookingDetail;
 
 class UsersModel extends Model
 {
@@ -69,5 +70,31 @@ class UsersModel extends Model
     $updateuser = CeUsers::where('id','=',$request->id)->update(['username' => $request->username, 'email' => $request->email ,'first_name' => $request->first_name, 'last_name' => $request->last_name, 'phone_number' => $request->phone_number ]);
     $userdetails = $this->getUserDetail($request->id);
     return $userdetails;
+  }
+  public function getUsersDetail()
+  {
+    $detail = CeUsers::select('id','username','email','phone_number',DB::raw("DATE_FORMAT(created_at, '%m-%d-%Y') as registerd_on"))->paginate(10);
+
+    foreach ($detail as $index =>$id) {
+      $bookings = UserBooking::select('id')->where('userid','=',$id->id)->get();
+      $detail[$index]['number_of_bookings'] = count($bookings);
+    }
+
+
+    return $detail;
+  }
+
+  public function searchUsersDetail($request)
+  {
+    
+    $detail = CeUsers::select('id','username','email','phone_number',DB::raw("DATE_FORMAT(created_at, '%m-%d-%Y') as registerd_on"))->where('username','like','%'.$request->search.'%')->orWhere('email','like','%'.$request->search.'%')->paginate(10);
+
+    foreach ($detail as $index =>$id) {
+      $bookings = UserBooking::select('id')->where('userid','=',$id->id)->get();
+      $detail[$index]['number_of_bookings'] = count($bookings);
+    }
+
+
+    return $detail;
   }
 }
