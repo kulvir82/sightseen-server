@@ -65,13 +65,98 @@ import UserProfilePage from './components/UserProfilePage.vue';
 Vue.component('VuePagination', require('./components/Pagination.vue'));
 
 const routes = [
-                  { path: '/', component: FrontView, name: 'frontview' },
-                  { path: '/sight-seen-list/:country', component: FrontSightSeenList, name: 'frontsightseenlist' },
-                  { path: '/about-us', component: AboutUs, name: 'aboutus' },
-                  { path: '/contact-us', component: ContactUs, name: 'contactus' },
-                  { path: '/terms-conditions', component: TermsConditions, name: 'termsconditions' },
-                  { path: '/support', component: Support, name: 'support' },
-                  { path: '/privacy-policy', component: PrivacyPolicy, name: 'privacypolicy' },
+                  { path: '/',
+                    component: FrontView,
+                    name: 'frontview', 
+                    meta:{
+                      title: 'Go4SightSeeing - Book SightSeeing Tour & City Excursions Online',
+                      metaTags: [
+                        {
+                          name: 'description',
+                          content: 'Discover online sightseeing tours across various Asian cities with Go4SS. Enjoy the blend of local sightseeing excursions. Visit our website & Book now.'
+                        }
+                      ]
+                    }
+                  },
+                  { path: '/sight-seen-list/:country', 
+                    component: FrontSightSeenList, 
+                    name: 'frontsightseenlist', 
+                    meta:{
+                      title: 'Go4SightSeeing - Book SightSeeing Tour & City Excursions Online',
+                      metaTags: [
+                        {
+                          name: 'description',
+                          content: 'Discover online sightseeing tours across various Asian cities with Go4SS. Enjoy the blend of local sightseeing excursions. Visit our website & Book now.'
+                        }
+                      ]
+                    }
+                  },
+                  { 
+                    path: '/about-us', 
+                    component: AboutUs,
+                    name: 'aboutus',
+                    meta:{
+                      title: 'About Us - Go4SightSeeing',
+                      metaTags: [
+                        {
+                          name: 'description',
+                          content: 'Welcome to Go4SS, gives an easy way to explore all your favourite sightseeings with just a click.'
+                        }
+                      ]
+                    } 
+                  },
+                  { path: '/contact-us', 
+                    component: ContactUs, 
+                    name: 'contactus',
+                    meta:{
+                      title: 'Contact Us - Go4SightSeeing',
+                      metaTags: [
+                        {
+                          name: 'description',
+                          content: 'Contact us at support@go4sightseeing.com for any enquiry regarding booking. Experience Go4SS app on mobile.'
+                        }
+                      ]
+                    }
+                  },
+                  { path: '/terms-conditions', 
+                    component: TermsConditions, 
+                    name: 'termsconditions', 
+                    meta:{
+                      title: 'Terms & Conditions - Go4SightSeeing',
+                      metaTags: [
+                        {
+                          name: 'description',
+                          content: 'Please read out the terms & conditions carefully regarding website and other third party services.'
+                        }
+                      ]
+                    }
+                  },
+                  { path: '/support', 
+                    component: Support, 
+                    name: 'support', 
+                    meta:{
+                      title: 'Customer Support - Go4SightSeeing',
+                      metaTags: [
+                        {
+                          name: 'description',
+                          content: 'Use this webpage to contact Go4SS customer support. For any technical assistance , Call us at +919875950679.'
+                        }
+                      ]
+                    }
+                  },
+                  { path: '/privacy-policy', 
+                    component: PrivacyPolicy, 
+                    name: 'privacypolicy',
+                    meta:{
+                      title: 'Privacy Policy - Go4SightSeeing',
+                      metaTags: [
+                        {
+                          name: 'description',
+                          content: 'We at Go4SS, respects & protects the private information or data for our customers privacy. For more Visit our link.'
+                        }
+                      ]
+                    }
+                  },
                   { path: '/addsightseen', component: AddSightSeen, name: 'addsightseen' },
                   { path: '/editsightseen', component: EditSightSeen, name: 'editsightseen' },
                   { path: '/sightseen', component: SightSeen, name: 'sightseen' },
@@ -91,6 +176,24 @@ const router = new VueRouter({
       }
     }
  });
+
+
+// to set title and meta tag dynamically
+router.beforeEach((to, from, next) => {
+  
+  // cehck if title is set
+  const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title);
+
+  // check if metatag is set
+  const nearestWithMeta = to.matched.slice().reverse().find(r => r.meta && r.meta.metaTags);
+  
+  if(nearestWithTitle) document.title = to.meta.title;
+  
+  if(nearestWithMeta) document.head.querySelector("[name='description']").content = to.meta.metaTags[0].content;
+
+  next();
+});
+//  
 
  var bus = new Vue({});
 
