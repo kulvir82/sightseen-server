@@ -5,7 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Discover online sightseeing tours across various Asian cities with Go4SS. Enjoy the blend of local sightseeing excursions. Visit our website & Book now">
+    <meta name="description" content="Discover online sightseeing tours across various Asian cities with Go4SS. Enjoy the blend of local sightseeing excursions. Visit our website & Book now" data-vue-router-controlled>
     <meta name="author" content="">
     <meta name="google-site-verification" content="z2-dY2tjy8MvHT7HZEF3bpGfjc5_F5nzY6KgzgK5shA" />
     <title> Go4SightSeeing - Book SightSeeing Tour & City Excursions Online</title>
